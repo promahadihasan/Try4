@@ -26,6 +26,10 @@
         android:title="@string/title_activity_seheri_ifter_time"
         android:orderInCategory="100"
         app:showAsAction="never" />
+    <item android:id="@+id/action_alarm"
+        android:title="@string/title_activity_alarm"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
     <item android:id="@+id/action_food_habit"
         android:title="@string/title_activity_food_habit"
         android:orderInCategory="100"

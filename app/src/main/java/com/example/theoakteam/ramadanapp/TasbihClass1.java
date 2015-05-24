@@ -1,5 +1,7 @@
 package com.example.theoakteam.ramadanapp;
 
+import java.util.HashMap;
+
 /**
  * Created by Sunny-PC on 5/24/2015.
  */
@@ -10,6 +12,9 @@ public class TasbihClass1 {
 
     public Integer tasbihCounter(){
         counter++;
+
+
+
         return  counter;
     }
 

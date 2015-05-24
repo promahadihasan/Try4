@@ -1,6 +1,7 @@
 package com.example.theoakteam.ramadanapp;
 
 import android.content.Intent;
+import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+
+
 //this is test for github
+
 public class MainActivity extends ActionBarActivity {
 
 
@@ -37,6 +41,8 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
+
+
     }
 
 
@@ -67,6 +73,14 @@ public class MainActivity extends ActionBarActivity {
 
             return true;
         }
+        else  if (id == R.id.action_alarm) {
+//            Intent i = new Intent(AlarmClock.ACTION_SHOW_ALARMS);
+//
+//            startActivity(i);
+
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
