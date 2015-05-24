@@ -1,6 +1,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_quran"
+        android:title="@string/title_activity_quran"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_hadis"
+        android:title="@string/title_activity_hadith"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_masala"
+        android:title="@string/title_activity_masala"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_dudorut"
+        android:title="@string/title_activity_dua"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_tasbhi"
+        android:title="@string/title_activity_tasbih"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/actionseheri_ifter_time"
+        android:title="@string/title_activity_seheri_ifter_time"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_food_habit"
+        android:title="@string/title_activity_food_habit"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
 </menu>

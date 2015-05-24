@@ -1,4 +1,4 @@
-package com.example.hasanabdullah.ramadanapp;
+package com.example.theoakteam.ramadanapp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
