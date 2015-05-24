@@ -13,7 +13,7 @@ public class DisplaySuraActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.display_text_of_sura_activity_xml);
+        setContentView(R.layout.display_sura);
     }
 
 
@@ -34,7 +34,7 @@ public class DisplaySuraActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_tasbhi) {
-            Intent intent = new Intent(DisplaySuraActivity.this, TasbihActivity.class);
+            Intent intent = new Intent(DisplaySuraActivity.this, TasbhiActivity1.class);
             startActivity(intent);
             finish();
             return true;

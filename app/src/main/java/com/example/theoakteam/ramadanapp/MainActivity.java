@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_tasbhi) {
-            Intent intent = new Intent(MainActivity.this, TasbihActivity.class);
+            Intent intent = new Intent(MainActivity.this, TasbhiActivity1.class);
             startActivity(intent);
             return true;
         }

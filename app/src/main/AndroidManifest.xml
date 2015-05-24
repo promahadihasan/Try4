@@ -16,13 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.theoakteam.ramadanapp.TasbihActivity"
-            android:label="@string/title_activity_tasbih" >
-        </activity>
         <activity android:name="com.example.theoakteam.ramadanapp.DisplaySuraActivity"
             android:label="@string/title_activity_quran"
             ></activity>
+        <activity android:name=".TasbhiActivity1"
+            android:label="@string/title_activity_tasbih">
+
+        </activity>
     </application>
 
 </manifest>
