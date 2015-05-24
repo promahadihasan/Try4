@@ -10,10 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.HashMap;
-
 //this is test for github
-//this is text for github by Hasan Abdullah
 public class MainActivity extends ActionBarActivity {
 
 
@@ -40,8 +37,6 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
-
-
     }
 
 
