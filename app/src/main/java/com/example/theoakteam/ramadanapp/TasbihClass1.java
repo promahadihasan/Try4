@@ -12,9 +12,6 @@ public class TasbihClass1 {
 
     public Integer tasbihCounter(){
         counter++;
-
-
-
         return  counter;
     }
 

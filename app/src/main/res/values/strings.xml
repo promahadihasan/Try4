@@ -9,8 +9,13 @@
     <string name="title_activity_seheri_ifter_time">সেহেরী ও ইফতারের সূচী</string>
     <string name="title_activity_tasbih">তসবিহ</string>
     <string name="title_activity_food_habit">রমজানের খাদ্যাভ্যাস</string>
-    <string name="title_activity_alarm"> এলারম </string>
+    <string name="title_activity_alarm"> এলার্ম </string>
     <string name="action_settings">সেটিংস</string>
     <string name="title_activity_sehri_and_ifter_short_form">সেহেরী ও ইফতারের সূচী</string>
+    <string name="sehri_ifter_first_note"> এর স্থানীয় সময় অনুযায়ী আজকের\nসেহরীর শেষ সময়\n</string>
+    <string name="ifter_time_note">ইফতারের সময়\n</string>
+    <string name="sehri_button_view">পুরো রমজানের সূচী দেখুন</string>
+
+
 </resources>
     <!--klkl-->

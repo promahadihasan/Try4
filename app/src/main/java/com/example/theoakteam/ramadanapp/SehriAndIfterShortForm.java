@@ -13,6 +13,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sehri_and_ifter_short_form);
+
+
     }
 
     @Override

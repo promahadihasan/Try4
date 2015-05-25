@@ -29,6 +29,7 @@ public class TasbhiActivity1 extends ActionBarActivity {
     String counterString;
     String DEFAULT;
     SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class TasbhiActivity1 extends ActionBarActivity {
         DEFAULT = "N/A";
 
         sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         counterString = sharedPreferences.getString("tasbihCounter",DEFAULT);
         if(counterString.equals(DEFAULT)){
             tasbih.setCounter(0);
@@ -46,33 +49,16 @@ public class TasbhiActivity1 extends ActionBarActivity {
         }
         else{
             textView.setText(counterString);
-            Integer integer = Integer.parseInt(counterString);
-            tasbih.setCounter(integer);
+            currentCounter = Integer.parseInt(counterString);
+            tasbih.setCounter(currentCounter);
         }
-
-
-
     }
 
 
     public void tasbihCount(View v){
-
         currentCounter = tasbih.tasbihCounter();
         textView.setText(currentCounter.toString());
-        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("tasbihCounter", currentCounter.toString());
-        editor.commit();
-
-
-
     }
-//it cause  unfortunately
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//
-//    }
 
     public  void  tasbihReset(View v){
 
@@ -82,13 +68,14 @@ public class TasbhiActivity1 extends ActionBarActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         tasbih.setCounter(0);
+                        currentCounter=0;
                         textView.setText("0");
 
-                        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("tasbihCounter", "0");
-
-                        editor.commit();
+//                        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sharedPreferences.edit();
+//                        editor.putString("tasbihCounter", "0");
+//
+//                        editor.commit();
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -99,8 +86,16 @@ public class TasbhiActivity1 extends ActionBarActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
 
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
+        //sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
+
+        editor.putString("tasbihCounter", currentCounter.toString());
+        editor.commit();
     }
 
     @Override
