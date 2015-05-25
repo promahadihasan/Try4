@@ -1,19 +1,57 @@
 package com.example.theoakteam.ramadanapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 
 public class SehriAndIfterShortForm extends ActionBarActivity {
 
+    String DEFAULT = "N/A";
+
+    SharedPreferences sharedPreferences = getSharedPreferences("DistrictInputFlag", Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+    AutoCompleteTextView autoCompleteTextView;
+
+    //This part is not completed!
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sehri_and_ifter_short_form);
 
+
+
+        String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
+
+        if(flagString.equals(DEFAULT)){
+            editor.putString("DistrictInputFlag","true");
+            editor.commit();
+            setContentView(R.layout.distric_input);
+
+
+            String[] countries = getResources().
+                    getStringArray(R.array.list_of_districts);
+            ArrayAdapter adapter = new ArrayAdapter
+                    (this,android.R.layout.simple_list_item_1,countries);
+            autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+            autoCompleteTextView.setAdapter(adapter);
+
+
+        }
+        else {
+            setContentView(R.layout.activity_sehri_and_ifter_short_form);
+        }
+
+
+    }
+
+    public void  saveDistrict(View view){
 
     }
 

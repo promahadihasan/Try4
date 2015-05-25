@@ -23,10 +23,8 @@
             android:name=".TasbhiActivity1"
             android:label="@string/title_activity_tasbih" >
         </activity>
-        <!--<activity-->
-            <!--android:name=".SehriAndIfterShortForm"-->
-            <!--android:label="@string/title_activity_sehri_and_ifter_short_form" >-->
-        <!--</activity>-->
+
+
     </application>
 
 </manifest>

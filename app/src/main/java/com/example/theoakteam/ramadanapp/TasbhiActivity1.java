@@ -40,7 +40,6 @@ public class TasbhiActivity1 extends ActionBarActivity {
         DEFAULT = "N/A";
 
         sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         counterString = sharedPreferences.getString("tasbihCounter",DEFAULT);
         if(counterString.equals(DEFAULT)){

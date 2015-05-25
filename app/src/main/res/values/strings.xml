@@ -15,6 +15,75 @@
     <string name="sehri_ifter_first_note"> এর স্থানীয় সময় অনুযায়ী আজকের\nসেহরীর শেষ সময়\n</string>
     <string name="ifter_time_note">ইফতারের সময়\n</string>
     <string name="sehri_button_view">পুরো রমজানের সূচী দেখুন</string>
+    <string name="title_activity_district_input">DistrictInputActivity</string>
+    <string name="district_submit_button">Submit</string>
+
+    <string-array name="list_of_districts">
+        <item >Barguna</item>
+        <item >Barisal</item>
+        <item >Bhola</item>
+        <item >Jhalokati</item>
+        <item >Patuakhali</item>
+        <item >Pirojpur</item>
+        <item >Bandarban</item>
+        <item >Brahmanbaria</item>
+        <item >Chandpur</item>
+        <item >Chittagong</item>
+        <item >Comilla</item>
+        <item >Cox\'s bazar</item>
+        <item >Feni</item>
+        <item >Khagrachhari</item>
+        <item >Lakshmipur</item>
+        <item >Noakhali</item>
+        <item >Rangamati</item>
+        <item >Dhaka</item>
+        <item >Faridpur</item>
+        <item >Gazipur</item>
+        <item >Gopalganj</item>
+        <item >Jamalpur</item>
+        <item >Kishoreganj</item>
+        <item >Madaripur</item>
+        <item >Manikganj</item>
+        <item >Munshiganj</item>
+        <item >Mymensingh</item>
+        <item >Narayanganj</item>
+        <item >Narsingdi</item>
+        <item >Netrakona</item>
+        <item >Rajbari</item>
+        <item >Shariatpur</item>
+        <item >Sherpur</item>
+        <item >Tangail</item>
+        <item >Bagerhat</item>
+        <item >Chuadanga</item>
+        <item >Jessore</item>
+        <item >Jhenaidah</item>
+        <item >Khulna</item>
+        <item >Kushtia</item>
+        <item >Magura</item>
+        <item >Meherpur</item>
+        <item >Narail</item>
+        <item >Satkhira</item>
+        <item >Bogra</item>
+        <item >Chapainawabganj</item>
+        <item >Joypurhat</item>
+        <item >Pabna</item>
+        <item >Naogaon</item>
+        <item >Natore</item>
+        <item >Rajshahi</item>
+        <item >Sirajganj</item>
+        <item >Dinajpur</item>
+        <item >Gaibandha</item>
+        <item >Kurigram</item>
+        <item >Lalmonirhat</item>
+        <item >Nilphamari</item>
+        <item >Panchagarh</item>
+        <item >Rangpur</item>
+        <item >Thakurgaon</item>
+        <item >Habiganj</item>
+        <item >Moulvibazar </item>
+        <item >Sunamganj</item>
+        <item >Sylhet</item>
+    </string-array>
 
 
 </resources>
