@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 /**
  * Created by Sunny-PC on 5/24/2015.
  */
@@ -48,7 +50,10 @@ public class TasbhiActivity1 extends ActionBarActivity {
             tasbih.setCounter(integer);
         }
 
+
+
     }
+
 
     public void tasbihCount(View v){
 
@@ -116,6 +121,11 @@ public class TasbhiActivity1 extends ActionBarActivity {
         if (id == R.id.action_quran) {
             startActivity(new Intent(TasbhiActivity1.this, DisplaySuraActivity.class));
             finish();
+            return true;
+        }
+        else if(id==R.id.actionseheri_ifter_time){
+            startActivity(new Intent(TasbhiActivity1.this, SehriAndIfterShortForm.class));
+
             return true;
         }
 

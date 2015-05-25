@@ -39,6 +39,8 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
+
+
     }
 
 
@@ -66,6 +68,11 @@ public class MainActivity extends ActionBarActivity {
         }
        else  if (id == R.id.action_quran) {
             startActivity(new Intent(MainActivity.this, DisplaySuraActivity.class));
+
+            return true;
+        }
+        else if(id==R.id.actionseheri_ifter_time){
+            startActivity(new Intent(MainActivity.this, SehriAndIfterShortForm.class));
 
             return true;
         }

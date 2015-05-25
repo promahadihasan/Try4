@@ -1,7 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <!--klkl-->
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.theoakteam.ramadanapp.SehriAndIfterShortForm">
+
+
     <item android:id="@+id/action_quran"
         android:title="@string/title_activity_quran"
         android:orderInCategory="100"
@@ -34,4 +36,5 @@
         android:title="@string/title_activity_food_habit"
         android:orderInCategory="107"
         app:showAsAction="never" />
+
 </menu>
