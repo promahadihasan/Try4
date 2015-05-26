@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -21,11 +22,16 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
     SharedPreferences.Editor editor;
     AutoCompleteTextView autoCompleteTextView;
     DistrictsTimeClass districtsTimeObject = new DistrictsTimeClass();
+    TextView iftarTime;
+    TextView sehriTime;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        //iftarTime.setText("TEXT");//Problem is here
 
         sharedPreferences = getSharedPreferences("DistrictInputFlag", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -41,9 +47,30 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
             autoCompleteTextView.setAdapter(adapter);
 
+            System.out.println("habu gabu labu");
+
         }
-        else
+        else{
             setContentView(R.layout.activity_sehri_and_ifter_short_form);
+            iftarTime = (TextView) findViewById(R.id.iftarTextView);
+            sehriTime = (TextView) findViewById(R.id.sehriTextView);
+
+            String sharedPref = sharedPreferences.getString("DefaultDistrictName", "N/A");
+            String str;
+            if(sharedPref=="N/A"){
+                str = "SharedPreference Error";
+            }
+            else{
+                str = districtsTimeObject.getDistrictIndividualIftarTime(sharedPref);
+                iftarTime.setText(str);
+            }
+
+            //Toast.makeText(getApplicationContext(),str,Toast.LENGTH_LONG).show();
+
+
+           System.out.println("Iftar Time ->>> "+ str + " Afsus!");
+        }
+
 
 
     }
@@ -54,11 +81,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
 
         if(districtsTimeObject.isDistrictPresent(districtName)){
             editor.putString("DefaultDistrictName",districtName);
-            editor.putString("DistrictTime", districtsTimeObject.getDistrictTime(districtName));
+            editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
             editor.commit();
             Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
 
-            setContentView(R.layout.activity_sehri_and_ifter_short_form);
+            //setContentView(R.layout.activity_sehri_and_ifter_short_form);
         }
         else{
 

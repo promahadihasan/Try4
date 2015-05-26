@@ -3,8 +3,13 @@ package com.example.theoakteam.ramadanapp;
 
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Hasan Abdullah on 24-May-15.
@@ -17,7 +22,7 @@ public class DistrictsTimeClass {
 
 
 
-    public String getDistrictTime(String districtKey){
+    public String getDistrictPlusMinusTime(String districtKey){
 
         districtTimeMap.put("barguna", "2");
         districtTimeMap.put("barisal", "0");// Check it
@@ -88,6 +93,66 @@ public class DistrictsTimeClass {
 
     }
 
+    public String calculateTime(String centralTime, String plusMinusTime){
+        String finalTime;
+        int minute,hour;
+
+
+        hour = centralTime.charAt(0)-'0';
+        minute = (centralTime.charAt(2)-'0') * 10 + centralTime.charAt(3)-'0';
+
+        if(plusMinusTime.charAt(0)=='-'){
+
+            int subMinuteAmount = plusMinusTime.charAt(1)-'0';
+
+            if(minute<subMinuteAmount){
+                minute = (minute+60) - subMinuteAmount;
+                hour--;
+            }
+            else{
+                minute = minute - subMinuteAmount;
+            }
+
+        }
+        else {
+
+            int addMinute = minute + plusMinusTime.charAt(0)-'0';
+
+            if(addMinute>=60){
+                hour++;
+                minute = addMinute - 60;
+            }
+            else {
+                minute = addMinute;
+            }
+
+        }
+
+        finalTime = String.valueOf(hour) + ":" + String.valueOf(minute);
+
+        return finalTime;
+    }
+
+    public String getDistrictIndividualSehriTime(String districtName, int date){
+
+        String centralTime = getCentralSehriTime(date);
+        String districtPlusMinusTime = getDistrictPlusMinusTime(districtName);
+
+        String districtSehriTime;
+
+        districtSehriTime = calculateTime(centralTime,districtPlusMinusTime);
+
+        return districtSehriTime;
+    }
+
+    public String getDistrictIndividualIftarTime(String districtName){
+        String centralTime = getCentralIftarTime(1);//Just testing with 1st Ramadan
+        String plusMinusTime = getDistrictPlusMinusTime(districtName);
+        String individualTime = calculateTime(centralTime,plusMinusTime);
+
+        return individualTime;
+    }
+
     public void setCentralSehriTime(){
 
         centralSehriTime[1] = "3:37";
@@ -123,6 +188,11 @@ public class DistrictsTimeClass {
 
     }
 
+    public String getCentralSehriTime(int date){
+
+        return centralSehriTime[date];
+    }
+
     public void setCentralIftarTime(){
         centralIftarTime[1] = "6:49";
         centralIftarTime[2] = "6:49";
@@ -156,8 +226,13 @@ public class DistrictsTimeClass {
         centralIftarTime[30] = "6:51";
     }
 
+    public String getCentralIftarTime(int date){
+        setCentralIftarTime();
+        return centralIftarTime[date];
+    }
+
     public boolean isDistrictPresent(String string){
-        String temp = getDistrictTime(string);
+        String temp = getDistrictPlusMinusTime(string);
 
         if(temp==null)
             return false;

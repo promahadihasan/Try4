@@ -22,40 +22,40 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/seheriTimeTextView"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="40sp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/ifter_time_note"
-        android:id="@+id/iftarTimeTextView"
+        android:id="@+id/iftarTimeNoteTextView"
         android:textSize="30sp"
-        android:layout_below="@+id/seheriTimeTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="48dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/ifterTimeTextView"
-        android:layout_below="@+id/iftarTimeTextView"
-        android:layout_toRightOf="@+id/seheriTimeTextView"
-        android:layout_toEndOf="@+id/seheriTimeTextView"
-        android:textSize="40sp"/>
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/textView2" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sehri_button_view"
         android:id="@+id/button"
-        android:layout_below="@+id/ifterTimeTextView"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp" />
+        android:layout_marginBottom="75dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="000"
+        android:id="@+id/sehriTextView"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="000"
+        android:id="@+id/iftarTextView"
+        android:layout_below="@+id/iftarTimeNoteTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
