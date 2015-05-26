@@ -13,6 +13,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class SehriAndIfterShortForm extends ActionBarActivity {
 
@@ -24,14 +27,13 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
     DistrictsTimeClass districtsTimeObject = new DistrictsTimeClass();
     TextView iftarTime;
     TextView sehriTime;
+    TextView sehriNote;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        //iftarTime.setText("TEXT");//Problem is here
 
         sharedPreferences = getSharedPreferences("DistrictInputFlag", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -47,31 +49,51 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
             autoCompleteTextView.setAdapter(adapter);
 
-            System.out.println("habu gabu labu");
+        }
+        else{
+            sehriActivity();
+
+        }
+
+    }
+
+    public void sehriActivity(){
+        setContentView(R.layout.activity_sehri_and_ifter_short_form);
+        iftarTime = (TextView) findViewById(R.id.iftarTextView);
+        sehriTime = (TextView) findViewById(R.id.sehriTextView);
+        sehriNote = (TextView) findViewById(R.id.sehri_iftar_initial_note);
+        String iftarTimeString;
+        String sehriTimeString;
+
+        districtName = sharedPreferences.getString("DefaultDistrictName", "N/A");
+
+        if(districtName=="N/A"){
+            Toast.makeText(getApplicationContext(),"SharedPreference Error",Toast.LENGTH_LONG).show();
 
         }
         else{
-            setContentView(R.layout.activity_sehri_and_ifter_short_form);
-            iftarTime = (TextView) findViewById(R.id.iftarTextView);
-            sehriTime = (TextView) findViewById(R.id.sehriTextView);
+            String dateString = getDate();
+            //This App now show time for 1st Ramadan. for exact replace by:(districtName, dateString)
+            //Yet some bugs. not work for July.
+            sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, "18/06");
+            iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, "18/06");
 
-            String sharedPref = sharedPreferences.getString("DefaultDistrictName", "N/A");
-            String str;
-            if(sharedPref=="N/A"){
-                str = "SharedPreference Error";
-            }
-            else{
-                str = districtsTimeObject.getDistrictIndividualIftarTime(sharedPref);
-                iftarTime.setText(str);
-                //Date will be sent
-            }
+            sehriNote.setText(districtName+getText(R.string.sehri_iftar_first_note));
+            sehriTime.setText(sehriTimeString);
+            iftarTime.setText(iftarTimeString);
 
-
-           System.out.println("Iftar Time ->>> "+ str + " Afsus!");
         }
 
+    }
 
+    public String getDate(){
+        Date date = new Date();
 
+        SimpleDateFormat ft = new SimpleDateFormat("dd/MM");
+
+        //System.out.println("Hasan's Date: "+ft.format(date).toString());
+
+        return ft.format(date).toString();
     }
 
     public void  saveDistrict(View view){
@@ -84,6 +106,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
             editor.commit();
             Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
 
+            sehriActivity();
             //setContentView(R.layout.activity_sehri_and_ifter_short_form);
         }
         else{

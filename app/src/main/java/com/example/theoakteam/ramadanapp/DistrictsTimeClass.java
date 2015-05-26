@@ -20,6 +20,11 @@ public class DistrictsTimeClass {
     private String[] centralSehriTime = new String[35];
     private String[] centralIftarTime = new String[35];
 
+    public DistrictsTimeClass(){
+        setCentralSehriTime();
+        setCentralIftarTime();
+    }
+
 
 
     public String getDistrictPlusMinusTime(String districtKey){
@@ -97,7 +102,6 @@ public class DistrictsTimeClass {
         String finalTime;
         int minute,hour;
 
-
         hour = centralTime.charAt(0)-'0';
         minute = (centralTime.charAt(2)-'0') * 10 + centralTime.charAt(3)-'0';
 
@@ -133,9 +137,23 @@ public class DistrictsTimeClass {
         return finalTime;
     }
 
-    public String getDistrictIndividualSehriTime(String districtName, int date){
+    public int getRamadanDate(String date){
 
-        String centralTime = getCentralSehriTime(date);
+        int dayRamadan;
+        if(date.charAt(4)=='6'){
+            dayRamadan = (date.charAt(0)-'0') * 10 + date.charAt(1)-'0' -17;
+        }
+        else {
+            dayRamadan = (date.charAt(0)-'0') * 10 + date.charAt(1)-'0' +23;
+        }
+
+
+        return dayRamadan;
+    }
+
+    public String getDistrictIndividualSehriTime(String districtName, String date){
+
+        String centralTime = getCentralSehriTime(getRamadanDate(date));
         String districtPlusMinusTime = getDistrictPlusMinusTime(districtName);
 
         String districtSehriTime;
@@ -145,8 +163,8 @@ public class DistrictsTimeClass {
         return districtSehriTime;
     }
 
-    public String getDistrictIndividualIftarTime(String districtName){
-        String centralTime = getCentralIftarTime(1);//Just testing with 1st Ramadan
+    public String getDistrictIndividualIftarTime(String districtName, String date){
+        String centralTime = getCentralIftarTime(getRamadanDate(date));
         String plusMinusTime = getDistrictPlusMinusTime(districtName);
         String individualTime = calculateTime(centralTime,plusMinusTime);
 
@@ -183,14 +201,15 @@ public class DistrictsTimeClass {
         centralSehriTime[26] = "3:48";
         centralSehriTime[27] = "3:49";
         centralSehriTime[28] = "3:49";
-        centralSehriTime[29] = "3:52";
+        centralSehriTime[29] = "3:50";
         centralSehriTime[30] = "3:51";
 
     }
 
-    public String getCentralSehriTime(int date){
+    public String getCentralSehriTime(int dateRamadan){
+        setCentralSehriTime();
 
-        return centralSehriTime[date];
+        return centralSehriTime[dateRamadan];
     }
 
     public void setCentralIftarTime(){

@@ -12,11 +12,14 @@
     <string name="title_activity_alarm"> এলার্ম </string>
     <string name="action_settings">সেটিংস</string>
     <string name="title_activity_sehri_and_ifter_short_form">সেহেরী ও ইফতারের সূচী</string>
-    <string name="sehri_ifter_first_note"> এর স্থানীয় সময় অনুযায়ী আজকের\nসেহরীর শেষ সময়\n</string>
+    <string name="sehri_iftar_first_note">\nএর স্থানীয় সময় অনুযায়ী আজকের\nসেহরীর শেষ সময়\n</string>
     <string name="ifter_time_note">ইফতারের সময়\n</string>
     <string name="sehri_button_view">পুরো রমজানের সূচী দেখুন</string>
     <string name="title_activity_district_input">DistrictInputActivity</string>
     <string name="district_submit_button">Submit</string>
+    <string name="manikganj">মানিকগঞ্জ</string>
+    <string name="dhaka">ঢাকা</string>
+    <string name="coxs_bazar">কক্সবাজার</string>
 
     <string-array name="list_of_districts">
         <item >Barguna</item>

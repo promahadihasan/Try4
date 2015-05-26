@@ -10,14 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/sehri_ifter_first_note"
-        android:id="@+id/textView2"
+        android:textSize="30sp"
+        android:text="District Name"
+        android:id="@+id/sehri_iftar_initial_note"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textSize="25sp"/>
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,10 +23,10 @@
         android:text="@string/ifter_time_note"
         android:id="@+id/iftarTimeNoteTextView"
         android:textSize="30sp"
+        android:layout_below="@+id/sehriTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/textView2" />
+        android:layout_marginTop="50dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,7 +43,7 @@
         android:textSize="40sp"
         android:text="000"
         android:id="@+id/sehriTextView"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/sehri_iftar_initial_note"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -58,4 +56,5 @@
         android:layout_below="@+id/iftarTimeNoteTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
 </RelativeLayout>
