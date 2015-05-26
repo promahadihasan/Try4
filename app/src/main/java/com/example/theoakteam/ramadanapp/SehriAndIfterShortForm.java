@@ -63,9 +63,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
             else{
                 str = districtsTimeObject.getDistrictIndividualIftarTime(sharedPref);
                 iftarTime.setText(str);
+                //Date will be sent
             }
-
-            //Toast.makeText(getApplicationContext(),str,Toast.LENGTH_LONG).show();
 
 
            System.out.println("Iftar Time ->>> "+ str + " Afsus!");
