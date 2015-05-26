@@ -1,6 +1,8 @@
 package com.example.theoakteam.ramadanapp;
 
 
+import android.widget.Toast;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +17,8 @@ public class DistrictsTimeClass {
 
 
 
-    public String grtDistrictTime(String districtKey){
-        //fg;
+    public String getDistrictTime(String districtKey){
+
         districtTimeMap.put("barguna", "2");
         districtTimeMap.put("barisal", "0");// Check it
         districtTimeMap.put("bhola", "-2");
@@ -88,72 +90,98 @@ public class DistrictsTimeClass {
 
     public void setCentralSehriTime(){
 
-        centralSehriTime[1] = "6:49";
-        centralSehriTime[2] = "6:49";
-        centralSehriTime[3] = "6:50";
-        centralSehriTime[4] = "6:50";
-        centralSehriTime[5] = "6:50";
-        centralSehriTime[6] = "6:51";
-        centralSehriTime[7] = "6:51";
-        centralSehriTime[8] = "6:52";
-        centralSehriTime[9] = "6:52";
-        centralSehriTime[10] = "6:52";
-        centralSehriTime[11] = "6:52";
-        centralSehriTime[12] = "6:53";
-        centralSehriTime[13] = "6:53";
-        centralSehriTime[14] = "6:54";
-        centralSehriTime[15] = "6:54";
-        centralSehriTime[16] = "6:54";
-        centralSehriTime[17] = "6:55";
-        centralSehriTime[18] = "6:55";
-        centralSehriTime[19] = "6:54";
-        centralSehriTime[20] = "6:54";
-        centralSehriTime[21] = "6:54";
-        centralSehriTime[22] = "6:54";
-        centralSehriTime[23] = "6:53";
-        centralSehriTime[24] = "6:53";
-        centralSehriTime[25] = "6:53";
-        centralSehriTime[26] = "6:53";
-        centralSehriTime[27] = "6:52";
-        centralSehriTime[28] = "6:52";
-        centralSehriTime[29] = "6:52";
-        centralSehriTime[30] = "6:51";
+        centralSehriTime[1] = "3:37";
+        centralSehriTime[2] = "3:37";
+        centralSehriTime[3] = "3:37";
+        centralSehriTime[4] = "3:38";
+        centralSehriTime[5] = "3:38";
+        centralSehriTime[6] = "3:38";
+        centralSehriTime[7] = "3:39";
+        centralSehriTime[8] = "3:39";
+        centralSehriTime[9] = "3:40";
+        centralSehriTime[10] = "3:40";
+        centralSehriTime[11] = "3:41";
+        centralSehriTime[12] = "3:41";
+        centralSehriTime[13] = "3:42";
+        centralSehriTime[14] = "3:42";
+        centralSehriTime[15] = "3:42";
+        centralSehriTime[16] = "3:43";
+        centralSehriTime[17] = "3:43";
+        centralSehriTime[18] = "3:44";
+        centralSehriTime[19] = "3:44";
+        centralSehriTime[20] = "3:45";
+        centralSehriTime[21] = "3:45";
+        centralSehriTime[22] = "3:46";
+        centralSehriTime[23] = "3:46";
+        centralSehriTime[24] = "3:47";
+        centralSehriTime[25] = "3:48";
+        centralSehriTime[26] = "3:48";
+        centralSehriTime[27] = "3:49";
+        centralSehriTime[28] = "3:49";
+        centralSehriTime[29] = "3:52";
+        centralSehriTime[30] = "3:51";
 
     }
 
     public void setCentralIftarTime(){
-        centralIftarTime[1] = "3:37";
-        centralIftarTime[2] = "3:37";
-        centralIftarTime[3] = "3:37";
-        centralIftarTime[4] = "3:38";
-        centralIftarTime[5] = "3:38";
-        centralIftarTime[6] = "3:38";
-        centralIftarTime[7] = "3:39";
-        centralIftarTime[8] = "3:39";
-        centralIftarTime[9] = "3:40";
-        centralIftarTime[10] = "3:40";
-        centralIftarTime[11] = "3:41";
-        centralIftarTime[12] = "3:41";
-        centralIftarTime[13] = "3:42";
-        centralIftarTime[14] = "3:42";
-        centralIftarTime[15] = "3:42";
-        centralIftarTime[16] = "3:43";
-        centralIftarTime[17] = "3:43";
-        centralIftarTime[18] = "3:44";
-        centralIftarTime[19] = "3:44";
-        centralIftarTime[20] = "3:45";
-        centralIftarTime[21] = "3:45";
-        centralIftarTime[22] = "3:46";
-        centralIftarTime[23] = "3:46";
-        centralIftarTime[24] = "3:47";
-        centralIftarTime[25] = "3:48";
-        centralIftarTime[26] = "3:48";
-        centralIftarTime[27] = "3:49";
-        centralIftarTime[28] = "3:49";
-        centralIftarTime[29] = "3:52";
-        centralIftarTime[30] = "3:51";
+        centralIftarTime[1] = "6:49";
+        centralIftarTime[2] = "6:49";
+        centralIftarTime[3] = "6:50";
+        centralIftarTime[4] = "6:50";
+        centralIftarTime[5] = "6:50";
+        centralIftarTime[6] = "6:51";
+        centralIftarTime[7] = "6:51";
+        centralIftarTime[8] = "6:52";
+        centralIftarTime[9] = "6:52";
+        centralIftarTime[10] = "6:52";
+        centralIftarTime[11] = "6:52";
+        centralIftarTime[12] = "6:53";
+        centralIftarTime[13] = "6:53";
+        centralIftarTime[14] = "6:54";
+        centralIftarTime[15] = "6:54";
+        centralIftarTime[16] = "6:54";
+        centralIftarTime[17] = "6:55";
+        centralIftarTime[18] = "6:55";
+        centralIftarTime[19] = "6:54";
+        centralIftarTime[20] = "6:54";
+        centralIftarTime[21] = "6:54";
+        centralIftarTime[22] = "6:54";
+        centralIftarTime[23] = "6:53";
+        centralIftarTime[24] = "6:53";
+        centralIftarTime[25] = "6:53";
+        centralIftarTime[26] = "6:53";
+        centralIftarTime[27] = "6:52";
+        centralIftarTime[28] = "6:52";
+        centralIftarTime[29] = "6:52";
+        centralIftarTime[30] = "6:51";
     }
 
+    public boolean isDistrictPresent(String string){
+        String temp = getDistrictTime(string);
 
+        if(temp==null)
+            return false;
+        else
+            return true;
+    }
+
+    public String removeEndSpace(String string){
+        String finalString=null;
+        String tempString=null;
+        int i,length,lastIndex=-1;
+        length = string.length();
+
+        for(i=length-1; i>=0; i--){
+            if(string.charAt(i)!=' ')
+            {
+                lastIndex = i+1;
+                break;
+            }
+        }
+
+        finalString = string.substring(0,lastIndex);
+
+        return finalString;
+    }
 
 }

@@ -8,9 +8,9 @@
         android:id="@+id/autoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:inputType="textPersonName"
         android:layout_marginTop="65dp"
-        android:ems="10"
+        android:ems="18"
         android:layout_weight="0.04">
         <requestFocus />
     </AutoCompleteTextView>
@@ -23,4 +23,6 @@
         android:layout_gravity="center_horizontal"
         android:onClick="saveDistrict"
         />
+
+
 </LinearLayout>

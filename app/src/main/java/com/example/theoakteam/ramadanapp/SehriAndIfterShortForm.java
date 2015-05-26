@@ -10,23 +10,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 
 public class SehriAndIfterShortForm extends ActionBarActivity {
 
     String DEFAULT = "N/A";
-
-    SharedPreferences sharedPreferences = getSharedPreferences("DistrictInputFlag", Context.MODE_PRIVATE);
-    SharedPreferences.Editor editor = sharedPreferences.edit();
+    String districtName;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     AutoCompleteTextView autoCompleteTextView;
+    DistrictsTimeClass districtsTimeObject = new DistrictsTimeClass();
 
-    //This part is not completed!
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
+        sharedPreferences = getSharedPreferences("DistrictInputFlag", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
 
         if(flagString.equals(DEFAULT)){
@@ -34,24 +36,35 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
             editor.commit();
             setContentView(R.layout.distric_input);
 
-
-            String[] countries = getResources().
-                    getStringArray(R.array.list_of_districts);
-            ArrayAdapter adapter = new ArrayAdapter
-                    (this,android.R.layout.simple_list_item_1,countries);
+            String[] districts = getResources().getStringArray(R.array.list_of_districts);
+            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
             autoCompleteTextView.setAdapter(adapter);
 
-
         }
-        else {
+        else
             setContentView(R.layout.activity_sehri_and_ifter_short_form);
-        }
 
 
     }
 
     public void  saveDistrict(View view){
+        districtName = autoCompleteTextView.getText().toString();
+        districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
+
+        if(districtsTimeObject.isDistrictPresent(districtName)){
+            editor.putString("DefaultDistrictName",districtName);
+            editor.putString("DistrictTime", districtsTimeObject.getDistrictTime(districtName));
+            editor.commit();
+            Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
+
+            setContentView(R.layout.activity_sehri_and_ifter_short_form);
+        }
+        else{
+
+            Toast.makeText(getApplicationContext(),"Your District name is not correct!",Toast.LENGTH_LONG).show();
+
+        }
 
     }
 
