@@ -144,7 +144,8 @@ public class DistrictsTimeClass {
             dayRamadan = (date.charAt(0)-'0') * 10 + date.charAt(1)-'0' -17;
         }
         else {
-            dayRamadan = (date.charAt(0)-'0') * 10 + date.charAt(1)-'0' +23;
+            dayRamadan = (date.charAt(0)-'0') * 10 + date.charAt(1)-'0' +13;
+            //System.out.println("HU HA HA "+dayRamadan);
         }
 
 

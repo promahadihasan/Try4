@@ -76,12 +76,14 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
             String dateString = getDate();
             //This App now show time for 1st Ramadan. for exact replace by:(districtName, dateString)
             //Yet some bugs. not work for July.
-            sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, "18/06");
-            iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, "18/06");
+            sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, "10/07");
+            iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, "10/07");
 
             sehriNote.setText(districtName+getText(R.string.sehri_iftar_first_note));
             sehriTime.setText(sehriTimeString);
             iftarTime.setText(iftarTimeString);
+
+            //System.out.println("Hasan's Debug date "+districtsTimeObject.getRamadanDate("15/07"));
 
         }
 
