@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -121,6 +122,11 @@ public class TasbhiActivity1 extends ActionBarActivity {
             startActivity(new Intent(TasbhiActivity1.this, SehriAndIfterShortForm.class));
 
             return true;
+        }
+        else if(id==R.id.action_alarm){
+            Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+            startActivity(i);
+            return  true;
         }
 
         return super.onOptionsItemSelected(item);

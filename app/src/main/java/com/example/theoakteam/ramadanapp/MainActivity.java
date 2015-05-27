@@ -1,6 +1,7 @@
 package com.example.theoakteam.ramadanapp;
 
 import android.content.Intent;
+import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+//alarm compleate
 //this is test for github
 //this is text for github by Hasan Abdullah fgdfgfg
 //fdgdf
@@ -75,6 +76,11 @@ public class MainActivity extends ActionBarActivity {
             startActivity(new Intent(MainActivity.this, SehriAndIfterShortForm.class));
 
             return true;
+        }
+        else if(id==R.id.action_alarm){
+            Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+            startActivity(i);
+            return  true;
         }
 
         return super.onOptionsItemSelected(item);

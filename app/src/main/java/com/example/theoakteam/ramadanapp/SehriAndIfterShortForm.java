@@ -3,6 +3,7 @@ package com.example.theoakteam.ramadanapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -146,6 +147,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
             startActivity(new Intent(SehriAndIfterShortForm.this, SehriAndIfterShortForm.class));
 
             return true;
+        }
+        else if(id==R.id.action_alarm){
+            Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+            startActivity(i);
+            return  true;
         }
 
         return super.onOptionsItemSelected(item);
