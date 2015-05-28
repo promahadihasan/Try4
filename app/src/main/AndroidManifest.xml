@@ -26,6 +26,10 @@
             android:name=".TasbhiActivity1"
             android:label="@string/title_activity_tasbih" >
         </activity>
+        <activity android:name=".SetingsActivity"
+            android:label="@string/title_settings"></activity>
+
+        <service android:name=".NotifyService"></service>
 
 
     </application>

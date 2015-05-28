@@ -123,7 +123,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sehri_and_ifter_short_form, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -138,6 +138,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         if (id == R.id.action_tasbhi) {
             Intent intent = new Intent(SehriAndIfterShortForm.this, TasbhiActivity1.class);
             startActivity(intent);
+
             return true;
         }
         else  if (id == R.id.action_quran) {
@@ -147,12 +148,19 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         }
         else if(id==R.id.actionseheri_ifter_time){
             startActivity(new Intent(SehriAndIfterShortForm.this, SehriAndIfterShortForm.class));
-
+            finish();
             return true;
         }
         else if(id==R.id.action_alarm){
             Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
             startActivity(i);
+
+            return  true;
+        }
+        else if(id==R.id.action_settings){
+            Intent i = new Intent(SehriAndIfterShortForm.this,SetingsActivity.class);
+            startActivity(i);
+
             return  true;
         }
 

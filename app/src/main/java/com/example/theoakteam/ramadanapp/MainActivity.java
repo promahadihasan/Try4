@@ -74,12 +74,19 @@ public class MainActivity extends ActionBarActivity {
         }
         else if(id==R.id.actionseheri_ifter_time){
             startActivity(new Intent(MainActivity.this, SehriAndIfterShortForm.class));
-
+            finish();
             return true;
         }
         else if(id==R.id.action_alarm){
             Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
             startActivity(i);
+            finish();
+            return  true;
+        }
+        else if(id==R.id.action_settings){
+            Intent i = new Intent(MainActivity.this,SetingsActivity.class);
+            startActivity(i);
+
             return  true;
         }
 
