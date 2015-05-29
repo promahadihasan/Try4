@@ -19,13 +19,71 @@ public class DistrictsTimeClass {
     private Map<String,String> districtTimeMap = new HashMap<String,String>();
     private String[] centralSehriTime = new String[35];
     private String[] centralIftarTime = new String[35];
+    private String[] centralSehriShaban = new String[35];
+    private String[] centralIftarShaban = new String[35];
 
     public DistrictsTimeClass(){
         setCentralSehriTime();
         setCentralIftarTime();
     }
 
+    public String getCentralSehriShaban(int dateShaban) {
+        setCentralSehriShaban();
+        return centralSehriShaban[dateShaban];
+    }
 
+    public void setCentralSehriShaban() {
+
+        centralSehriShaban[10] = "3:41";
+        centralSehriShaban[11] = "3:40";
+        centralSehriShaban[12] = "3:40";
+        centralSehriShaban[13] = "3:39";
+        centralSehriShaban[14] = "3:39";
+        centralSehriShaban[15] = "3:39";
+        centralSehriShaban[16] = "3:39";
+        centralSehriShaban[17] = "3:39";
+        centralSehriShaban[18] = "3:38";
+        centralSehriShaban[19] = "3:38";
+        centralSehriShaban[20] = "3:38";
+        centralSehriShaban[21] = "3:38";
+        centralSehriShaban[22] = "3:38";
+        centralSehriShaban[23] = "3:38";
+        centralSehriShaban[24] = "3:38";
+        centralSehriShaban[25] = "3:38";
+        centralSehriShaban[26] = "3:38";
+        centralSehriShaban[27] = "3:38";
+        centralSehriShaban[28] = "3:38";
+        centralSehriShaban[29] = "3:38";
+    }
+
+    public String getCentralIftarShaban(int dateShaban) {
+        setCentralIftarShaban();
+        return centralIftarShaban[dateShaban];
+    }
+
+    public void setCentralIftarShaban() {
+
+        centralIftarShaban[10] = "6:42";
+        centralIftarShaban[11] = "6:42";
+        centralIftarShaban[12] = "6:43";
+        centralIftarShaban[13] = "6:44";
+        centralIftarShaban[14] = "6:44";
+        centralIftarShaban[15] = "6:44";
+        centralIftarShaban[16] = "6:44";
+        centralIftarShaban[17] = "6:44";
+        centralIftarShaban[18] = "6:44";
+        centralIftarShaban[19] = "6:44";
+        centralIftarShaban[20] = "6:44";
+        centralIftarShaban[21] = "6:44";
+        centralIftarShaban[22] = "6:49";
+        centralIftarShaban[23] = "6:49";
+        centralIftarShaban[24] = "6:49";
+        centralIftarShaban[25] = "6:49";
+        centralIftarShaban[26] = "6:49";
+        centralIftarShaban[27] = "6:49";
+        centralIftarShaban[28] = "6:49";
+        centralIftarShaban[29] = "6:49";
+    }
 
     public String getDistrictPlusMinusTime(String districtKey){
 
@@ -152,9 +210,58 @@ public class DistrictsTimeClass {
         return dayRamadan;
     }
 
+    public int getShabanDate(String date){
+        int dayShaban=0,dateEnglish;
+
+        dateEnglish = (date.charAt(0)-'0') * 10 + date.charAt(1)-'0';
+
+        if(dateEnglish==29)
+            dayShaban = 10;
+        else if(dateEnglish==30)
+            dayShaban = 11;
+        else if(dateEnglish==31)
+            dayShaban = 12;
+        else{
+
+            dayShaban = dateEnglish + 12;
+        }
+
+        return dayShaban;
+    }
+
+    public String findMonth(String date){
+        Date dateObject=new Date(),shabanStartDate=new Date(),shabanLast=new Date(), ramadanLastDate=new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String monthName=null;
+
+        try {
+            dateObject = formatter.parse(date);
+            shabanStartDate = formatter.parse("28/05/2015");
+            shabanLast = formatter.parse("18/06/2015");
+            ramadanLastDate = formatter.parse("18/07/2015");
+            //System.out.println("Date is: "+dateObject);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        if(dateObject.compareTo(shabanStartDate)>0 && dateObject.compareTo(shabanLast)<0){
+            //System.out.println("Shaban is running!");
+            monthName = "shaban";
+
+        }
+        else if (dateObject.compareTo(shabanLast)>0 && dateObject.compareTo(ramadanLastDate)<0){
+            //System.out.println("Ramadan is running!");
+            monthName = "ramadan";
+        }
+        //System.out.println("Month is: "+ monthName);
+        return monthName;
+    }
+
     public String getDistrictIndividualSehriTime(String districtName, String date){
 
-        String centralTime = getCentralSehriTime(getRamadanDate(date));
+        String centralTime= centralTime = getCentralSehriTime(date);
         String districtPlusMinusTime = getDistrictPlusMinusTime(districtName);
 
         String districtSehriTime;
@@ -165,11 +272,16 @@ public class DistrictsTimeClass {
     }
 
     public String getDistrictIndividualIftarTime(String districtName, String date){
-        String centralTime = getCentralIftarTime(getRamadanDate(date));
-        String plusMinusTime = getDistrictPlusMinusTime(districtName);
-        String individualTime = calculateTime(centralTime,plusMinusTime);
 
-        return individualTime;
+        String centralTime = getCentralIftarTime(date);
+        String plusMinusTime = getDistrictPlusMinusTime(districtName);
+//        String individualTime = calculateTime(centralTime, plusMinusTime);
+
+        String districtIftarTime;
+
+        districtIftarTime = calculateTime(centralTime,plusMinusTime);
+
+        return districtIftarTime;
     }
 
     public void setCentralSehriTime(){
@@ -207,10 +319,19 @@ public class DistrictsTimeClass {
 
     }
 
-    public String getCentralSehriTime(int dateRamadan){
-        setCentralSehriTime();
+    public String getCentralSehriTime(String date){
 
-        return centralSehriTime[dateRamadan];
+        String month = findMonth(date);
+        String centralTime;
+
+        if(month=="ramadan"){
+            centralTime = centralSehriTime[getRamadanDate(date)];
+        }
+        else {
+            centralTime = getCentralSehriShaban(getShabanDate(date));
+        }
+
+        return centralTime;
     }
 
     public void setCentralIftarTime(){
@@ -246,9 +367,23 @@ public class DistrictsTimeClass {
         centralIftarTime[30] = "6:51";
     }
 
-    public String getCentralIftarTime(int date){
-        setCentralIftarTime();
-        return centralIftarTime[date];
+    public String getCentralIftarTime(String  date){
+        String month;
+        String centralTime;
+
+        month = findMonth(date);
+
+        if(month=="ramadan"){
+           centralTime = centralIftarTime[getRamadanDate(date)];
+        }
+        else {
+            centralTime = getCentralIftarShaban(getShabanDate(date));
+        }
+
+
+//        String districtPlusMinusTime = getDistrictPlusMinusTime(districtName);
+//        return centralIftarTime[date];
+        return centralTime;
     }
 
     public boolean isDistrictPresent(String string){

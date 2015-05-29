@@ -14,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -74,14 +75,36 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         }
         else{
             String dateString = getDate();
-            //This App now show time for 1st Ramadan. for exact replace by:(districtName, dateString)
-            //Yet some bugs. not work for July.
-            sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, "10/07");
-            iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, "10/07");
+            //String test = "31/05/2015";
+            sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, getDate());
+            iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, getDate());
 
             sehriNote.setText(districtName+getText(R.string.sehri_iftar_first_note));
             sehriTime.setText(sehriTimeString);
             iftarTime.setText(iftarTimeString);
+
+
+//        //Debug
+//        Date dateObject=null,startDate=null,endDate=null;
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+//        try {
+//            dateObject = formatter.parse(getDate());
+//            startDate = formatter.parse("28/05/2015");
+//            endDate = formatter.parse("17/07/2015");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//        if(dateObject.compareTo(startDate) <0){
+//            System.out.println("Date value Negative!");
+//        }
+//        else if (dateObject.compareTo(startDate)>0 && dateObject.compareTo(endDate)<0) {
+//            System.out.println("Ramadan is running!");
+//        }
+//        else {
+//            System.out.println("It's Today: "+formatter.format(dateObject));
+//        }
+//        //Debug End
 
             //System.out.println("Hasan's Debug date "+districtsTimeObject.getRamadanDate("15/07"));
 
@@ -92,7 +115,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
     public String getDate(){
         Date date = new Date();
 
-        SimpleDateFormat ft = new SimpleDateFormat("dd/MM");
+        SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");
 
         //System.out.println("Hasan's Date: "+ft.format(date).toString());
 
