@@ -58,6 +58,12 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         }
 
     }
+    @Override
+    protected void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+
+    }
 
     public void sehriActivity(){
         setContentView(R.layout.activity_sehri_and_ifter_short_form);
