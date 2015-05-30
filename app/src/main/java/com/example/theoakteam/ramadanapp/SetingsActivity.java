@@ -8,8 +8,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import java.util.Calendar;
@@ -17,15 +17,15 @@ import java.util.concurrent.TimeUnit;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.widget.LinearLayout;
+import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 public class SetingsActivity extends ActionBarActivity {
 
     CheckBox checkBoxUser;
     private Button pickTime;
-    private LinearLayout userTimeLayout;
     private StringBuilder timeString;
 
     private  int pfinalHour;
@@ -34,13 +34,12 @@ public class SetingsActivity extends ActionBarActivity {
     private int pMinute;
     private String AMPM;
 
-    private int checkBoxcheck;
-    private String preTime;
-    boolean flagOnstop=false;
-
     boolean makeSureButtonCheckhed=false;
 
-
+    private EditText tasbihEditText;
+    private AutoCompleteTextView autoCompleteTextView;
+    private Button tasbihButton;
+    private Button districtButton;
 
 
     static final int TIME_DIALOG_ID = 0;
@@ -56,57 +55,21 @@ public class SetingsActivity extends ActionBarActivity {
     private long finalMinute;
 
 
-    private void intilizationOfViews() {
-        pickTime = (Button) findViewById(R.id.bttimeshow);
-        checkBoxUser = (CheckBox) findViewById(R.id.checkBoxmain);
-        userTimeLayout=(LinearLayout)findViewById(R.id.notification_user_time);
-        timeString  =new StringBuilder();
-        sharedPreferences = getSharedPreferences("TimeData", Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        intilizationOfViews();
+        intt();
+        tasbihInitialization();
+        districtInitialization();
 
         if(sharedPreferences.contains("time"))
-        {    preTime=sharedPreferences.getString("time",checkShareprefernce);
+        {   String preTime=sharedPreferences.getString("time",checkShareprefernce);
             pickTime.setText(preTime);
 
         }
-        if(sharedPreferences.contains("checkbox"))
-        {
-            checkBoxcheck=sharedPreferences.getInt("checkbox",6);
-            if(checkBoxcheck==0)
-            {
-                callChechkBoxMakeGone();
-            }
-            else if(checkBoxcheck==1){
-                callChechkBoxMakeVisibile();
-            }
-        }
-
-
-        checkBoxUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkBoxUser.isChecked()==false)
-                {
-                    callChechkBoxMakeGone();
-                }
-                if (checkBoxUser.isChecked()==true)
-                {
-                    callChechkBoxMakeVisibile();
-
-                }
-            }
-        });
-
 
 
 
@@ -118,7 +81,9 @@ public class SetingsActivity extends ActionBarActivity {
                 pMinute = cal.get(Calendar.MINUTE);
                 showDialog(TIME_DIALOG_ID);
                 makeSureButtonCheckhed=true;
-
+                backgroundThread = new BackgroundThread();
+                backgroundThread.setRunning(true);
+                backgroundThread.start();
 
             }
         });
@@ -127,35 +92,58 @@ public class SetingsActivity extends ActionBarActivity {
 
 
     }
-    private void callChechkBoxMakeGone() {
-        checkBoxUser.setChecked(false);
-        editor.putInt("checkbox", 0);
-        userTimeLayout.setVisibility(View.GONE);
-        flagOnstop=true;
+
+    //Hasan's Code area start
+    public void tasbihInitialization() {
+        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
+        String counterString = sharedPreferences.getString("tasbihCounter","0");
+        tasbihEditText.setText(counterString);
+        System.out.println("Hungki pungki: "+counterString);
+    }
+    public void districtInitialization(){
+        sharedPreferences = getSharedPreferences("DistrictData", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        String districtString = sharedPreferences.getString("DefaultDistrictName","0");
+        autoCompleteTextView.setText(districtString);
     }
 
-    private void callChechkBoxMakeVisibile() {
-        checkBoxUser.setChecked(true);
-        editor.putInt("checkbox", 1);
-        if(preTime!=null && preTime.length()!=0)
-        {
-            pickTime.setText(preTime);
-        }
-        else {
-            pickTime.setText(getResources().getString(R.string.txt_time));
-        }
-        userTimeLayout.setVisibility(View.VISIBLE);
+    public void tasbihCounterSet(View v){
+        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        String tasbihCounter = tasbihEditText.getText().toString();
+        editor.putString("tasbihCounter", tasbihCounter);
+        editor.commit();
+        Toast.makeText(getApplicationContext(),"Tasbih counter is "+tasbihCounter, Toast.LENGTH_LONG).show();
     }
+    public void saveDistrict(View v){
+
+    }
+    //Hasan's Code area end
 
 
 
+    private void intt() {
+        pickTime = (Button) findViewById(R.id.bttimeshow);
+        checkBoxUser = (CheckBox) findViewById(R.id.checkBoxmain);
+        timeString  =new StringBuilder();
+        sharedPreferences = getSharedPreferences("TimeData", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        //Added by Hasan
+        tasbihEditText = (EditText) findViewById(R.id.tasbihCounterSetEditText);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        tasbihButton = (Button) findViewById(R.id.tasbihCounterButton);
+        districtButton = (Button) findViewById(R.id.districtButton);
+
+
+    }
 
     private void timeCalculation()
     {
         //for background thread
         final Calendar cal = Calendar.getInstance();
-        int nowHour	= cal.get(Calendar.HOUR_OF_DAY);
-        int nowMinute = cal.get(Calendar.MINUTE);
+       int nowHour	= cal.get(Calendar.HOUR_OF_DAY);
+       int nowMinute = cal.get(Calendar.MINUTE);
 
         finalHour=pfinalHour-nowHour;
         finalMinute=pfinalMinute-nowMinute;
@@ -183,15 +171,11 @@ public class SetingsActivity extends ActionBarActivity {
         if(makeSureButtonCheckhed==true) {
 
             editor.putString("time", timeString.toString());
-
             editor.commit();
 
 
 
             makeSureButtonCheckhed=false;
-        }
-        else {
-            editor.commit();
         }
     }
 
@@ -254,12 +238,9 @@ public class SetingsActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if(flagOnstop==true) {
-            onStop();
-        }
-        else  if(flagOnstop==false){
-            onStart();
-        }
+        backgroundThread = new BackgroundThread();
+        backgroundThread.setRunning(true);
+        backgroundThread.start();
 
     }
 
@@ -279,17 +260,13 @@ public class SetingsActivity extends ActionBarActivity {
         super.onStop();
         boolean retry = true;
         backgroundThread.setRunning(false);
-        System.out.println("ON stop ");
+
         while(retry){
             try {
-                finish();
                 backgroundThread.join();
-                System.out.println("ON stop try");
-
                 retry = false;
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
-                System.out.println("ON stop catch");
                 e.printStackTrace();
             }
         }
@@ -321,7 +298,15 @@ public class SetingsActivity extends ActionBarActivity {
             // TODO Auto-generated method stub
             while(running && finalMinute!=0){
                 try {
-                    TimeUnit.MINUTES.sleep(finalMinute);
+
+                    if(finalMinute==0){
+                        running=false;
+                    }
+                    else {
+                        TimeUnit.MINUTES.sleep(finalMinute);
+                    }
+
+
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

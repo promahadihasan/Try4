@@ -37,7 +37,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
 
-        sharedPreferences = getSharedPreferences("DistrictInputFlag", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("DistrictData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
 
@@ -73,6 +73,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         String iftarTimeString;
         String sehriTimeString;
 
+        //sharedPreferences = getSharedPreferences("DistrictData", Context.MODE_PRIVATE);
         districtName = sharedPreferences.getString("DefaultDistrictName", "N/A");
 
         if(districtName=="N/A"){
@@ -81,38 +82,13 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         }
         else{
             String dateString = getDate();
-            //String test = "31/05/2015";
-            sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, getDate());
-            iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, getDate());
+            String test = "31/05/2015";
+            sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, test);
+            iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, test);
 
             sehriNote.setText(districtName+getText(R.string.sehri_iftar_first_note));
             sehriTime.setText(sehriTimeString);
             iftarTime.setText(iftarTimeString);
-
-
-//        //Debug
-//        Date dateObject=null,startDate=null,endDate=null;
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-//        try {
-//            dateObject = formatter.parse(getDate());
-//            startDate = formatter.parse("28/05/2015");
-//            endDate = formatter.parse("17/07/2015");
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//
-//        if(dateObject.compareTo(startDate) <0){
-//            System.out.println("Date value Negative!");
-//        }
-//        else if (dateObject.compareTo(startDate)>0 && dateObject.compareTo(endDate)<0) {
-//            System.out.println("Ramadan is running!");
-//        }
-//        else {
-//            System.out.println("It's Today: "+formatter.format(dateObject));
-//        }
-//        //Debug End
-
-            //System.out.println("Hasan's Debug date "+districtsTimeObject.getRamadanDate("15/07"));
 
         }
 

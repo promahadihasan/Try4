@@ -29,8 +29,9 @@
     <string name="action_notification">Get notification</string>
     <string name="title_notification"> দিনের অধিসুচনা </string>
     <string name="first_notification">রোযা রাখা যেমন ফরয তেমনি  রোযার নিয়ত করা ফরয  </string>
-
-
+    <string name="tasbih_counter_setting">তসবিহ এর কাউন্টার সেট করুন</string>
+    <string name="tasbih_counter_set_button">Submit</string>
+    <string name="district_name_setting_note">জেলার নাম পরিবর্তন করুনঃ</string>
 
 
     <string-array name="list_of_districts">

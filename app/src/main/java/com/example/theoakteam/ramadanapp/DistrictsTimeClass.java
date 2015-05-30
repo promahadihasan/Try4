@@ -192,6 +192,8 @@ public class DistrictsTimeClass {
 
         finalTime = String.valueOf(hour) + ":" + String.valueOf(minute);
 
+        System.out.println("Plus-minus time: "+plusMinusTime+" Final Time: "+finalTime);
+
         return finalTime;
     }
 
@@ -225,6 +227,7 @@ public class DistrictsTimeClass {
 
             dayShaban = dateEnglish + 12;
         }
+        //System.out.println("habi haji "+dayShaban);
 
         return dayShaban;
     }
