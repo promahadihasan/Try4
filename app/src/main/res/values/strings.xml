@@ -21,7 +21,7 @@
     <string name="dhaka">ঢাকা</string>
     <string name="coxs_bazar">কক্সবাজার</string>
 
-
+<string name="title_logo">Loading...</string>
 
     <string name="txt_showthe">Show the notification for the day</string>
     <string name="txt_nottime">Notification Time   </string>
