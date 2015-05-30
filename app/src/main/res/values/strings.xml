@@ -13,7 +13,7 @@
     <string name="title_settings">সেটিংস</string>
     <string name="title_activity_sehri_and_ifter_short_form">সেহেরী ও ইফতারের সূচী</string>
     <string name="sehri_iftar_first_note">\nএর স্থানীয় সময় অনুযায়ী আজকের\nসেহরীর শেষ সময়\n</string>
-    <string name="ifter_time_note">ইফতারের সময়\n</string>
+    <string name="ifter_time_note">ইফতারের সময়</string>
     <string name="sehri_button_view">পুরো রমজানের সূচী দেখুন</string>
     <string name="title_activity_district_input">DistrictInputActivity</string>
     <string name="district_submit_button">Submit</string>
@@ -32,6 +32,10 @@
     <string name="tasbih_counter_setting">তসবিহ এর কাউন্টার সেট করুন</string>
     <string name="tasbih_counter_set_button">Submit</string>
     <string name="district_name_setting_note">জেলার নাম পরিবর্তন করুনঃ</string>
+    <string name="date_text_view">আজ  </string>
+    <string name="ramadan">রমজান</string>
+    <string name="shaban">শাবান</string>
+    <string name="hijri">১৪৩৬ হিজরী)</string>
 
 
     <string-array name="list_of_districts">

@@ -6,27 +6,67 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.theoakteam.ramadanapp.SehriAndIfterShortForm">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30sp"
-        android:text="District Name"
-        android:id="@+id/sehri_iftar_initial_note"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/dateLayout">
 
-    <TextView
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_text_view"
+            android:textSize="30sp"
+            android:id="@+id/dateEnglishTextView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arabic Date"
+            android:textSize="25sp"
+            android:id="@+id/arabicTextView"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ifter_time_note"
-        android:id="@+id/iftarTimeNoteTextView"
-        android:textSize="30sp"
-        android:layout_below="@+id/sehriTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
+        android:layout_below="@id/dateLayout"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="District Name"
+            android:id="@+id/sehri_iftar_initial_note" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="000"
+            android:id="@+id/sehriTextView"
+            android:layout_below="@+id/sehri_iftar_initial_note"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ifter_time_note"
+            android:id="@+id/iftarTimeNoteTextView"
+            android:textSize="30sp"
+            android:layout_below="@+id/sehriTextView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="000"
+            android:id="@+id/iftarTextView"
+            android:layout_below="@+id/iftarTimeNoteTextView" />
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -36,25 +76,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="75dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="000"
-        android:id="@+id/sehriTextView"
-        android:layout_below="@+id/sehri_iftar_initial_note"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="000"
-        android:id="@+id/iftarTextView"
-        android:layout_below="@+id/iftarTimeNoteTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

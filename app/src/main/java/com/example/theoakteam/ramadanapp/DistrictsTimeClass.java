@@ -21,10 +21,15 @@ public class DistrictsTimeClass {
     private String[] centralIftarTime = new String[35];
     private String[] centralSehriShaban = new String[35];
     private String[] centralIftarShaban = new String[35];
+    private String monthName;
 
     public DistrictsTimeClass(){
         setCentralSehriTime();
         setCentralIftarTime();
+    }
+
+    public String getMonthName(){
+        return monthName;
     }
 
     public String getCentralSehriShaban(int dateShaban) {
@@ -235,7 +240,7 @@ public class DistrictsTimeClass {
     public String findMonth(String date){
         Date dateObject=new Date(),shabanStartDate=new Date(),shabanLast=new Date(), ramadanLastDate=new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String monthName=null;
+        //monthName=null;
 
         try {
             dateObject = formatter.parse(date);
@@ -324,10 +329,10 @@ public class DistrictsTimeClass {
 
     public String getCentralSehriTime(String date){
 
-        String month = findMonth(date);
+        //String month = findMonth(date);
         String centralTime;
 
-        if(month=="ramadan"){
+        if(monthName=="ramadan"){
             centralTime = centralSehriTime[getRamadanDate(date)];
         }
         else {
@@ -374,9 +379,9 @@ public class DistrictsTimeClass {
         String month;
         String centralTime;
 
-        month = findMonth(date);
+        //month = findMonth(date);
 
-        if(month=="ramadan"){
+        if(monthName=="ramadan"){
            centralTime = centralIftarTime[getRamadanDate(date)];
         }
         else {

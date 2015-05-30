@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -33,6 +34,7 @@ public class SetingsActivity extends ActionBarActivity {
     private int pHour;
     private int pMinute;
     private String AMPM;
+    DistrictsTimeClass districtsTimeObject = new DistrictsTimeClass();
 
     boolean makeSureButtonCheckhed=false;
 
@@ -104,9 +106,14 @@ public class SetingsActivity extends ActionBarActivity {
         sharedPreferences = getSharedPreferences("DistrictData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         String districtString = sharedPreferences.getString("DefaultDistrictName","0");
-        autoCompleteTextView.setText(districtString);
-    }
+        autoCompleteTextView.setText(districtString.substring(0,1).toUpperCase() + districtString.substring(1));
 
+        String[] districts = getResources().getStringArray(R.array.list_of_districts);
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        autoCompleteTextView.setAdapter(adapter);
+
+    }
     public void tasbihCounterSet(View v){
         sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -116,7 +123,20 @@ public class SetingsActivity extends ActionBarActivity {
         Toast.makeText(getApplicationContext(),"Tasbih counter is "+tasbihCounter, Toast.LENGTH_LONG).show();
     }
     public void saveDistrict(View v){
+        String districtName = autoCompleteTextView.getText().toString();
+        districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
+        sharedPreferences = getSharedPreferences("DistrictData", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
+        if(districtsTimeObject.isDistrictPresent(districtName)){
+            editor.putString("DefaultDistrictName",districtName);
+            editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
+            editor.commit();
+            Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Your District name is not correct!",Toast.LENGTH_LONG).show();
+        }
     }
     //Hasan's Code area end
 
