@@ -10,10 +10,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name=".SehriAndIfterShortForm"
-            android:label="@string/title_activity_sehri_and_ifter_short_form"
 
+        <activity
+            android:name=".SplashActivity.MainSplashScreen"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +21,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashActivity.MainSplashScreen"
-             />
+            android:name=".SehriAndIfterShortForm"
+            android:label="@string/title_activity_sehri_and_ifter_short_form"
+
+            />
         <activity
             android:name=".DisplaySuraActivity"
             android:label="@string/title_activity_quran" />

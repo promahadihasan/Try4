@@ -116,6 +116,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         return ft.format(date).toString();
     }
 
+
     public void  saveDistrict(View view){
         districtName = autoCompleteTextView.getText().toString();
         districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
