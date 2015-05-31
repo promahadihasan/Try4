@@ -1,5 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <!--klkl-->
     <item android:id="@+id/action_quran"
@@ -36,6 +37,6 @@
         app:showAsAction="never" />
     <item android:id="@+id/action_settings"
         android:title="@string/title_settings"
-        android:orderInCategory="117"
+        android:orderInCategory="108"
         app:showAsAction="never" />
 </menu>

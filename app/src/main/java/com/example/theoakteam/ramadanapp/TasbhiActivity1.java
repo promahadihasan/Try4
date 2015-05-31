@@ -40,7 +40,7 @@ public class TasbhiActivity1 extends ActionBarActivity {
         textView = (TextView) findViewById(R.id.textView);
         DEFAULT = "N/A";
 
-        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         counterString = sharedPreferences.getString("tasbihCounter",DEFAULT);
         if(counterString.equals(DEFAULT)){
@@ -71,11 +71,6 @@ public class TasbhiActivity1 extends ActionBarActivity {
                         currentCounter=0;
                         textView.setText("0");
 
-//                        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
-//                        SharedPreferences.Editor editor = sharedPreferences.edit();
-//                        editor.putString("tasbihCounter", "0");
-//
-//                        editor.commit();
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -92,7 +87,7 @@ public class TasbhiActivity1 extends ActionBarActivity {
     protected void onPause() {
         super.onPause();
 
-        //sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
 
         editor.putString("tasbihCounter", currentCounter.toString());
         editor.commit();
@@ -134,6 +129,11 @@ public class TasbhiActivity1 extends ActionBarActivity {
             startActivity(i);
 
             return  true;
+        }
+        else if(id==R.id.action_tasbhi){
+            startActivity(new Intent(TasbhiActivity1.this, TasbhiActivity1.class));
+            finish();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

@@ -38,9 +38,9 @@ public class SetingsActivity extends ActionBarActivity {
     private LinearLayout userTimeLayout;
     boolean makeSureButtonCheckhed=false;
 
-    private EditText tasbihEditText;
+//    private EditText tasbihEditText;
     private AutoCompleteTextView autoCompleteTextView;
-    private Button tasbihButton;
+//    private Button tasbihButton;
     private Button districtButton;
 
 
@@ -67,7 +67,7 @@ public class SetingsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_settings);
 
         intilizationOfViews();
-        tasbihInitialization();
+//        tasbihInitialization();
         districtInitialization();
 
         if(sharedPreferences.contains("time"))
@@ -144,14 +144,14 @@ public class SetingsActivity extends ActionBarActivity {
     }
 
     //Hasan's Code area start
-    public void tasbihInitialization() {
-        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
-        String counterString = sharedPreferences.getString("tasbihCounter","0");
-        tasbihEditText.setText(counterString);
-        System.out.println("Hungki pungki: " + counterString);
-    }
+//    public void tasbihInitialization() {
+//        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+//        String counterString = sharedPreferences.getString("tasbihCounter","0");
+//        tasbihEditText.setText(counterString);
+//        System.out.println("Hungki pungki: " + counterString);
+//    }
     public void districtInitialization(){
-        sharedPreferences = getSharedPreferences("DistrictData", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         String districtString = sharedPreferences.getString("DefaultDistrictName","0");
         autoCompleteTextView.setText(districtString.substring(0,1).toUpperCase() + districtString.substring(1));
@@ -162,18 +162,19 @@ public class SetingsActivity extends ActionBarActivity {
         autoCompleteTextView.setAdapter(adapter);
 
     }
-    public void tasbihCounterSet(View v){
-        sharedPreferences = getSharedPreferences("TasbihData", Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        String tasbihCounter = tasbihEditText.getText().toString();
-        editor.putString("tasbihCounter", tasbihCounter);
-        editor.commit();
-        Toast.makeText(getApplicationContext(),"Tasbih counter is "+tasbihCounter, Toast.LENGTH_LONG).show();
-    }
+//    public void tasbihCounterSet(View v){
+//        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+//        editor = sharedPreferences.edit();
+//        String tasbihCounter = tasbihEditText.getText().toString();
+//        editor.putString("tasbihCounter", tasbihCounter);
+//        editor.commit();
+//        System.out.println("Huh... "+sharedPreferences.getString("tasbihCounter","N/A"));
+//        Toast.makeText(getApplicationContext(),"Tasbih counter is "+tasbihCounter, Toast.LENGTH_LONG).show();
+//    }
     public void saveDistrict(View v){
         String districtName = autoCompleteTextView.getText().toString();
         districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
-        sharedPreferences = getSharedPreferences("DistrictData", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         if(districtsTimeObject.isDistrictPresent(districtName)){
@@ -196,13 +197,13 @@ public class SetingsActivity extends ActionBarActivity {
         checkBoxUser = (CheckBox) findViewById(R.id.checkBoxmain);
         userTimeLayout=(LinearLayout)findViewById(R.id.notification_user_time);
         timeString  =new StringBuilder();
-        sharedPreferences = getSharedPreferences("TimeData", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         //Added by Hasan
-        tasbihEditText = (EditText) findViewById(R.id.tasbihCounterSetEditText);
+//        tasbihEditText = (EditText) findViewById(R.id.tasbihCounterSetEditText);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
-        tasbihButton = (Button) findViewById(R.id.tasbihCounterButton);
+//        tasbihButton = (Button) findViewById(R.id.tasbihCounterButton);
         districtButton = (Button) findViewById(R.id.districtButton);
 
     }

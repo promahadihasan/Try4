@@ -12,7 +12,9 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".SplashActivity.MainSplashScreen"
+
+            android:name=".SehriAndIfterShortForm"
+            android:label="@string/title_activity_sehri_and_ifter_short_form"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SehriAndIfterShortForm"
-            android:label="@string/title_activity_sehri_and_ifter_short_form"
+            android:name=".SplashActivity.MainSplashScreen"
 
             />
         <activity
