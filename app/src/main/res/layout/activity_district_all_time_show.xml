@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/district_name_all"
+            android:padding="5dp"
             android:id="@+id/districtNameTextView" />
 
         <LinearLayout
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/columnNameLayout"
+            android:padding="10dp"
             android:weightSum="4">
 
             <TextView
@@ -29,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/ramadan_month"
+                android:gravity="center"
                 android:id="@+id/ramadanTextView" />
 
             <TextView
@@ -37,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/english_date"
+                android:gravity="center"
                 android:id="@+id/englishTextView" />
 
             <TextView
@@ -45,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/sehri_last"
+                android:gravity="center"
                 android:id="@+id/sehriTextView" />
 
             <TextView
@@ -53,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/iftar"
+                android:gravity="center"
                 android:id="@+id/iftarTextView" />
         </LinearLayout>
     </LinearLayout>
@@ -62,12 +68,46 @@
         android:layout_height="match_parent"
         android:id="@+id/scrollView" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""
-            android:id="@+id/ramadanDateTextView" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center"
+                android:id="@+id/ramadanDateTextView" />
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center"
+                android:id="@+id/englishDateTextView" />
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center"
+                android:id="@+id/sehriTimeTextView" />
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center"
+                android:id="@+id/iftarTimeTextView" />
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

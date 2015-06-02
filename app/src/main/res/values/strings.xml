@@ -109,6 +109,8 @@
         <item >Sunamganj</item>
         <item >Sylhet</item>
     </string-array>
+    <string name="title_activity_district_all_time_show">Full Ramadan Time show</string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>

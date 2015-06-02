@@ -23,13 +23,22 @@ public class DistrictsTimeClass {
     private String[] centralIftarShaban = new String[35];
     private String monthName;
 
+
     public DistrictsTimeClass(){
         setCentralSehriTime();
         setCentralIftarTime();
+
     }
 
     public String getMonthName(){
         return monthName;
+    }
+
+    public String getCentralSehri(int date){
+        return centralSehriTime[date];
+    }
+    public String getCentralIftar(int date){
+        return centralIftarTime[date];
     }
 
     public String getCentralSehriShaban(int dateShaban) {
@@ -64,6 +73,16 @@ public class DistrictsTimeClass {
     public String getCentralIftarShaban(int dateShaban) {
         setCentralIftarShaban();
         return centralIftarShaban[dateShaban];
+    }
+
+    public String getDistrictSehriShaban(String districtName, int shabanDate){
+        String plusMinusTime = getDistrictPlusMinusTime(districtName);
+        return calculateTime(centralSehriShaban[shabanDate],plusMinusTime);
+    }
+
+    public String getDistrictIftarShaban(String districtName, int shabanDate){
+        String plusMinusTime = getDistrictPlusMinusTime(districtName);
+        return calculateTime(centralIftarShaban[shabanDate],plusMinusTime);
     }
 
     public void setCentralIftarShaban() {
@@ -197,7 +216,7 @@ public class DistrictsTimeClass {
 
         finalTime = String.valueOf(hour) + ":" + String.valueOf(minute);
 
-        System.out.println("Plus-minus time: "+plusMinusTime+" Final Time: "+finalTime);
+//        System.out.println("Plus-minus time (DistrictTimeClass 210 num Line): "+plusMinusTime+" Final Time: "+finalTime);
 
         return finalTime;
     }
@@ -245,7 +264,7 @@ public class DistrictsTimeClass {
         try {
             dateObject = formatter.parse(date);
             shabanStartDate = formatter.parse("28/05/2015");
-            shabanLast = formatter.parse("18/06/2015");
+            shabanLast = formatter.parse("17/06/2015");
             ramadanLastDate = formatter.parse("18/07/2015");
             //System.out.println("Date is: "+dateObject);
 
@@ -269,7 +288,7 @@ public class DistrictsTimeClass {
 
     public String getDistrictIndividualSehriTime(String districtName, String date){
 
-        String centralTime= centralTime = getCentralSehriTime(date);
+        String centralTime = getCentralSehriTime(date);
         String districtPlusMinusTime = getDistrictPlusMinusTime(districtName);
 
         String districtSehriTime;
@@ -323,7 +342,7 @@ public class DistrictsTimeClass {
         centralSehriTime[27] = "3:49";
         centralSehriTime[28] = "3:49";
         centralSehriTime[29] = "3:50";
-        centralSehriTime[30] = "3:51";
+        centralSehriTime[30] = "3:50";
 
     }
 
@@ -331,7 +350,6 @@ public class DistrictsTimeClass {
 
         //String month = findMonth(date);
         String centralTime;
-
         if(monthName=="ramadan"){
             centralTime = centralSehriTime[getRamadanDate(date)];
         }
@@ -376,7 +394,7 @@ public class DistrictsTimeClass {
     }
 
     public String getCentralIftarTime(String  date){
-        String month;
+        //String month;
         String centralTime;
 
         //month = findMonth(date);
