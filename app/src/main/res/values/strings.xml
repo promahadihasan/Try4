@@ -12,7 +12,7 @@
     <string name="title_activity_alarm"> এলার্ম </string>
     <string name="title_settings">সেটিংস</string>
     <string name="title_activity_sehri_and_ifter_short_form">সেহেরী ও ইফতারের সূচী</string>
-    <string name="sehri_iftar_first_note">এর স্থানীয় সময় অনুযায়ী আজকের সেহরীর শেষ সময়</string>
+    <string name="sehri_iftar_first_note">জেলার স্থানীয় সময় অনুযায়ী আজকের\n\nসেহরীর শেষ সময়</string>
     <string name="ifter_time_note">ইফতারের সময়</string>
     <string name="sehri_button_view">পুরো রমজানের সূচী দেখুন</string>
     <string name="title_activity_district_input">DistrictInputActivity</string>
@@ -39,6 +39,7 @@
     <string name="english_date">ইংরেজী</string>
     <string name="sehri_last">সেহরী</string>
     <string name="iftar">ইফতার</string>
+    <string name="all_district_time_show_button">সকল জেলার সূচী দেখুন</string>
 
 
 

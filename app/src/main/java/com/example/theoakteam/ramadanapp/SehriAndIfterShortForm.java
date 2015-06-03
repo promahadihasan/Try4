@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
     TextView sehriNote;
     TextView englishDate;
     TextView arabicDate;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
 
 
 
@@ -63,6 +65,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
     }
 // Hasan's Code Start
     public void showFullTime(View v){
+        v.startAnimation(buttonClick);
 
         String[] allSehriTime = new String[31];
         String[] allIftarTime = new String[31];
