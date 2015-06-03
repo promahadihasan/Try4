@@ -9,6 +9,7 @@ import com.example.theoakteam.ramadanapp.R;
 
 /**
  * Created by Sunny_PC on 6/3/2015.
+ * this hadith
  */
 public class HadisViewer extends ActionBarActivity {
 
