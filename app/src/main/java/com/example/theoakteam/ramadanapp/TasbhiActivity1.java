@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.HashMap;
+import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
 
 /**
  * Created by Sunny-PC on 5/24/2015.
@@ -113,25 +113,30 @@ public class TasbhiActivity1 extends ActionBarActivity {
             finish();
             return true;
         }
-        else if(id==R.id.actionseheri_ifter_time){
+        else if(id== R.id.actionseheri_ifter_time){
             startActivity(new Intent(TasbhiActivity1.this, SehriAndIfterShortForm.class));
             finish();
             return true;
         }
-        else if(id==R.id.action_alarm){
+        else if(id== R.id.action_alarm){
             Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
             startActivity(i);
             finish();
             return  true;
         }
-        else if(id==R.id.action_settings){
-            Intent i = new Intent(TasbhiActivity1.this,SetingsActivity.class);
+        else if(id== R.id.action_settings){
+            Intent i = new Intent(TasbhiActivity1.this,SettingsActivity.class);
             startActivity(i);
 
             return  true;
         }
-        else if(id==R.id.action_tasbhi){
+        else if(id== R.id.action_tasbhi){
             startActivity(new Intent(TasbhiActivity1.this, TasbhiActivity1.class));
+            finish();
+            return true;
+        }
+        else if(id== R.id.action_hadis){
+            startActivity(new Intent(TasbhiActivity1.this, HadithTitleClass.class));
             finish();
             return true;
         }

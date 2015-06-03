@@ -1,29 +1,27 @@
 package com.example.theoakteam.ramadanapp;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 import android.widget.LinearLayout;
-import android.app.Dialog;
-import android.app.TimePickerDialog;
-import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.theoakteam.ramadanapp.NotificationChallenging.NotifyingService;
 
-public class SetingsActivity extends ActionBarActivity {
+import java.util.Calendar;
+
+
+public class SettingsActivity extends ActionBarActivity {
 
     CheckBox checkBoxUser;
     private Button pickTime;
@@ -49,9 +47,6 @@ public class SetingsActivity extends ActionBarActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
-
-    //variable for Background thread
-    BackgroundThread backgroundThread;
 
     private long finalHour;
     private long finalMinute;
@@ -91,12 +86,10 @@ public class SetingsActivity extends ActionBarActivity {
         checkBoxUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkBoxUser.isChecked()==false)
-                {
+                if (checkBoxUser.isChecked() == false) {
                     callChechkBoxMakeGone();
                 }
-                if (checkBoxUser.isChecked()==true)
-                {
+                if (checkBoxUser.isChecked() == true) {
                     callChechkBoxMakeVisibile();
 
                 }
@@ -112,9 +105,7 @@ public class SetingsActivity extends ActionBarActivity {
                 pMinute = cal.get(Calendar.MINUTE);
                 showDialog(TIME_DIALOG_ID);
                 makeSureButtonCheckhed = true;
-                backgroundThread = new BackgroundThread();
-                backgroundThread.setRunning(true);
-                backgroundThread.start();
+
 
             }
         });
@@ -127,7 +118,7 @@ public class SetingsActivity extends ActionBarActivity {
         checkBoxUser.setChecked(false);
         editor.putInt("checkbox", 0);
         userTimeLayout.setVisibility(View.GONE);
-        flagOnstop=true;
+
     }
 
     private void callChechkBoxMakeVisibile() {
@@ -229,6 +220,8 @@ public class SetingsActivity extends ActionBarActivity {
         System.out.println("Final Minute=" + finalMinute);
         System.out.println("Final Hour=" + finalHour);
         finalMinute+=finalHour*60;
+        System.out.println("Final Minute aftercalculation=" + finalMinute);
+        System.out.println("Final Milliseconds aftercalculation=" + finalMinute*60*1000);
 
 
     }
@@ -238,10 +231,15 @@ public class SetingsActivity extends ActionBarActivity {
     protected void onPause() {
         super.onPause();
 
-        if(makeSureButtonCheckhed==true) {
+        if(makeSureButtonCheckhed==true ) {
 
             editor.putString("time", timeString.toString());
+            editor.putLong("finaltime",finalMinute);
             editor.commit();
+            if (finalMinute!=0)
+            {Intent serviceIntent=new Intent(getApplicationContext(),NotifyingService.class);
+
+            startService(serviceIntent);}
 
 
 
@@ -249,7 +247,11 @@ public class SetingsActivity extends ActionBarActivity {
         }
         else {
             editor.commit();
-        }
+
+            Intent serviceIntent=new Intent(getApplicationContext(),NotifyingService.class);
+
+                stopService(serviceIntent);}
+
     }
 
 
@@ -308,109 +310,6 @@ public class SetingsActivity extends ActionBarActivity {
         return null;
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if(flagOnstop==true) {
-            onStop();
-        }
-        else  if(flagOnstop==false){
-            onStart();
-        }
-
-    }
-
-    //metod for Background thread
-    @Override
-    protected void onStart() {
-        // TODO Auto-generated method stub
-        super.onStart();
-        backgroundThread = new BackgroundThread();
-        backgroundThread.setRunning(true);
-        backgroundThread.start();
-    }
-
-    @Override
-    protected void onStop() {
-        // TODO Auto-generated method stub
-        super.onStop();
-        boolean retry = true;
-        backgroundThread.setRunning(false);
-        System.out.println("ON stop ");
-        while(retry){
-            try {
-                finish();
-                backgroundThread.join();
-                System.out.println("ON stop try");
-
-                retry = false;
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                System.out.println("ON stop catch");
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    public class BackgroundThread extends Thread {
-        boolean running = false;
-        final static String ACTION = "NotifyServiceAction";
-        NotificationManager notificationManager;
-        Notification myNotification;
-        private final String myBlog = "HEloo1";
-        private static final int MY_NOTIFICATION_ID=1;
-
-        void setRunning(boolean b){
-            running = b;
-        }
-
-        @Override
-        public synchronized void start() {
-            // TODO Auto-generated method stub
-            super.start();
-            notificationManager =
-                    (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        }
-
-        @Override
-        public void run() {
-            // TODO Auto-generated method stub
-            while(running && finalMinute!=0){
-                try {
-
-                    TimeUnit.MINUTES.sleep(finalMinute);
-
-
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-                // Send Notification
-                myNotification = new Notification(R.drawable.notification_icon,
-                        "Notification!",
-                        System.currentTimeMillis());
-                Context context = getApplicationContext();
-                String notificationTitle = getResources().getString(R.string.title_notification);
-
-
-                String notificationText =getResources().getString(R.string.first_notification);
-                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(myBlog));
-                PendingIntent pendingIntent
-                        = PendingIntent.getActivity(getBaseContext(),
-                        0, myIntent,
-                        Intent.FLAG_ACTIVITY_NEW_TASK);
-                myNotification.defaults |= Notification.DEFAULT_SOUND;
-                myNotification.flags |= Notification.FLAG_AUTO_CANCEL;
-                myNotification.setLatestEventInfo(context,
-                        notificationTitle,
-                        notificationText,
-                        pendingIntent);
-                notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
-            }
-        }
-    }
 
 
 }

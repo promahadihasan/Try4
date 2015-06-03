@@ -1,14 +1,16 @@
 package com.example.theoakteam.ramadanapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.provider.AlarmClock;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
 
 
 public class DistrictAllTimeShow extends ActionBarActivity {
@@ -68,7 +70,7 @@ public class DistrictAllTimeShow extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_district_all_time_show, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -80,7 +82,36 @@ public class DistrictAllTimeShow extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_quran) {
+            startActivity(new Intent(DistrictAllTimeShow.this, DisplaySuraActivity.class));
+            finish();
+            return true;
+        }
+        else if(id== R.id.actionseheri_ifter_time){
+            startActivity(new Intent(DistrictAllTimeShow.this, SehriAndIfterShortForm.class));
+            finish();
+            return true;
+        }
+        else if(id== R.id.action_alarm){
+            Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+            startActivity(i);
+            finish();
+            return  true;
+        }
+        else if(id== R.id.action_settings){
+            Intent i = new Intent(DistrictAllTimeShow.this,SettingsActivity.class);
+            startActivity(i);
+
+            return  true;
+        }
+        else if(id== R.id.action_tasbhi){
+            startActivity(new Intent(DistrictAllTimeShow.this, TasbhiActivity1.class));
+            finish();
+            return true;
+        }
+        else if(id== R.id.action_hadis){
+            startActivity(new Intent(DistrictAllTimeShow.this, HadithTitleClass.class));
+            finish();
             return true;
         }
 

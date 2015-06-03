@@ -11,15 +11,16 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SehriAndIfterShortForm"
-            android:label="@string/title_activity_sehri_and_ifter_short_form" >
+            android:name=".SplashActivity.MainSplashScreen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashActivity.MainSplashScreen" />
+        <activity  android:name=".SehriAndIfterShortForm"
+            android:label="@string/title_activity_sehri_and_ifter_short_form" />
         <activity
             android:name=".DisplaySuraActivity"
             android:label="@string/title_activity_quran" />
@@ -28,14 +29,23 @@
             android:label="@string/title_activity_tasbih" >
         </activity>
         <activity
-            android:name=".SetingsActivity"
+            android:name=".SettingsActivity"
             android:label="@string/title_settings" />
 
-        <service android:name=".NotifyService" />
+        <service android:name=".NotificationChallenging.NotifyingService" />
 
         <activity
             android:name=".DistrictAllTimeShow"
             android:label="@string/title_activity_district_all_time_show" >
+        </activity>
+        <activity android:name=".NotificationChallenging.NotificationViewer"
+            android:label="@string/title_notification">
+
+        </activity>
+        <activity android:name=".HadithActivity.HadithTitleClass"
+            android:label="@string/title_activity_hadith"></activity>
+        <activity android:name=".HadithActivity.HadisViewer" android:label="@string/title_activity_hadith">
+
         </activity>
     </application>
 

@@ -1,15 +1,11 @@
 package com.example.theoakteam.ramadanapp;
 
 
-import android.widget.Toast;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Hasan Abdullah on 24-May-15.

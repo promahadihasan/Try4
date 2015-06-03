@@ -3,9 +3,9 @@ package com.example.theoakteam.ramadanapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -220,22 +222,27 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
 
             return true;
         }
-        else if(id==R.id.actionseheri_ifter_time){
+        else if(id== R.id.actionseheri_ifter_time){
             startActivity(new Intent(SehriAndIfterShortForm.this, SehriAndIfterShortForm.class));
             finish();
             return true;
         }
-        else if(id==R.id.action_alarm){
+        else if(id== R.id.action_alarm){
             Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
             startActivity(i);
 
             return  true;
         }
-        else if(id==R.id.action_settings){
-            Intent i = new Intent(SehriAndIfterShortForm.this,SetingsActivity.class);
+        else if(id== R.id.action_settings){
+            Intent i = new Intent(SehriAndIfterShortForm.this,SettingsActivity.class);
             startActivity(i);
 
             return  true;
+        }
+        else if(id== R.id.action_hadis){
+            startActivity(new Intent(SehriAndIfterShortForm.this, HadithTitleClass.class));
+
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

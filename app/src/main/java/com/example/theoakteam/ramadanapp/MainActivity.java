@@ -1,15 +1,17 @@
 package com.example.theoakteam.ramadanapp;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
 //alarm compleate
 //this is test for github
 //this is text for github by Hasan Abdullah fgdfgfg
@@ -73,22 +75,27 @@ public class MainActivity extends ActionBarActivity {
 
             return true;
         }
-        else if(id==R.id.actionseheri_ifter_time){
+        else if(id== R.id.actionseheri_ifter_time){
             startActivity(new Intent(MainActivity.this, SehriAndIfterShortForm.class));
             finish();
             return true;
         }
-        else if(id==R.id.action_alarm){
+        else if(id== R.id.action_alarm){
             Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
             startActivity(i);
             finish();
             return  true;
         }
-        else if(id==R.id.action_settings){
-            Intent i = new Intent(MainActivity.this,SetingsActivity.class);
+        else if(id== R.id.action_settings){
+            Intent i = new Intent(MainActivity.this,SettingsActivity.class);
             startActivity(i);
 
             return  true;
+        }
+        else if(id== R.id.action_hadis){
+            startActivity(new Intent(MainActivity.this, HadithTitleClass.class));
+            finish();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
