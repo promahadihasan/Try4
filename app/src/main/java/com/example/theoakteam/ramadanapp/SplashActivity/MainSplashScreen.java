@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.theoakteam.ramadanapp.R;
-import com.example.theoakteam.ramadanapp.SehriAndIfterShortForm;
+import com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm;
 
 
 public class MainSplashScreen extends Activity {

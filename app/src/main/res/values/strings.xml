@@ -4,7 +4,7 @@
     <string name="hello_world">ভাষা হোক উন্মুক্ত</string>
     <string name="title_activity_quran">কুরআনের বাণী</string>
     <string name="title_activity_hadith">হাদীসের বাণী</string>
-    <string name="title_activity_masala">মাসয়ালা</string>
+    <string name="title_activity_masala">আরটিকেল এবং মাসয়ালা</string>
     <string name="title_activity_dua">দোয়া দরূদ</string>
     <string name="title_activity_seheri_ifter_time">সেহেরী ও ইফতারের সূচী</string>
     <string name="title_activity_tasbih">তসবিহ</string>
@@ -115,6 +115,16 @@
     </string-array>
     <string name="title_activity_district_all_time_show">Full Ramadan Time show</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_drawer_main">DrawerMainActivity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
 
 
 </resources>

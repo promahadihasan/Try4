@@ -1,113 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/default_background">
 
+
+
+    <!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout"
+android:layout_width="match_parent" android:layout_height="match_parent"
+tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.DrawerMainActivity">
+
+<!-- As the main content view, the view below consumes the entire
+     space available using match_parent in both dimensions. -->
+<FrameLayout android:id="@+id/container" android:layout_width="match_parent"
+    android:layout_height="match_parent" >
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/district_name_all"
-            android:padding="5dp"
-            android:id="@+id/districtNameTextView" />
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/default_background">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/district_name_all"
+                android:padding="5dp"
+                android:id="@+id/districtNameTextView" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/columnNameLayout"
+                android:padding="10dp"
+                android:weightSum="4">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/ramadan_month"
+                    android:gravity="center"
+                    android:id="@+id/ramadanTextView" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/english_date"
+                    android:gravity="center"
+                    android:id="@+id/englishTextView" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/sehri_last"
+                    android:gravity="center"
+                    android:id="@+id/sehriTextView" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/iftar"
+                    android:gravity="center"
+                    android:id="@+id/iftarTextView" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/columnNameLayout"
-            android:padding="10dp"
-            android:weightSum="4">
+            android:id="@+id/scrollView" >
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/ramadan_month"
-                android:gravity="center"
-                android:id="@+id/ramadanTextView" />
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/english_date"
-                android:gravity="center"
-                android:id="@+id/englishTextView" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:weightSum="4">
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/sehri_last"
-                android:gravity="center"
-                android:id="@+id/sehriTextView" />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="center"
+                    android:id="@+id/ramadanDateTextView" />
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/iftar"
-                android:gravity="center"
-                android:id="@+id/iftarTextView" />
-        </LinearLayout>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="center"
+                    android:id="@+id/englishDateTextView" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="center"
+                    android:id="@+id/sehriTimeTextView" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="center"
+                    android:id="@+id/iftarTimeTextView" />
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView" >
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:weightSum="4">
+</FrameLayout>
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="center"
-                android:id="@+id/ramadanDateTextView" />
+<!-- android:layout_gravity="start" tells DrawerLayout to treat
+     this as a sliding drawer on the left side for left-to-right
+     languages and on the right side for right-to-left languages.
+     If you're not building against API 17 or higher, use
+     android:layout_gravity="left" instead. -->
+<!-- The drawer is given a fixed width in dp and extends the full height of
+     the container. -->
+<fragment android:id="@+id/navigation_drawer"
+    android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:name="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment"
+    tools:layout="@layout/fragment_navigation_drawer"
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="center"
-                android:id="@+id/englishDateTextView" />
+    />
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="center"
-                android:id="@+id/sehriTimeTextView" />
+</android.support.v4.widget.DrawerLayout>
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="center"
-                android:id="@+id/iftarTimeTextView" />
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>

@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
 
 import com.example.theoakteam.ramadanapp.R;
-import com.example.theoakteam.ramadanapp.SehriAndIfterShortForm;
+import com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm;
 
 /**
  * Created by Sunny_PC on 6/3/2015.
