@@ -49,6 +49,10 @@
         <activity android:name=".HadithActivity.HadisViewer" android:label="@string/title_activity_hadith">
 
         </activity>
+        <activity android:name=".MasalaActivity.MasalaTitleClass"
+            android:label="@string/title_activity_masala"></activity>
+        <activity android:name=".MasalaActivity.MasalaViewer"
+            android:label="@string/title_activity_masala"></activity>
     </application>
 
 </manifest>

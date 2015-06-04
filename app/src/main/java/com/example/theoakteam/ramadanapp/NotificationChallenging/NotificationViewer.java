@@ -14,14 +14,17 @@ import com.example.theoakteam.ramadanapp.SehriAndIfterShortForm;
 public class NotificationViewer extends ActionBarActivity {
 
     private TextView noTextView;
+    private String[] notificationStringArray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_details);
         Intent myIntent=getIntent();
-        String text=myIntent.getStringExtra("text");
+        int i=Integer.parseInt(myIntent.getStringExtra("indexofnotificaton"));
+        notificationStringArray=getResources().getStringArray(R.array.notification_messages);
         noTextView=(TextView)findViewById(R.id.txtview_notification);
-        noTextView.setText(text);
+        System.out.println(i);
+        noTextView.setText(notificationStringArray[i]);
     }
 
     @Override

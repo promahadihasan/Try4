@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.theoakteam.ramadanapp.MasalaActivity.MasalaTitleClass;
 import com.example.theoakteam.ramadanapp.R;
 import com.example.theoakteam.ramadanapp.SehriAndIfterShortForm;
 import com.example.theoakteam.ramadanapp.SettingsActivity;
@@ -83,6 +84,11 @@ public class HadithTitleClass extends ActionBarActivity {
         }
         else if(id== R.id.action_hadis){
             startActivity(new Intent(this, HadithTitleClass.class));
+            finish();
+            return true;
+        }
+        else if(id== R.id.action_masala){
+            startActivity(new Intent(this, MasalaTitleClass.class));
             finish();
             return true;
         }

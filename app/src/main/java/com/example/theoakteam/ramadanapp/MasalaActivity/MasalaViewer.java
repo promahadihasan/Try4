@@ -1,4 +1,4 @@
-package com.example.theoakteam.ramadanapp.HadithActivity;
+package com.example.theoakteam.ramadanapp.MasalaActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import com.example.theoakteam.ramadanapp.R;
  * Created by Sunny_PC on 6/3/2015.
  * this hadith
  */
-public class HadisViewer extends ActionBarActivity {
+public class MasalaViewer extends ActionBarActivity {
 
-    private String[] hidithTitle_details;
+    private String[] masalaTitle_details;
     private TextView noTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +21,11 @@ public class HadisViewer extends ActionBarActivity {
         setContentView(R.layout.notification_details);
         Intent myIntent=getIntent();
 
-        int i=Integer.parseInt(myIntent.getStringExtra("index"));
-
-        hidithTitle_details = getResources().getStringArray(R.array.hadis_details);
+        int i=Integer.parseInt(myIntent.getStringExtra("indexformasala"));
+        System.out.println(i);
+        masalaTitle_details = getResources().getStringArray(R.array.masala_details);
         noTextView=(TextView)findViewById(R.id.txtview_notification);
-        noTextView.setText(hidithTitle_details[i]);
+        noTextView.setText(masalaTitle_details[i]);
     }
 
 

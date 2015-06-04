@@ -305,7 +305,7 @@ public class SettingsActivity extends ActionBarActivity {
         switch (id) {
             case TIME_DIALOG_ID:
                 return new TimePickerDialog(this,
-                        mTimeSetListener, pHour, pMinute+2, false);
+                        mTimeSetListener, pHour, pMinute+1, false);
         }
         return null;
     }

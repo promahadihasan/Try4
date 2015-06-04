@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
+import com.example.theoakteam.ramadanapp.MasalaActivity.MasalaTitleClass;
 
 
 public class DistrictAllTimeShow extends ActionBarActivity {
@@ -111,6 +112,11 @@ public class DistrictAllTimeShow extends ActionBarActivity {
         }
         else if(id== R.id.action_hadis){
             startActivity(new Intent(DistrictAllTimeShow.this, HadithTitleClass.class));
+            finish();
+            return true;
+        }
+        else if(id== R.id.action_masala){
+            startActivity(new Intent(this, MasalaTitleClass.class));
             finish();
             return true;
         }

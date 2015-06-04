@@ -85,14 +85,14 @@ private void showNotification(int moodId, int textId) {
     Notification notification = new Notification(moodId, null, System.currentTimeMillis());
 
     Intent mynoIntent = new Intent(this, NotificationViewer.class);
-    mynoIntent.putExtra("text", text);
+    mynoIntent.putExtra("indexofnotificaton", String.valueOf(textId));
 
     PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
             mynoIntent, 0);
 
 
     notification.setLatestEventInfo(this, getText(R.string.title_notification),
-            text, contentIntent);
+            text.toString(), contentIntent);
 
 
 

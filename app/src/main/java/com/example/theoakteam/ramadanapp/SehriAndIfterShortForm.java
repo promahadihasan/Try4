@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
+import com.example.theoakteam.ramadanapp.MasalaActivity.MasalaTitleClass;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -244,6 +245,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity {
         }
         else if(id== R.id.action_hadis){
             startActivity(new Intent(SehriAndIfterShortForm.this, HadithTitleClass.class));
+
+            return true;
+        }
+        else if(id== R.id.action_masala){
+            startActivity(new Intent(this, MasalaTitleClass.class));
 
             return true;
         }

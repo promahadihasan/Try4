@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
+import com.example.theoakteam.ramadanapp.MasalaActivity.MasalaTitleClass;
 
 /**
  * Created by Sunny-PC on 5/21/2015.
@@ -64,7 +65,11 @@ public class DisplaySuraActivity extends ActionBarActivity {
             finish();
             return true;
         }
-
+        else if(id== R.id.action_masala){
+            startActivity(new Intent(this, MasalaTitleClass.class));
+            finish();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
 
     }

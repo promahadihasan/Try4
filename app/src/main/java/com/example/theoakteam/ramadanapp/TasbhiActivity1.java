@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
+import com.example.theoakteam.ramadanapp.MasalaActivity.MasalaTitleClass;
 
 /**
  * Created by Sunny-PC on 5/24/2015.
@@ -137,6 +138,11 @@ public class TasbhiActivity1 extends ActionBarActivity {
         }
         else if(id== R.id.action_hadis){
             startActivity(new Intent(TasbhiActivity1.this, HadithTitleClass.class));
+            finish();
+            return true;
+        }
+        else if(id== R.id.action_masala){
+            startActivity(new Intent(this, MasalaTitleClass.class));
             finish();
             return true;
         }
