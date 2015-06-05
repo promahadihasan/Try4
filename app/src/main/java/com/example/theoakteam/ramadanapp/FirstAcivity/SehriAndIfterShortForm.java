@@ -142,6 +142,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.logo);
+
         actionBar.setTitle(mTitle);
     }
 

@@ -1,6 +1,7 @@
 package com.example.theoakteam.ramadanapp.NavigationDrawerActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -194,7 +195,10 @@ public class NavigationDrawerFragment extends Fragment {
         // set up the drawer's list view with items and click listener
 
         ActionBar actionBar = getActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xffff00ff));
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+
         actionBar.setHomeButtonEnabled(true);
 
         // ActionBarDrawerToggle ties together the the proper interactions

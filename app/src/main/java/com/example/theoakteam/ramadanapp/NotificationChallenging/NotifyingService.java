@@ -25,6 +25,7 @@ public class NotifyingService extends Service {
 
     private ConditionVariable mCondition;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     private long finalMinute;
     private long finalMilliScecond;
     long checkShareprefernce=1;
@@ -33,7 +34,7 @@ public class NotifyingService extends Service {
     public void onCreate() {
         mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-
+        editor=sharedPreferences.edit();
         if(sharedPreferences.contains("finaltime"))
         {  finalMinute=sharedPreferences.getLong("finaltime", checkShareprefernce);
            finalMilliScecond=finalMinute*60*1000;
@@ -58,6 +59,11 @@ public class NotifyingService extends Service {
     private Runnable mTask = new Runnable() {
         public void run() {
             for (int i = 0; i < notificationString.length; ++i) {
+                sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+                editor=sharedPreferences.edit();
+                editor.putInt("ivalue", i);
+                editor.commit();
+               // System.out.println(i);
 
                 System.out.println("Final Minute=" + finalMinute);
                 System.out.println("Final Milliseconds=" + finalMilliScecond);
