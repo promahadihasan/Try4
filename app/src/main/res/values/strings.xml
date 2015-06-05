@@ -17,6 +17,7 @@
     <string name="sehri_button_view">পুরো রমজানের সূচী দেখুন</string>
     <string name="title_activity_district_input">DistrictInputActivity</string>
     <string name="district_submit_button">Submit</string>
+    <string name="district_input_note">মাত্র একবারের জন্য আপনার জেলার নাম ইনপুট করুন</string>
 
 
     <string name="title_logo">Loading...</string>

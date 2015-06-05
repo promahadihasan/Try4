@@ -2,28 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
+    android:weightSum="5"
     android:background="@drawable/default_background">
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:layout_marginTop="65dp"
-        android:ems="18"
-        android:layout_weight="0.04">
-        <requestFocus />
-    </AutoCompleteTextView>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:gravity="center"
+        android:padding="10dp">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/district_submit_button"
-        android:id="@+id/button2"
-        android:layout_gravity="center_horizontal"
-        android:onClick="saveDistrict"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/districtInputTextView"
+            android:text="@string/district_input_note"
+            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="18"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/district_submit_button"
+            android:id="@+id/button2"
+            android:layout_gravity="center_horizontal"
+            android:onClick="saveDistrict"
+            />
+    </LinearLayout>
 
 
 </LinearLayout>
