@@ -55,6 +55,10 @@
         <activity
             android:name=".MasalaActivity.MasalaViewer"
             android:label="@string/title_activity_masala" />
+        <activity android:name=".EattingHabitActivity.EattingHabitTitleClass"
+            android:label="@string/title_activity_food_habit"></activity>
+        <activity android:name=".EattingHabitActivity.EattingHabitViewer"
+            android:label="@string/title_activity_food_habit"></activity>
 
     </application>
 

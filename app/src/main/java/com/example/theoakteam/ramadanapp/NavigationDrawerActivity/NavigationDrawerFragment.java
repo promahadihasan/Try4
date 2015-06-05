@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.theoakteam.ramadanapp.EattingHabitActivity.EattingHabitTitleClass;
 import com.example.theoakteam.ramadanapp.SuraActivity.DisplaySuraActivity;
 import com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm;
 import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
@@ -142,12 +143,12 @@ public class NavigationDrawerFragment extends Fragment {
 
 
                 }
-//                else   if (position==7) {
-//                    Intent intent = new Intent(getActivity(), EattingHabitActivity.class);
-//                    startActivity(intent);
-//
-//
-//                }
+                else   if (position==7) {
+                    Intent intent = new Intent(getActivity(), EattingHabitTitleClass.class);
+                    startActivity(intent);
+
+
+                }
                 else if(position==8){
                     Intent i = new Intent(getActivity(),SettingsActivity.class);
                     startActivity(i);

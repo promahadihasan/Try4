@@ -111,7 +111,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     <Button
                         android:layout_width="300dp"
                         android:layout_height="60dp"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:text="@string/sehri_button_view"
                         android:id="@+id/fullTimeShowButton"
                         android:background="@drawable/added_button"
@@ -121,7 +121,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     <Button
                         android:layout_width="300dp"
                         android:layout_height="60dp"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:text="@string/all_district_time_show_button"
                         android:background="@drawable/added_button"
                         android:onClick="showAllDistrict"
@@ -141,7 +141,8 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
 <!-- The drawer is given a fixed width in dp and extends the full height of
      the container. -->
 <fragment android:id="@+id/navigation_drawer"
-    android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
+    android:layout_width="@dimen/navigation_drawer_width"
+    android:layout_height="wrap_content"
     android:layout_gravity="start"
     android:name="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment"
     tools:layout="@layout/fragment_navigation_drawer"
