@@ -69,7 +69,7 @@ public class EattingHabitTitleClass
         //upper code use for drawer
 
     }
-
+//
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
