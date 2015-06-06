@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -55,6 +56,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     TextView englishDate;
     TextView arabicDate;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
+    String hourForAlarm;
+    String minuteForAlarm;
 
 
 
@@ -67,8 +70,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
 
         if(flagString.equals(DEFAULT)){
-            editor.putString("DistrictInputFlag","true");
-            editor.commit();
+
             setContentView(R.layout.distric_input);
 
             String[] districts = getResources().getStringArray(R.array.list_of_districts);
@@ -263,7 +265,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         else{
             String dateString = getDate(); // "15/06/2015"; // "17/06/2015"; //"10/07/2015";  //
             String arabicMonth = districtsTimeObject.findMonth(dateString);
-            englishDate.append(" "+dateString);
+            englishDate.append(" " + dateString);
             if(arabicMonth=="ramadan"){
                 arabicDate.setText("("+districtsTimeObject.getRamadanDate(dateString)+" "+getString(R.string.ramadan)+" "+getString(R.string.hijri));
                 sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, dateString);
@@ -282,13 +284,25 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
             }
 
-            sehriNote.setText(districtName.substring(0,1).toUpperCase() + districtName.substring(1)+"  "+getText(R.string.sehri_iftar_first_note));
+            sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
             sehriTime.setText(sehriTimeString + " am");
             iftarTime.setText(iftarTimeString + " pm");
+            String alarmTime = districtsTimeObject.calculateTime(sehriTimeString,"-60");
+            hourForAlarm = "" + alarmTime.charAt(0);
+            minuteForAlarm = alarmTime.substring(2,4);
+
+            //System.out.println("Testing Time -->>: "+hourForAlarm+":"+minuteForAlarm);
 
         }
 
 
+    }
+
+    public void alarmSet(View v){
+        Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+        i.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(hourForAlarm));
+        i.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(minuteForAlarm));
+        startActivity(i);
     }
 
     public String getDate(){
@@ -300,23 +314,34 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     }
 
     public void  saveDistrict(View view){
-        districtName = autoCompleteTextView.getText().toString();
-        districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
 
-        if(districtsTimeObject.isDistrictPresent(districtName)){
-            editor.putString("DefaultDistrictName", districtName);
-            editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
-            editor.commit();
-            Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
+        try{
 
-            sehriActivity();
-            //setContentView(R.layout.activity_sehri_and_ifter_short_form);
+            districtName = autoCompleteTextView.getText().toString();
+            districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
+
+            if(districtsTimeObject.isDistrictPresent(districtName)){
+                editor.putString("DefaultDistrictName", districtName);
+                editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
+                editor.putString("DistrictInputFlag","true");
+                editor.commit();
+                Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
+
+                sehriActivity();
+                //setContentView(R.layout.activity_sehri_and_ifter_short_form);
+            }
+            else{
+
+                Toast.makeText(getApplicationContext(),"Your District name is not correct!",Toast.LENGTH_LONG).show();
+
+            }
+
         }
-        else{
-
-            Toast.makeText(getApplicationContext(),"Your District name is not correct!",Toast.LENGTH_LONG).show();
-
+        catch (Exception e){
+            Toast.makeText(getApplicationContext(), "Please enter your District Name", Toast.LENGTH_LONG).show();
         }
+
+
 
     }
 // Hasan's Code End

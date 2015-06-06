@@ -186,11 +186,20 @@ public class DistrictsTimeClass {
 
         if(plusMinusTime.charAt(0)=='-'){
 
-            int subMinuteAmount = plusMinusTime.charAt(1)-'0';
+            int subMinuteAmount;
+            if(plusMinusTime.length()==2){
+                subMinuteAmount = plusMinusTime.charAt(1)-'0';
+            }
+            else{
+                subMinuteAmount = (plusMinusTime.charAt(1)- '0') * 10 + plusMinusTime.charAt(2)-'0';
+
+            }
+
 
             if(minute<subMinuteAmount){
                 minute = (minute+60) - subMinuteAmount;
                 hour--;
+
             }
             else{
                 minute = minute - subMinuteAmount;
@@ -211,7 +220,10 @@ public class DistrictsTimeClass {
 
         }
 
-        finalTime = String.valueOf(hour) + ":" + String.valueOf(minute);
+        if(minute>9)
+            finalTime = String.valueOf(hour) + ":" + String.valueOf(minute);
+        else
+            finalTime = String.valueOf(hour) + ":" + "0" + String.valueOf(minute);
 
 //        System.out.println("Plus-minus time (DistrictTimeClass 210 num Line): "+plusMinusTime+" Final Time: "+finalTime);
 
