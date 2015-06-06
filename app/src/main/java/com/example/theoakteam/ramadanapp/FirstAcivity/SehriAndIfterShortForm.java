@@ -299,9 +299,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     }
 
     public void alarmSet(View v){
+        String title=getResources().getString(R.string.sehri_last)+" "+getResources().getString(R.string.title_activity_alarm);
         Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
         i.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(hourForAlarm));
         i.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(minuteForAlarm));
+        i.putExtra(AlarmClock.EXTRA_MESSAGE,title);
         startActivity(i);
     }
 
