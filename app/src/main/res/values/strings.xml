@@ -115,7 +115,7 @@
         <item >Sunamganj</item>
         <item >Sylhet</item>
     </string-array>
-    <string name="title_activity_district_all_time_show">Full Ramadan Time show</string>
+    <string name="title_activity_district_all_time_show">জেলার পূর্ণাঙ্গ সূচী</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_drawer_main">DrawerMainActivity</string>
 
@@ -125,6 +125,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example">Example action</string>
+    <string name="title_activity_input_for_all_district_time">যে কোন জেলার সূচী</string>
 
 
 </resources>

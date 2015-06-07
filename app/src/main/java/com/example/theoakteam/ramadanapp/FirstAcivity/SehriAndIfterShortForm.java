@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.theoakteam.ramadanapp.DistrictActivity.DistrictAllTimeShow;
 import com.example.theoakteam.ramadanapp.DistrictActivity.DistrictsTimeClass;
 
+import com.example.theoakteam.ramadanapp.DistrictActivity.InputForAllDistrictTimeActivity;
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
 import com.example.theoakteam.ramadanapp.R;
 
@@ -261,95 +262,12 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     }
 
     public void showAllDistrict(View v){
-        setContentView(R.layout.all_district_time_show);
 
-        String[] districts = getResources().getStringArray(R.array.list_of_districts);
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
-        allDistrictAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.allDistrictAutoCompleteTextView);
-        allDistrictAutoCompleteTextView.setAdapter(adapter);
-
+        Intent intent = new Intent(SehriAndIfterShortForm.this, InputForAllDistrictTimeActivity.class);
+        startActivity(intent);
 
     }
 
-    public void allDistrictShowTimeButton(View v){
-        String tempDistrict;
-
-        try{
-
-            tempDistrict = allDistrictAutoCompleteTextView.getText().toString();
-            tempDistrict = districtsTimeObject.removeEndSpace(tempDistrict).toLowerCase();
-
-            if(districtsTimeObject.isDistrictPresent(tempDistrict)){
-
-                String[] allSehriTime = new String[31];
-                String[] allIftarTime = new String[31];
-                String[] allDate = new String[31];
-                allIftarTime[0]="0:00";
-                allIftarTime[0]="0:00";
-                allDate[0] = "00/00/0000";
-                int engDate=18, flag=0;
-                String engMonth="06";
-                for(int ramadanDate=1; ramadanDate<=30; ramadanDate++,engDate++){
-
-                    if(flag==0 && engDate>30){
-                        engDate=1;
-                        engMonth = "07";
-                        flag = 1;
-                    }
-
-                    String dateStringFull;
-                    if(engDate<10){
-                        dateStringFull = "0" + String.valueOf(engDate) + "/" + engMonth + "/" + "'15";
-                    }
-                    else {
-                        dateStringFull = String.valueOf(engDate) + "/" + engMonth + "/" + "'15";
-
-                    }
-
-                    String plusMinus = districtsTimeObject.getDistrictPlusMinusTime(tempDistrict);
-                    String centralSehri = districtsTimeObject.getCentralSehri(ramadanDate);
-                    String centralIftar = districtsTimeObject.getCentralIftar(ramadanDate);
-                    String sehriTimeString = districtsTimeObject.calculateTime(centralSehri, plusMinus);
-                    String iftarTimeString = districtsTimeObject.calculateTime(centralIftar,plusMinus);
-
-                    allSehriTime[ramadanDate] = sehriTimeString;
-                    allIftarTime[ramadanDate] = iftarTimeString;
-                    allDate[ramadanDate] = dateStringFull;
-
-                }
-
-                Bundle bundle=new Bundle();
-                bundle.putStringArray("allSehri", allSehriTime);
-                bundle.putStringArray("allIftar", allIftarTime);
-                bundle.putStringArray("allDate", allDate);
-                bundle.putString("districtName", tempDistrict);
-
-                Intent intent = new Intent(SehriAndIfterShortForm.this, DistrictAllTimeShow.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
-
-
-
-
-                Toast.makeText(getApplicationContext(),tempDistrict.substring(0,1).toUpperCase() + tempDistrict.substring(1)+" is your Required District",Toast.LENGTH_LONG).show();
-
-                //sehriActivity();
-                //setContentView(R.layout.activity_sehri_and_ifter_short_form);
-            }
-            else{
-
-                Toast.makeText(getApplicationContext(),"Your District name is not correct!",Toast.LENGTH_LONG).show();
-
-            }
-
-        }
-        catch (Exception e){
-            Toast.makeText(getApplicationContext(), "Please enter your District Name", Toast.LENGTH_LONG).show();
-        }
-
-
-        //helpShowFullTime(allDistrictAutoCompleteTextView.getText().toString());
-    }
 
     public void sehriActivity(){
         setContentView(R.layout.activity_sehri_and_ifter_short_form);

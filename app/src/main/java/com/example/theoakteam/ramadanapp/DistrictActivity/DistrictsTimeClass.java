@@ -322,36 +322,36 @@ public class DistrictsTimeClass {
 
     public void setCentralSehriTime(){
 
-        centralSehriTime[1] = "3:37";
-        centralSehriTime[2] = "3:37";
-        centralSehriTime[3] = "3:37";
-        centralSehriTime[4] = "3:38";
-        centralSehriTime[5] = "3:38";
-        centralSehriTime[6] = "3:38";
+        centralSehriTime[1] = "3:38";
+        centralSehriTime[2] = "3:38";
+        centralSehriTime[3] = "3:38";
+        centralSehriTime[4] = "3:39";
+        centralSehriTime[5] = "3:39";
+        centralSehriTime[6] = "3:39";
         centralSehriTime[7] = "3:39";
-        centralSehriTime[8] = "3:39";
+        centralSehriTime[8] = "3:40";
         centralSehriTime[9] = "3:40";
-        centralSehriTime[10] = "3:40";
+        centralSehriTime[10] = "3:41";
         centralSehriTime[11] = "3:41";
-        centralSehriTime[12] = "3:41";
+        centralSehriTime[12] = "3:42";
         centralSehriTime[13] = "3:42";
         centralSehriTime[14] = "3:42";
-        centralSehriTime[15] = "3:42";
+        centralSehriTime[15] = "3:43";
         centralSehriTime[16] = "3:43";
-        centralSehriTime[17] = "3:43";
+        centralSehriTime[17] = "3:44";
         centralSehriTime[18] = "3:44";
-        centralSehriTime[19] = "3:44";
+        centralSehriTime[19] = "3:45";
         centralSehriTime[20] = "3:45";
-        centralSehriTime[21] = "3:45";
+        centralSehriTime[21] = "3:46";
         centralSehriTime[22] = "3:46";
-        centralSehriTime[23] = "3:46";
-        centralSehriTime[24] = "3:47";
+        centralSehriTime[23] = "3:47";
+        centralSehriTime[24] = "3:48";
         centralSehriTime[25] = "3:48";
-        centralSehriTime[26] = "3:48";
+        centralSehriTime[26] = "3:49";
         centralSehriTime[27] = "3:49";
-        centralSehriTime[28] = "3:49";
+        centralSehriTime[28] = "3:50";
         centralSehriTime[29] = "3:50";
-        centralSehriTime[30] = "3:50";
+        centralSehriTime[30] = "3:51";
 
     }
 
@@ -375,36 +375,36 @@ public class DistrictsTimeClass {
     }
 
     public void setCentralIftarTime(){
-        centralIftarTime[1] = "6:49";
-        centralIftarTime[2] = "6:49";
-        centralIftarTime[3] = "6:50";
-        centralIftarTime[4] = "6:50";
-        centralIftarTime[5] = "6:50";
-        centralIftarTime[6] = "6:51";
-        centralIftarTime[7] = "6:51";
-        centralIftarTime[8] = "6:52";
-        centralIftarTime[9] = "6:52";
-        centralIftarTime[10] = "6:52";
-        centralIftarTime[11] = "6:52";
+        centralIftarTime[1] = "6:52";
+        centralIftarTime[2] = "6:52";
+        centralIftarTime[3] = "6:52";
+        centralIftarTime[4] = "6:52";
+        centralIftarTime[5] = "6:53";
+        centralIftarTime[6] = "6:53";
+        centralIftarTime[7] = "6:53";
+        centralIftarTime[8] = "6:53";
+        centralIftarTime[9] = "6:53";
+        centralIftarTime[10] = "6:53";
+        centralIftarTime[11] = "6:53";
         centralIftarTime[12] = "6:53";
-        centralIftarTime[13] = "6:53";
+        centralIftarTime[13] = "6:54";
         centralIftarTime[14] = "6:54";
         centralIftarTime[15] = "6:54";
         centralIftarTime[16] = "6:54";
-        centralIftarTime[17] = "6:55";
-        centralIftarTime[18] = "6:55";
+        centralIftarTime[17] = "6:54";
+        centralIftarTime[18] = "6:54";
         centralIftarTime[19] = "6:54";
         centralIftarTime[20] = "6:54";
-        centralIftarTime[21] = "6:54";
-        centralIftarTime[22] = "6:54";
+        centralIftarTime[21] = "6:53";
+        centralIftarTime[22] = "6:53";
         centralIftarTime[23] = "6:53";
         centralIftarTime[24] = "6:53";
         centralIftarTime[25] = "6:53";
         centralIftarTime[26] = "6:53";
-        centralIftarTime[27] = "6:52";
+        centralIftarTime[27] = "6:53";
         centralIftarTime[28] = "6:52";
         centralIftarTime[29] = "6:52";
-        centralIftarTime[30] = "6:51";
+        centralIftarTime[30] = "6:52";
     }
 
     public String getCentralIftarTime(String  date){
