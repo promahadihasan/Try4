@@ -369,6 +369,11 @@ public class DistrictsTimeClass {
         return centralTime;
     }
 
+    public String[] getAllCentralSehriTime(){
+
+        return centralSehriTime;
+    }
+
     public void setCentralIftarTime(){
         centralIftarTime[1] = "6:49";
         centralIftarTime[2] = "6:49";

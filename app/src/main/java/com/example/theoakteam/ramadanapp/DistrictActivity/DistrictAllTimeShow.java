@@ -37,7 +37,6 @@ public class DistrictAllTimeShow extends ActionBarActivity
     TextView englishDateTextView;
     TextView sehriTimeTextView;
     TextView iftarTimeTextView;
-
     String districtName;
     SharedPreferences sharedPreferences;
 
@@ -52,6 +51,7 @@ public class DistrictAllTimeShow extends ActionBarActivity
         String[] allSehriTime=bundle.getStringArray("allSehri");
         String[] allIftarTime=bundle.getStringArray("allIftar");
         String[] allDate = bundle.getStringArray("allDate");
+        districtName = bundle.getString("districtName");
 
         initialize();
 
@@ -171,7 +171,7 @@ public class DistrictAllTimeShow extends ActionBarActivity
     private void initialize() {
 
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-        districtName = sharedPreferences.getString("DefaultDistrictName", "Not Found");
+        //districtName = sharedPreferences.getString("DefaultDistrictName", "Not Found");
 
         districtNameTextView = (TextView) findViewById(R.id.districtNameTextView);
         ramadanDateTextView = (TextView) findViewById(R.id.ramadanDateTextView);

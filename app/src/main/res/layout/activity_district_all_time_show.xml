@@ -48,7 +48,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:id="@+id/ramadanTextView" />
 
                 <TextView
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -57,7 +57,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:id="@+id/englishTextView" />
 
                 <TextView
-                    android:layout_weight="1"
+                    android:layout_weight="0.9"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -90,7 +90,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                 android:weightSum="4">
 
                 <TextView
-                    android:layout_weight="1"
+                    android:layout_weight="0.8"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -98,7 +98,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:id="@+id/ramadanDateTextView" />
 
                 <TextView
-                    android:layout_weight="1"
+                    android:layout_weight="1.4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -106,7 +106,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:id="@+id/englishDateTextView" />
 
                 <TextView
-                    android:layout_weight="1"
+                    android:layout_weight="0.9"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -114,7 +114,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:id="@+id/sehriTimeTextView" />
 
                 <TextView
-                    android:layout_weight="1"
+                    android:layout_weight="0.9"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
