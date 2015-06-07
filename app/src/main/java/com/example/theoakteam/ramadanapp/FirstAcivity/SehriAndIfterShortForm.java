@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.support.v4.app.Fragment;
@@ -72,7 +74,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
-
+        ActionBar actionBara = getSupportActionBar();
+        actionBara.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getResources().getString(R.string.actionbar_color))));
         if(flagString.equals(DEFAULT)){
             setContentView(R.layout.distric_input);
 
@@ -130,13 +133,13 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             case 6:
                 mTitle = getString(R.string.title_activity_sehri_and_ifter_short_form);
                 break;
+//            case 7:
+//                mTitle = getString(R.string.title_activity_alarm);
+//                break;
             case 7:
-                mTitle = getString(R.string.title_activity_alarm);
-                break;
-            case 8:
                 mTitle = getString(R.string.title_activity_food_habit);
                 break;
-            case 9:
+            case 8:
                 mTitle = getString(R.string.title_settings);
                 break;
         }
@@ -146,7 +149,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setHomeAsUpIndicator(R.drawable.logo);
 
         actionBar.setTitle(mTitle);

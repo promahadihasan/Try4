@@ -95,7 +95,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                             android:layout_height="wrap_content"
                             android:src="@mipmap/ic_alarm"
                             android:id="@+id/alarmButton"
-                            android:background="#ff757571"
+                            android:background="#cc1584cc"
                             android:onClick="alarmSet"/>
 
 

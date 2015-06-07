@@ -113,12 +113,9 @@ public class TasbhiActivity1
                 mTitle = getString(R.string.title_activity_sehri_and_ifter_short_form);
                 break;
             case 7:
-                mTitle = getString(R.string.title_activity_alarm);
-                break;
-            case 8:
                 mTitle = getString(R.string.title_activity_food_habit);
                 break;
-            case 9:
+            case 8:
                 mTitle = getString(R.string.title_settings);
                 break;
         }

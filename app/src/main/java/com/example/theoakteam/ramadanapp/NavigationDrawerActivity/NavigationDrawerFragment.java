@@ -1,6 +1,7 @@
 package com.example.theoakteam.ramadanapp.NavigationDrawerActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
@@ -139,23 +140,18 @@ public class NavigationDrawerFragment extends Fragment {
 
                 }
                 else if(position==6){
-                    Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-                    startActivity(i);
-
-
-                }
-                else   if (position==7) {
                     Intent intent = new Intent(getActivity(), EattingHabitTitleClass.class);
                     startActivity(intent);
 
 
                 }
-                else if(position==8){
+                else   if (position==7) {
                     Intent i = new Intent(getActivity(),SettingsActivity.class);
                     startActivity(i);
 
 
                 }
+
 
 
 
@@ -169,8 +165,7 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_activity_quran), getString(R.string.title_activity_hadith),
                         getString(R.string.title_activity_masala),getString(R.string.title_activity_dua),
                         getString(R.string.title_activity_tasbih),getString(R.string.title_activity_sehri_and_ifter_short_form),
-                        getString(R.string.title_activity_alarm),getString(R.string.title_activity_food_habit),
-                        getString(R.string.title_settings),
+                      getString(R.string.title_activity_food_habit),getString(R.string.title_settings),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -195,11 +190,11 @@ public class NavigationDrawerFragment extends Fragment {
         // set up the drawer's list view with items and click listener
 
         ActionBar actionBar = getActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(0xffff00ff));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#cc1584cc")));//link http://www.nthelp.com/colorcodes.htm
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
 
-        actionBar.setHomeButtonEnabled(true);
+        actionBar.setHomeButtonEnabled(false);
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
