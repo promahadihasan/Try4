@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
 import com.example.theoakteam.ramadanapp.R;
+import com.example.theoakteam.ramadanapp.SuraActivity.DisplaySuraActivity;
 
 /**
  * Created by Sunny-PC on 5/24/2015.
@@ -61,8 +65,10 @@ public class TasbhiActivity1
         editor = sharedPreferences.edit();
         counterString = sharedPreferences.getString("tasbihCounter",DEFAULT);
         if(counterString.equals(DEFAULT)){
+            currentCounter = 0;
             tasbih.setCounter(0);
             textView.setText("0");
+
         }
         else{
             textView.setText(counterString);
@@ -178,99 +184,71 @@ public class TasbhiActivity1
         textView.setText(currentCounter.toString());
     }
 
-    public  void  tasbihReset(View v){
-
-        new AlertDialog.Builder(this)
-                .setTitle("Reset?")
-                .setMessage("Are you sure you want to reset Tasbih?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        tasbih.setCounter(0);
-                        currentCounter=0;
-                        textView.setText("0");
-
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-
-    }
+//    public  void  tasbihReset(View v){
+//
+//
+//
+//    }
 
     @Override
     protected void onPause() {
         super.onPause();
-       if(currentCounter!=0) {
+//       if(currentCounter!=0) {
            sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
 
            editor.putString("tasbihCounter", currentCounter.toString());
            editor.commit();
-       }
-        else
-           editor.commit();
+//       }
+//        else
+//           editor.commit();
 
         finish();
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_quran) {
-//            startActivity(new Intent(TasbhiActivity1.this, DisplaySuraActivity.class));
-//            finish();
-//            return true;
-//        }
-//        else if(id== R.id.actionseheri_ifter_time){
-//            startActivity(new Intent(TasbhiActivity1.this, SehriAndIfterShortForm.class));
-//            finish();
-//            return true;
-//        }
-//        else if(id== R.id.action_alarm){
-//            Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-//            startActivity(i);
-//            finish();
-//            return  true;
-//        }
-//        else if(id== R.id.action_settings){
-//            Intent i = new Intent(TasbhiActivity1.this,SettingsActivity.class);
-//            startActivity(i);
-//
-//            return  true;
-//        }
-//        else if(id== R.id.action_tasbhi){
-//            startActivity(new Intent(TasbhiActivity1.this, TasbhiActivity1.class));
-//            finish();
-//            return true;
-//        }
-//        else if(id== R.id.action_hadis){
-//            startActivity(new Intent(TasbhiActivity1.this, HadithTitleClass.class));
-//            finish();
-//            return true;
-//        }
-//        else if(id== R.id.action_masala){
-//            startActivity(new Intent(this, MasalaTitleClass.class));
-//            finish();
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.tasbih_reset_menu) {
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Reset?")
+                    .setMessage("Are you sure you want to reset Tasbih?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            tasbih.setCounter(0);
+                            currentCounter=0;
+                            textView.setText("0");
+
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 }

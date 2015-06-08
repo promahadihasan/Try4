@@ -21,7 +21,7 @@
     <string name="district_input_note">মাত্র একবারের জন্য আপনার জেলার নাম ইনপুট করুন</string>
     <string name="all_district_input_note">আপনি যে জেলার সূচী দেখতে চান সেটির নাম লিখুন</string>
 
-    <string name="title_logo">Loading...</string>
+    <string name="title_logo">আহলান-সাহলান...</string>
 
     <string name="txt_showthe">Show the notification for the day</string>
     <string name="txt_nottime">Notification Time   </string>

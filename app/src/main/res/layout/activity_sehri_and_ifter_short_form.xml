@@ -91,11 +91,11 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
     android:layout_width="88dp"
     android:layout_height="1dp" />
                         <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/ic_alarm"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_alarm_clock"
                             android:id="@+id/alarmButton"
-                            android:background="#cc1584cc"
+                            android:alpha=".60"
                             android:onClick="alarmSet"/>
 
 

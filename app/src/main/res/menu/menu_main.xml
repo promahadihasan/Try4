@@ -3,40 +3,48 @@
 
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <!--klkl-->
-    <item android:id="@+id/action_quran"
-        android:title="@string/title_activity_quran"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_hadis"
-        android:title="@string/title_activity_hadith"
-        android:orderInCategory="101"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_masala"
-        android:title="@string/title_activity_masala"
-        android:orderInCategory="102"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_dudorut"
-        android:title="@string/title_activity_dua"
-        android:orderInCategory="103"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_tasbhi"
+    <item android:id="@+id/tasbih_reset_menu"
         android:title="@string/title_activity_tasbih"
-        android:orderInCategory="104"
-        app:showAsAction="never" />
-    <item android:id="@+id/actionseheri_ifter_time"
-        android:title="@string/title_activity_seheri_ifter_time"
-        android:orderInCategory="105"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_alarm"
-        android:title="@string/title_activity_alarm"
-        android:orderInCategory="106"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_food_habit"
-        android:title="@string/title_activity_food_habit"
-        android:orderInCategory="107"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_settings"
-        android:title="@string/title_settings"
-        android:orderInCategory="108"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_tasbih_reset">
+
+    </item>
+
+
+    <!--<item android:id="@+id/action_quran"-->
+        <!--android:title="@string/title_activity_quran"-->
+        <!--android:orderInCategory="100"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item android:id="@+id/action_hadis"-->
+        <!--android:title="@string/title_activity_hadith"-->
+        <!--android:orderInCategory="101"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item android:id="@+id/action_masala"-->
+        <!--android:title="@string/title_activity_masala"-->
+        <!--android:orderInCategory="102"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item android:id="@+id/action_dudorut"-->
+        <!--android:title="@string/title_activity_dua"-->
+        <!--android:orderInCategory="103"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item android:id="@+id/action_tasbhi"-->
+        <!--android:title="@string/title_activity_tasbih"-->
+        <!--android:orderInCategory="104"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item android:id="@+id/actionseheri_ifter_time"-->
+        <!--android:title="@string/title_activity_seheri_ifter_time"-->
+        <!--android:orderInCategory="105"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item android:id="@+id/action_alarm"-->
+        <!--android:title="@string/title_activity_alarm"-->
+        <!--android:orderInCategory="106"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item android:id="@+id/action_food_habit"-->
+        <!--android:title="@string/title_activity_food_habit"-->
+        <!--android:orderInCategory="107"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item android:id="@+id/action_settings"-->
+        <!--android:title="@string/title_settings"-->
+        <!--android:orderInCategory="108"-->
+        <!--app:showAsAction="never" />-->
+
 </menu>
