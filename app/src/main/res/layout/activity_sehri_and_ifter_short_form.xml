@@ -47,14 +47,14 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/date_text_view"
-                        android:textSize="30sp"
+                        android:textSize="20sp"
                         android:id="@+id/dateEnglishTextView" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Arabic Date"
-                        android:textSize="25sp"
+                        android:textSize="15sp"
                         android:id="@+id/arabicTextView"/>
                 </LinearLayout>
 
@@ -63,13 +63,13 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_below="@id/dateLayout"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="2.5">
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="2.6">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:text="District Name"
                         android:id="@+id/sehri_iftar_initial_note" />
 
@@ -81,21 +81,21 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="40sp"
+                            android:textSize="30sp"
                             android:text="000"
                             android:id="@+id/sehriTextView"
                             android:layout_below="@+id/sehri_iftar_initial_note"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true" />
        <Space
-       android:layout_width="88dp"
+       android:layout_width="70dp"
        android:layout_height="1dp" />
                         <ImageButton
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:src="@drawable/ic_alarm_clock"
                             android:id="@+id/alarmButton"
-                            android:alpha=".60"
+                            android:alpha=".80"
                             android:onClick="alarmSet"/>
 
 
@@ -108,7 +108,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                         android:layout_height="wrap_content"
                         android:text="@string/ifter_time_note"
                         android:id="@+id/iftarTimeNoteTextView"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:layout_below="@+id/sehriTextView" />
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -117,19 +117,19 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="40sp"
+                        android:textSize="30sp"
                         android:text="000"
                         android:id="@+id/iftarTextView"
                         android:layout_below="@+id/iftarTimeNoteTextView" />
                         <Space
-                            android:layout_width="88dp"
+                            android:layout_width="70dp"
                             android:layout_height="1dp" />
                         <ImageButton
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:src="@drawable/ic_alarm_clock"
                             android:id="@+id/alarmButton2"
-                            android:alpha=".60"
+                            android:alpha=".80"
                             android:onClick="alarmSet"/>
                         </LinearLayout>
 
@@ -140,8 +140,8 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:gravity="center"
-                    android:layout_weight="1.5"
-                    android:padding="20dp">
+                    android:layout_weight="1.4"
+                    android:padding="15dp">
 
                     <Button
                         android:layout_width="300dp"

@@ -27,6 +27,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
             android:text="@string/txt_showthe"
             android:id="@+id/checkBoxmain"
             android:checked="true"
+
             />
         />
         <LinearLayout
@@ -42,6 +43,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                 android:layout_height="wrap_content"
                 android:text="@string/txt_nottime"
                 android:paddingRight="3dp"
+
                 />
             <Button
                 android:layout_width="wrap_content"
@@ -122,17 +124,18 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="18"
-                    android:layout_weight="2">
-                    <!--<requestFocus />-->
+                    android:layout_weight="2"
+                    android:selectAllOnFocus="true">
                 </AutoCompleteTextView>
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:text="@string/district_submit_button"
                     android:id="@+id/districtButton"
                     android:layout_gravity="center_horizontal"
                     android:onClick="saveDistrict"
+                    android:background="@drawable/added_button"
                     android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>

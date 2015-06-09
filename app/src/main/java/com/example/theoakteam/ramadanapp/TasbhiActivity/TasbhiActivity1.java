@@ -190,14 +190,11 @@ public class TasbhiActivity1
     @Override
     protected void onPause() {
         super.onPause();
-//       if(currentCounter!=0) {
+
            sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
 
            editor.putString("tasbihCounter", currentCounter.toString());
            editor.commit();
-//       }
-//        else
-//           editor.commit();
 
         finish();
     }

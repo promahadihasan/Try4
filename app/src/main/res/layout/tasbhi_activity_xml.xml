@@ -29,6 +29,11 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tasbih_welcome_note"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/textView"
                 android:textSize="100sp"
                 android:text="0"
@@ -38,26 +43,6 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
 
         </LinearLayout>
 
-        <!--android:layout_above="@+id/imageButton"-->
-
-        <!--<ImageButton-->
-            <!--android:layout_width="150dp"-->
-            <!--android:layout_height="150dp"-->
-            <!--android:id="@+id/imageButton"-->
-            <!--android:src="@mipmap/ic_launcher"-->
-            <!--android:onClick="tasbihCount"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_centerHorizontal="true" />-->
-
-        <!--<Button-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Reset"-->
-            <!--android:id="@+id/tasbihResetButton"-->
-            <!--android:onClick="tasbihReset"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginBottom="43dp" />-->
 
 
 

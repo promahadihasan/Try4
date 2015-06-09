@@ -275,7 +275,18 @@ public class SettingsActivity
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(adapter);
+        autoCompleteTextView.setSelection(autoCompleteTextView.getText().length());
 
+//        autoCompleteTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (hasFocus) {
+//                    autoCompleteTextView.setText("");
+//                }
+//            }
+//
+//        });
     }
 //    public void tasbihCounterSet(View v){
 //        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);

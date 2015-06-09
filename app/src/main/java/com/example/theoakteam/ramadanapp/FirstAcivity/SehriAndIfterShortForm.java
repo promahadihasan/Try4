@@ -233,10 +233,10 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
             String dateStringFull;
             if(engDate<10){
-                dateStringFull = "0" + String.valueOf(engDate) + "/" + engMonth + "/" + "'15";
+                dateStringFull = "0" + String.valueOf(engDate) + "/" + engMonth + "/" + "15";
             }
             else {
-                dateStringFull = String.valueOf(engDate) + "/" + engMonth + "/" + "'15";
+                dateStringFull = String.valueOf(engDate) + "/" + engMonth + "/" + "15";
 
             }
 
@@ -287,7 +287,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         districtName = sharedPreferences.getString("DefaultDistrictName", "N/A");
 
         if(districtName=="N/A"){
-            Toast.makeText(getApplicationContext(),"SharedPreference Error",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"SharedPreference Error",Toast.LENGTH_LONG).show();
         }
         else{
             String dateString = getDate(); // "15/06/2015"; // "17/06/2015"; //"10/07/2015";  //
@@ -348,6 +348,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         }
         startActivity(i);
     }
+
+
 
     public String getDate(){
         Date date = new Date();

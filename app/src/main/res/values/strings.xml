@@ -9,8 +9,9 @@
     <string name="title_hasan_fb">"www.facebook.com/hasan.cse91"</string>
     <string name="title_sunny_fb">"www.facebook.com/mahadihasansunny1"</string>
     <string name="title_chisty_fb">"www.facebook.com/mainuddin.chisty1"</string>
+    <string name="title_saimum_fb">"www.facebook.com/shakirahmedsaimum"</string>
 
-    <string name="moible_team">"01521208079"</string>
+    <string name="mobile_team">"01521208079"</string>
     <string name="mail_hasan">"hasan_cse91@yahoo.com"</string>
     <string name="mail_sunny">"sunny_mhs@hotmail.com"</string>
     <string name="mail_chisty">"chistyinfo@gmail.com"</string>
@@ -31,21 +32,22 @@
     <string name="sehri_button_view">পুরো রমজানের সূচী দেখুন</string>
     <string name="title_activity_district_input">DistrictInputActivity</string>
     <string name="district_submit_button">Submit</string>
-    <string name="district_input_note">মাত্র একবারের জন্য আপনার জেলার নাম ইনপুট করুন</string>
-    <string name="all_district_input_note">আপনি যে জেলার সূচী দেখতে চান সেটির নাম লিখুন</string>
+    <string name="district_input_note">আপনার অবস্থানরত জেলার নাম লিখুন</string>
+    <string name="all_district_input_note">জেলার নাম লিখুন</string>
 
     <string name="title_logo">আহলান-সাহলান...</string>
+
     <string name="title_ifter_alarm">ইফতারের</string>
 
-    <string name="txt_showthe">Show the notification for the day</string>
+    <string name="txt_showthe">প্রত্যহ আয়াত/হাদীসের নোটিফিকেশন প্রাপ্তির সময় সেট করুন</string>
     <string name="txt_nottime">Notification Time   </string>
-    <string name="txt_time">02:00 AM</string>
+    <string name="txt_time">06:00 PM</string>
     <string name="action_notification">Get notification</string>
-    <string name="title_notification"> দিনের অধিসুচনা </string>
+    <string name="title_notification"> আজকের আয়াত/হাদীস </string>
     <string name="first_notification">রোযা রাখা যেমন ফরয তেমনি  রোযার নিয়ত করা ফরয  </string>
     <string name="tasbih_counter_setting">তসবিহ এর কাউন্টার সেট করুন</string>
     <string name="tasbih_counter_set_button">Submit</string>
-    <string name="district_name_setting_note">জেলার নাম পরিবর্তন করুনঃ</string>
+    <string name="district_name_setting_note">ডিফল্ট জেলা পরিবর্তন করুনঃ</string>
     <string name="date_text_view">আজ  </string>
     <string name="ramadan">রমজান</string>
     <string name="shaban">শাবান</string>
@@ -140,6 +142,7 @@
 
     <string name="action_example">Example action</string>
     <string name="title_activity_input_for_all_district_time">যে কোন জেলার সূচী</string>
+    <string name="title_activity_about_developer">About Developer</string>
 
 
 </resources>
