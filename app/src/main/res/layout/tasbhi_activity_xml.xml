@@ -35,7 +35,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                 android:text="0"
 
                 android:layout_centerHorizontal="true" />
-//
+
 
         </LinearLayout>
 

@@ -10,6 +10,7 @@ import com.example.theoakteam.ramadanapp.R;
 
 /**
  * Created by Sunny_PC on 6/9/2015.
+ * f
  */
 public class AboutUsActivity extends Activity {
     @Override
