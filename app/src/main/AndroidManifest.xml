@@ -4,27 +4,32 @@
 
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" >
     </uses-permission>
+ <uses-permission android:name="android.permission.CALL_PHONE">
+ </uses-permission>
+
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
+
             android:name=".SplashActivity.MainSplashScreen"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FirstAcivity.SehriAndIfterShortForm"
-            android:label="@string/title_activity_sehri_and_ifter_short_form" />
-        <activity
-            android:name=".SuraActivity.DisplaySuraActivity"
-            android:label="@string/title_activity_quran" />
+        <activity android:name=".FirstAcivity.SehriAndIfterShortForm"
+            android:label="@string/title_activity_sehri_and_ifter_short_form"/>
+
         <activity
             android:name=".TasbhiActivity.TasbhiActivity1"
             android:label="@string/title_activity_tasbih" >
@@ -45,11 +50,14 @@
         </activity>
         <activity
             android:name=".HadithActivity.HadithTitleClass"
+            android:label="@string/title_activity_hadith"
             android:autoRemoveFromRecents="true"
-            android:label="@string/title_activity_hadith" />
+            />
         <activity
             android:name=".HadithActivity.HadisViewer"
-            android:label="@string/title_activity_hadith" >
+            android:label="@string/title_activity_hadith"
+
+            >
         </activity>
         <activity
             android:name=".MasalaActivity.MasalaTitleClass"
@@ -57,16 +65,12 @@
         <activity
             android:name=".MasalaActivity.MasalaViewer"
             android:label="@string/title_activity_masala" />
-        <activity
-            android:name=".EattingHabitActivity.EattingHabitTitleClass"
-            android:label="@string/title_activity_food_habit" />
-        <activity
-            android:name=".EattingHabitActivity.EattingHabitViewer"
-            android:label="@string/title_activity_food_habit" />
-        <activity
-            android:name=".DistrictActivity.InputForAllDistrictTimeActivity"
-            android:label="@string/title_activity_input_for_all_district_time" >
-        </activity>
+        <activity android:name=".EattingHabitActivity.EattingHabitTitleClass"
+            android:label="@string/title_activity_food_habit"></activity>
+        <activity android:name=".EattingHabitActivity.EattingHabitViewer"
+            android:label="@string/title_activity_food_habit"></activity>
+        <activity android:name=".About.AboutUsActivity"></activity>
+
     </application>
 
 </manifest>

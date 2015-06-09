@@ -5,7 +5,10 @@
     <!--klkl-->
     <item android:id="@+id/tasbih_reset_menu"
         android:title="@string/title_activity_tasbih"
-        android:icon="@drawable/ic_tasbih_reset">
+        android:icon="@drawable/ic_tasbih_reset"
+        app:showAsAction="always"
+
+        >
 
     </item>
 

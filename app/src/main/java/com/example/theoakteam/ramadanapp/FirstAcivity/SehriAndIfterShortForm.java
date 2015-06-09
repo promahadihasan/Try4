@@ -85,25 +85,32 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
             autoCompleteTextView.setAdapter(adapter);
 
+
         }
         else{
+            setContentView(R.layout.activity_sehri_and_ifter_short_form);
+            drawerHelper();
             sehriActivity();
-            //below code use for drawer
-            mNavigationDrawerFragment = (NavigationDrawerFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-            mTitle = getTitle();
 
-            // Set up the drawer.
-            mNavigationDrawerFragment.setUp(
-                    R.id.navigation_drawer,
-                    (DrawerLayout) findViewById(R.id.drawer_layout));
-            //upper code use for drawer
 
         }
+
 
 
     }
 
+    private  void drawerHelper(){
+    //below code use for drawer
+    mNavigationDrawerFragment = (NavigationDrawerFragment)
+            getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+    mTitle = getTitle();
+
+    // Set up the drawer.
+    mNavigationDrawerFragment.setUp(
+            R.id.navigation_drawer,
+            (DrawerLayout) findViewById(R.id.drawer_layout));
+    //upper code use for drawer
+}
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -112,12 +119,13 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
+
     }
 
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_activity_quran);
+                mTitle = getString(R.string.title_activity_sehri_and_ifter_short_form);
                 break;
             case 2:
                 mTitle = getString(R.string.title_activity_hadith);
@@ -132,17 +140,12 @@ public class SehriAndIfterShortForm extends ActionBarActivity
                 mTitle = getString(R.string.title_activity_tasbih);
                 break;
             case 6:
-                mTitle = getString(R.string.title_activity_sehri_and_ifter_short_form);
-                break;
-//            case 7:
-//                mTitle = getString(R.string.title_activity_alarm);
-//                break;
-            case 7:
                 mTitle = getString(R.string.title_activity_food_habit);
                 break;
-            case 8:
+            case 7:
                 mTitle = getString(R.string.title_settings);
                 break;
+
         }
     }
 
@@ -269,8 +272,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     }
 
 
+
+
     public void sehriActivity(){
-        setContentView(R.layout.activity_sehri_and_ifter_short_form);
+
+
         iftarTime = (TextView) findViewById(R.id.iftarTextView);
         sehriTime = (TextView) findViewById(R.id.sehriTextView);
         sehriNote = (TextView) findViewById(R.id.sehri_iftar_initial_note);
@@ -287,7 +293,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         else{
             String dateString = getDate(); // "15/06/2015"; // "17/06/2015"; //"10/07/2015";  //
             String arabicMonth = districtsTimeObject.findMonth(dateString);
-            englishDate.append(" " + dateString);
+            englishDate.setText(getResources().getString(R.string.date_text_view) + " " + dateString);
             if(arabicMonth=="ramadan"){
                 arabicDate.setText("("+districtsTimeObject.getRamadanDate(dateString)+" "+getString(R.string.ramadan)+" "+getString(R.string.hijri));
                 sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, dateString);
@@ -351,8 +357,10 @@ public class SehriAndIfterShortForm extends ActionBarActivity
                 editor.commit();
                 Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
 
+
+                setContentView(R.layout.activity_sehri_and_ifter_short_form);
                 sehriActivity();
-                //setContentView(R.layout.activity_sehri_and_ifter_short_form);
+                drawerHelper();
             }
             else{
 
@@ -368,18 +376,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
 
     }
-// Hasan's Code End
 
-    @Override
-    protected void onStart() {
-        // TODO Auto-generated method stub
-        super.onStart();
-
-    }
     @Override
     protected void onPostResume() {
         super.onPostResume();
-//        sehriActivity();
+       sehriActivity();
     }
 
 

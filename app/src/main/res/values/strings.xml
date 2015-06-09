@@ -2,6 +2,19 @@
     <string name="app_name">App Of Ramadan</string>
     <string name="actionbar_color">#cc1584cc</string>
 
+
+    <string name="title_aboutus">আমাদের সম্পর্কে</string>
+
+    <string name="title_team_fb">"www.facebook.com/TheOakTeam"</string>
+    <string name="title_hasan_fb">"www.facebook.com/hasan.cse91"</string>
+    <string name="title_sunny_fb">"www.facebook.com/mahadihasansunny1"</string>
+    <string name="title_chisty_fb">"www.facebook.com/mainuddin.chisty1"</string>
+
+    <string name="moible_team">"01521208079"</string>
+    <string name="mail_hasan">"hasan_cse91@yahoo.com"</string>
+    <string name="mail_sunny">"sunny_mhs@hotmail.com"</string>
+    <string name="mail_chisty">"chistyinfo@gmail.com"</string>
+
     <string name="hello_world">ভাষা হোক উন্মুক্ত</string>
     <string name="title_activity_quran">কুরআনের বাণী</string>
     <string name="title_activity_hadith">হাদীসের বাণী</string>

@@ -82,7 +82,7 @@ public class HadithTitleClass
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_activity_quran);
+                mTitle = getString(R.string.title_activity_sehri_and_ifter_short_form);
                 break;
             case 2:
                 mTitle = getString(R.string.title_activity_hadith);
@@ -97,12 +97,9 @@ public class HadithTitleClass
                 mTitle = getString(R.string.title_activity_tasbih);
                 break;
             case 6:
-                mTitle = getString(R.string.title_activity_sehri_and_ifter_short_form);
-                break;
-            case 7:
                 mTitle = getString(R.string.title_activity_food_habit);
                 break;
-            case 8:
+            case 7:
                 mTitle = getString(R.string.title_settings);
                 break;
         }

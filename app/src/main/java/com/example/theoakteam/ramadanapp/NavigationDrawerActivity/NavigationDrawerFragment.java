@@ -3,7 +3,6 @@ package com.example.theoakteam.ramadanapp.NavigationDrawerActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -26,8 +25,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.theoakteam.ramadanapp.About.AboutUsActivity;
+
 import com.example.theoakteam.ramadanapp.EattingHabitActivity.EattingHabitTitleClass;
-import com.example.theoakteam.ramadanapp.SuraActivity.DisplaySuraActivity;
+
 import com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm;
 import com.example.theoakteam.ramadanapp.HadithActivity.HadithTitleClass;
 import com.example.theoakteam.ramadanapp.MasalaActivity.MasalaTitleClass;
@@ -67,7 +68,7 @@ public class NavigationDrawerFragment extends Fragment {
     private ListView mDrawerListView;
     private View mFragmentContainerView;
 
-    private int mCurrentSelectedPosition = 0;
+    private int mCurrentSelectedPosition ;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
@@ -86,10 +87,12 @@ public class NavigationDrawerFragment extends Fragment {
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
+            System.out.println("89 onCreate Position "+mCurrentSelectedPosition);
         }
 
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
+        System.out.println("94 Position " + mCurrentSelectedPosition);
     }
 
     @Override
@@ -107,13 +110,15 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
+
+
                 if (position==0) {
-                    Intent intent = new Intent(getActivity(), DisplaySuraActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(getActivity(), SehriAndIfterShortForm.class));
                 }
                 else if(position==1){
+
                     startActivity(new Intent(getActivity(), HadithTitleClass.class));
+
 
 
                 }
@@ -135,22 +140,25 @@ public class NavigationDrawerFragment extends Fragment {
 
                 }
                 else if(position==5){
-                    startActivity(new Intent(getActivity(), SehriAndIfterShortForm.class));
 
-
-                }
-                else if(position==6){
                     Intent intent = new Intent(getActivity(), EattingHabitTitleClass.class);
                     startActivity(intent);
 
-
                 }
-                else   if (position==7) {
+                else if(position==6){
+
                     Intent i = new Intent(getActivity(),SettingsActivity.class);
                     startActivity(i);
 
+                }
+                else if(position==7){
+
+                    Intent i = new Intent(getActivity(),AboutUsActivity.class);
+                    startActivity(i);
 
                 }
+
+                selectItem(position);
 
 
 
@@ -162,10 +170,10 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 new String[]{
-                        getString(R.string.title_activity_quran), getString(R.string.title_activity_hadith),
+                        getString(R.string.title_activity_sehri_and_ifter_short_form), getString(R.string.title_activity_hadith),
                         getString(R.string.title_activity_masala),getString(R.string.title_activity_dua),
-                        getString(R.string.title_activity_tasbih),getString(R.string.title_activity_sehri_and_ifter_short_form),
-                      getString(R.string.title_activity_food_habit),getString(R.string.title_settings),
+                        getString(R.string.title_activity_tasbih),
+                      getString(R.string.title_activity_food_habit),getString(R.string.title_settings),getString(R.string.title_aboutus),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -194,7 +202,7 @@ public class NavigationDrawerFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
 
-        actionBar.setHomeButtonEnabled(false);
+        actionBar.setHomeButtonEnabled(true);
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
@@ -254,6 +262,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
+        System.out.println("255 selectItam Position "+mCurrentSelectedPosition);
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
         }
@@ -263,6 +272,7 @@ public class NavigationDrawerFragment extends Fragment {
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
+
     }
 
     @Override
@@ -286,6 +296,8 @@ public class NavigationDrawerFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
+        System.out.println("288 onSaveIn Position " + mCurrentSelectedPosition);
+//        selectItem(mCurrentSelectedPosition);
     }
 
     @Override

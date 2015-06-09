@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:orientation="vertical" >
+
+
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo" />
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              >
+              <Space
+                  android:layout_width="50dp"
+                  android:layout_height="wrap_content" />
+              <ImageButton
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="58dp"
+                  android:textSize="22sp"
+                  android:background="@android:drawable/ic_menu_call"
+                  android:text="@string/moible_team"
+                  android:onClick="CalltoDeveloper"
+
+                  />
+             <ImageButton
+                 android:id="@+id/team_fb"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/facebook2"
+                 android:onClick="FacebookAction2"
+                 />
+          </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hasan Abdullah"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mail_hasan"
+                    android:onClick="EmailAction"
+                    android:id="@+id/hasan_email"
+                    android:autoLink="email"
+                    android:linksClickable="true"
+                    />
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_hasan_fb"
+                    android:onClick="FacebookAction"
+                    android:id="@+id/hasan_fb"
+                    android:autoLink="web"
+                   android:linksClickable="true"
+                    />
+
+
+            </LinearLayout>
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mahadi Hasan Sunny"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mail_sunny"
+                    android:onClick="EmailAction"
+                    android:id="@+id/sunny_email"
+                    android:autoLink="email"
+                    android:linksClickable="true"
+                    />
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="FacebookAction"
+                    android:id="@+id/sunny_fb"
+                    android:text="@string/title_sunny_fb"
+                    android:autoLink="web"
+                    android:linksClickable="true"
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mainuddin Chisty"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mail_chisty"
+                android:onClick="EmailAction"
+                android:id="@+id/chisty_email"
+                android:autoLink="email"
+                android:linksClickable="true"
+                />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+               android:id="@+id/chisty_fb"
+                android:text="@string/title_chisty_fb"
+                android:onClick="FacebookAction"
+                android:autoLink="web"
+                android:linksClickable="true"
+
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginTop="25dp"
+            android:text="Copyright @ The Oak Team - 2015" />
+</LinearLayout>
+    </ScrollView>

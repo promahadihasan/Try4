@@ -24,13 +24,13 @@
 
         <AutoCompleteTextView
             android:id="@+id/allDistrictAutoCompleteTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:digits=" 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            android:ems="18"
+            android:inputType="text"
+
+            android:ems="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:hint="Enter District name in English"
             >
             <requestFocus />
         </AutoCompleteTextView>
