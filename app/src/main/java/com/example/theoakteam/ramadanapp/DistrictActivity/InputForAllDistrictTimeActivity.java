@@ -11,7 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.example.theoakteam.ramadanapp.R;
-
+//h
 public class InputForAllDistrictTimeActivity extends ActionBarActivity {
 
     AutoCompleteTextView allDistrictAutoCompleteTextView;

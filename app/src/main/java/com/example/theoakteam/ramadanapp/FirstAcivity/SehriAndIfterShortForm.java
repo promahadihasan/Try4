@@ -337,6 +337,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             i.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(hourForAlarmSeheri));
             i.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(minuteForAlarmSeheri));
             i.putExtra(AlarmClock.EXTRA_MESSAGE, titleSeheri);
+            //ss
 
         }
         if (v.getId()==R.id.alarmButton2){

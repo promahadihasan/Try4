@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/districtInputTextView"
             android:text="@string/all_district_input_note"
-            android:textSize="20sp"
+            android:textSize="21sp"
             android:inputType="text"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
