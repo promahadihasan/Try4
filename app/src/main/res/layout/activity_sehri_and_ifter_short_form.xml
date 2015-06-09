@@ -87,9 +87,9 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                             android:layout_below="@+id/sehri_iftar_initial_note"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true" />
-<Space
-    android:layout_width="88dp"
-    android:layout_height="1dp" />
+       <Space
+       android:layout_width="88dp"
+       android:layout_height="1dp" />
                         <ImageButton
                             android:layout_width="50dp"
                             android:layout_height="50dp"
@@ -110,7 +110,10 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                         android:id="@+id/iftarTimeNoteTextView"
                         android:textSize="25sp"
                         android:layout_below="@+id/sehriTextView" />
-
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -118,6 +121,18 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                         android:text="000"
                         android:id="@+id/iftarTextView"
                         android:layout_below="@+id/iftarTimeNoteTextView" />
+                        <Space
+                            android:layout_width="88dp"
+                            android:layout_height="1dp" />
+                        <ImageButton
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_alarm_clock"
+                            android:id="@+id/alarmButton2"
+                            android:alpha=".60"
+                            android:onClick="alarmSet"/>
+                        </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout

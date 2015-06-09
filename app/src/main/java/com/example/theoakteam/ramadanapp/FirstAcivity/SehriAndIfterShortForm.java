@@ -29,8 +29,6 @@ import com.example.theoakteam.ramadanapp.DistrictActivity.InputForAllDistrictTim
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
 import com.example.theoakteam.ramadanapp.R;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -62,9 +60,10 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     TextView englishDate;
     TextView arabicDate;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
-    String hourForAlarm;
-    String minuteForAlarm;
-
+    String hourForAlarmSeheri;
+    String minuteForAlarmSeheri;
+    String hourForAlarmIfter;
+    String minuteForAlarmIfter;
 
 
 
@@ -315,11 +314,15 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
             sehriTime.setText(sehriTimeString + " am");
             iftarTime.setText(iftarTimeString + " pm");
-            String alarmTime = districtsTimeObject.calculateTime(sehriTimeString,"-60");
-            hourForAlarm = "" + alarmTime.charAt(0);
-            minuteForAlarm = alarmTime.substring(2,4);
+            String alarmTimeSeheri = districtsTimeObject.calculateTime(sehriTimeString,"-60");
 
-            //System.out.println("Testing Time -->>: "+hourForAlarm+":"+minuteForAlarm);
+            hourForAlarmSeheri = "" + alarmTimeSeheri.charAt(0);
+            minuteForAlarmSeheri = alarmTimeSeheri.substring(2,4);
+            String alarmTimeIfter = districtsTimeObject.calculateTime(iftarTimeString,"-05");
+
+        hourForAlarmIfter=""+alarmTimeIfter.charAt(0);
+            minuteForAlarmIfter=""+alarmTimeIfter.substring(2,4);
+            //System.out.println("Testing Time -->>: "+hourForAlarmSeheri+":"+minuteForAlarmSeheri);
 
         }
 
@@ -327,11 +330,21 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     }
 
     public void alarmSet(View v){
-        String title=getResources().getString(R.string.sehri_last)+" "+getResources().getString(R.string.title_activity_alarm);
         Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-        i.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(hourForAlarm));
-        i.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(minuteForAlarm));
-        i.putExtra(AlarmClock.EXTRA_MESSAGE,title);
+        if(v.getId()==R.id.alarmButton) {
+            String titleSeheri = getResources().getString(R.string.sehri_last) + " " + getResources().getString(R.string.title_activity_alarm);
+
+            i.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(hourForAlarmSeheri));
+            i.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(minuteForAlarmSeheri));
+            i.putExtra(AlarmClock.EXTRA_MESSAGE, titleSeheri);
+
+        }
+        if (v.getId()==R.id.alarmButton2){
+            String titleIfter=getString(R.string.title_ifter_alarm)+" "+getString(R.string.title_activity_alarm);
+            i.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(hourForAlarmIfter)+12);
+            i.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(minuteForAlarmIfter));
+            i.putExtra(AlarmClock.EXTRA_MESSAGE, titleIfter);
+        }
         startActivity(i);
     }
 

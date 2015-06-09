@@ -70,6 +70,7 @@
         <activity android:name=".EattingHabitActivity.EattingHabitViewer"
             android:label="@string/title_activity_food_habit"></activity>
         <activity android:name=".About.AboutUsActivity"></activity>
+        <activity android:name=".DistrictActivity.InputForAllDistrictTimeActivity"></activity>
 
     </application>
 

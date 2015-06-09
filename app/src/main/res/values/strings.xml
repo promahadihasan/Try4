@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">App Of Ramadan</string>
-    <string name="actionbar_color">#cc1584cc</string>
+    <string name="actionbar_color">#ff000000</string>
 
 
     <string name="title_aboutus">আমাদের সম্পর্কে</string>
@@ -35,6 +35,7 @@
     <string name="all_district_input_note">আপনি যে জেলার সূচী দেখতে চান সেটির নাম লিখুন</string>
 
     <string name="title_logo">আহলান-সাহলান...</string>
+    <string name="title_ifter_alarm">ইফতারের</string>
 
     <string name="txt_showthe">Show the notification for the day</string>
     <string name="txt_nottime">Notification Time   </string>
