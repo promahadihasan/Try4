@@ -7,6 +7,7 @@
     <string name="facebook_oak_team">ফেসবুকে The Oak Team</string>
     <string name="facebook_note">Me on Facebook</string>
     <string name="mail_note">Mail me</string>
-    <string name="developer_head_line">Developers</string>
+    <string name="developer_head_line">We try our best...</string>
+    <string name="designation">Developer</string>
 
 </resources>
