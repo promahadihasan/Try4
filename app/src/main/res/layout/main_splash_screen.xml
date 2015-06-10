@@ -28,6 +28,8 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:src="@drawable/logo_on_background" />
 
             <TextView
@@ -35,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:fontFamily="sans-serif-light"
-                android:layout_marginBottom="15dp"
                 android:textSize="20sp"
                 android:text="@string/copy_right" />
 

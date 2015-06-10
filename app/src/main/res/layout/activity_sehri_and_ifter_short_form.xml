@@ -53,7 +53,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Arabic Date"
+                        android:text="@string/arabic_date"
                         android:textSize="15sp"
                         android:id="@+id/arabicTextView"/>
                 </LinearLayout>
@@ -70,7 +70,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        android:text="District Name"
+                        android:text="@string/district_name_note_check"
                         android:id="@+id/sehri_iftar_initial_note" />
 
                     <LinearLayout
@@ -82,13 +82,13 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="30sp"
-                            android:text="000"
+                            android:text="0:00"
                             android:id="@+id/sehriTextView"
                             android:layout_below="@+id/sehri_iftar_initial_note"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true" />
        <Space
-       android:layout_width="70dp"
+       android:layout_width="40dp"
        android:layout_height="1dp" />
                         <ImageButton
                             android:layout_width="50dp"
@@ -118,11 +118,11 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="30sp"
-                        android:text="000"
+                        android:text="0:00"
                         android:id="@+id/iftarTextView"
                         android:layout_below="@+id/iftarTimeNoteTextView" />
                         <Space
-                            android:layout_width="70dp"
+                            android:layout_width="40dp"
                             android:layout_height="1dp" />
                         <ImageButton
                             android:layout_width="50dp"
@@ -132,6 +132,10 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                             android:alpha=".80"
                             android:onClick="alarmSet"/>
                         </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/date_validity_check_note"/>
 
                 </LinearLayout>
 

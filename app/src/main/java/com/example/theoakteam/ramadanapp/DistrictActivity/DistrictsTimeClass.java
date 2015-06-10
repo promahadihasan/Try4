@@ -20,6 +20,39 @@ public class DistrictsTimeClass {
     private String[] centralIftarShaban = new String[35];
     private String monthName;
 
+    public boolean isDateValid(String date){
+
+        boolean validity;
+        Date dateObject=new Date(),shabanStartDate=new Date(),shabanLast=new Date(), ramadanLastDate=new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        //monthName=null;
+
+        try {
+            dateObject = formatter.parse(date);
+            shabanStartDate = formatter.parse("28/05/2015");
+            shabanLast = formatter.parse("17/06/2015");
+            ramadanLastDate = formatter.parse("18/07/2015");
+            //System.out.println("Date is: "+dateObject);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        if(dateObject.compareTo(shabanStartDate)>0 && dateObject.compareTo(ramadanLastDate)<0){
+            //System.out.println("Shaban is running!");
+            validity = true;
+
+        }
+        else {
+            //System.out.println("Ramadan is running!");
+            validity = false;;
+        }
+        //System.out.println("Month is: "+ monthName);
+
+
+        return validity;
+    }
 
     public DistrictsTimeClass(){
         setCentralSehriTime();
@@ -34,6 +67,7 @@ public class DistrictsTimeClass {
     public String getCentralSehri(int date){
         return centralSehriTime[date];
     }
+
     public String getCentralIftar(int date){
         return centralIftarTime[date];
     }
@@ -55,15 +89,15 @@ public class DistrictsTimeClass {
         centralSehriShaban[17] = "3:39";
         centralSehriShaban[18] = "3:38";
         centralSehriShaban[19] = "3:38";
-        centralSehriShaban[20] = "3:38";
-        centralSehriShaban[21] = "3:38";
-        centralSehriShaban[22] = "3:38";
-        centralSehriShaban[23] = "3:38";
-        centralSehriShaban[24] = "3:38";
-        centralSehriShaban[25] = "3:38";
-        centralSehriShaban[26] = "3:38";
-        centralSehriShaban[27] = "3:38";
-        centralSehriShaban[28] = "3:38";
+        centralSehriShaban[20] = "3:36";
+        centralSehriShaban[21] = "3:36";
+        centralSehriShaban[22] = "3:36";
+        centralSehriShaban[23] = "3:36";
+        centralSehriShaban[24] = "3:37";
+        centralSehriShaban[25] = "3:37";
+        centralSehriShaban[26] = "3:37";
+        centralSehriShaban[27] = "3:37";
+        centralSehriShaban[28] = "3:37";
         centralSehriShaban[29] = "3:38";
     }
 
@@ -99,11 +133,11 @@ public class DistrictsTimeClass {
         centralIftarShaban[22] = "6:49";
         centralIftarShaban[23] = "6:49";
         centralIftarShaban[24] = "6:49";
-        centralIftarShaban[25] = "6:49";
-        centralIftarShaban[26] = "6:49";
-        centralIftarShaban[27] = "6:49";
-        centralIftarShaban[28] = "6:49";
-        centralIftarShaban[29] = "6:49";
+        centralIftarShaban[25] = "6:50";
+        centralIftarShaban[26] = "6:50";
+        centralIftarShaban[27] = "6:50";
+        centralIftarShaban[28] = "6:51";
+        centralIftarShaban[29] = "6:51";
     }
 
     public String getDistrictPlusMinusTime(String districtKey){

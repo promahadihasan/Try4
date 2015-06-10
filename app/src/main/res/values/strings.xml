@@ -6,11 +6,11 @@
 
     <string name="title_aboutus">আমাদের সম্পর্কে</string>
 
-    <string name="title_team_fb">"www.facebook.com/TheOakTeam"</string>
-    <string name="title_hasan_fb">"www.facebook.com/hasan.cse91"</string>
-    <string name="title_sunny_fb">"www.facebook.com/mahadihasansunny1"</string>
-    <string name="title_chisty_fb">"www.facebook.com/mainuddin.chisty1"</string>
-    <string name="title_saimum_fb">"www.facebook.com/shakirahmedsaimum"</string>
+    <string name="title_team_fb">"http://www.facebook.com/TheOakTeam"</string>
+    <string name="title_hasan_fb">"http://www.facebook.com/hasan.cse91"</string>
+    <string name="title_sunny_fb">"http://www.facebook.com/mahadihasansunny1"</string>
+    <string name="title_chisty_fb">"http://www.facebook.com/mainuddin.chisty1"</string>
+    <string name="title_saimum_fb">"http://www.facebook.com/shakirahmedsaimum"</string>
 
     <string name="mobile_team">"01521208079"</string>
     <string name="mail_hasan">"hasan_cse91@yahoo.com"</string>
@@ -19,7 +19,7 @@
 
     <string name="hello_world">ভাষা হোক উন্মুক্ত</string>
     <string name="title_activity_quran">কুরআনের বাণী</string>
-    <string name="title_activity_hadith">হাদীসের বাণী</string>
+    <string name="title_activity_hadith">কুরআন ও হাদীস</string>
     <string name="title_activity_masala">আর্টিকেল এবং মাসয়ালা</string>
     <string name="title_activity_dua">দোয়া দরূদ</string>
     <string name="title_activity_seheri_ifter_time">সেহেরী ও ইফতারের সূচী</string>
@@ -38,10 +38,10 @@
 
     <string name="title_logo">আহলান-সাহলান...</string>
 
-    <string name="title_ifter_alarm">ইফতারের</string>
+    <string name="title_ifter_alarm">ইফতার</string>
 
-    <string name="txt_showthe">প্রত্যহ আয়াত/হাদীসের নোটিফিকেশন প্রাপ্তির সময় সেট করুন</string>
-    <string name="txt_nottime">Notification Time   </string>
+    <string name="txt_showthe">প্রতিদিন নোটিফিকেশন আকারে একটি কুরআন/হাদীস এর বাণী দেয়া হবে</string>
+    <string name="txt_nottime">নোটিফিকেশন প্রাপ্তির সময় নির্বাচন করুন</string>
     <string name="txt_time">06:00 PM</string>
     <string name="action_notification">Get notification</string>
     <string name="title_notification"> আজকের আয়াত/হাদীস </string>
@@ -58,7 +58,7 @@
     <string name="english_date">ইংরেজী</string>
     <string name="sehri_last">সেহরী</string>
     <string name="iftar">ইফতার</string>
-    <string name="all_district_time_show_button">সকল জেলার সূচী দেখুন</string>
+    <string name="all_district_time_show_button">যে কোন জেলার সূচী দেখুন</string>
 
 
 

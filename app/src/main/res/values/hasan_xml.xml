@@ -9,5 +9,8 @@
     <string name="mail_note">Mail me</string>
     <string name="developer_head_line">We try our best...</string>
     <string name="designation">Developer</string>
+    <string name="arabic_date">12 রমজান ১৪৩৬</string>
+    <string name="district_name_note_check">Manikganj জেলার স্থানীয় সময় অনুযায়ী আজকের\n\nসেহরীর শেষ সময়</string>
+    <string name="date_check_note">[আজকের তারিখটি রমজান ২০১৫ এর সাথে সামঞ্জস্যপূর্ণ নয়। এখানে আরবি মাসের একটি ডেমো তারিখ ও সেহরি-ইফতারের ডেমো সময় দেখানো হয়েছে।]</string>
 
 </resources>

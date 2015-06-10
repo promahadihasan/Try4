@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
 
 import com.example.theoakteam.ramadanapp.R;
@@ -15,12 +16,17 @@ import com.example.theoakteam.ramadanapp.R;
  * f
  */
 public class AboutUsActivity extends Activity {
+
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_xml);
     }
     public void callToDeveloper(View view){
+        view.startAnimation(buttonClick);
 
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:01521208079"));
@@ -29,7 +35,7 @@ public class AboutUsActivity extends Activity {
     }
 
     public void FacebookActionOak(View view){
-
+        view.startAnimation(buttonClick);
         try{
             Intent webIntent=new Intent(Intent.ACTION_VIEW);
             String Url = null;
@@ -45,7 +51,7 @@ public class AboutUsActivity extends Activity {
     }
 
     public void FacebookAction(View view){
-
+        view.startAnimation(buttonClick);
         try{
 
             String Url = null;
@@ -78,6 +84,8 @@ public class AboutUsActivity extends Activity {
     }
 
     public void emailAction(View view){
+        view.startAnimation(buttonClick);
+
         Log.i("Send email", "");
 //        String[] TO = {"hasan_cse91@yahoo.com","sunny_mhs@hotmail.com","chistyinfo@gmail.com","shakirahmed1996@gmail.com"};
         String[] CC = {""};
@@ -104,7 +112,7 @@ public class AboutUsActivity extends Activity {
             emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         }
         else if(view.getId()==R.id.emailOakTeam){
-            String[] TO = {"theoakteam2015@gmail.com"};
+            String[] TO = {"oakteam2015@gmail.com"};
             emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         }
 
@@ -116,32 +124,12 @@ public class AboutUsActivity extends Activity {
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             finish();
-            Log.i("Finished sending email...", "");
+            Log.i("E-mail sent!", "");
         }
         catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(AboutUsActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
 
-//   public void EmailAction(View view){
-//
-//       String Url = null;
-//       switch (view.getId()) {
-//
-//           case R.id.hasan_email:
-//               Url = getString(R.string.mail_hasan);
-//               break;
-//           case R.id.sunny_email:
-//               Url = getString(R.string.mail_sunny);
-//               break;
-//           case R.id.chysti_email:
-//               Url = getString(R.string.mail_chisty);
-//               break;
-//       }
-//      Intent mailIntent=new Intent(Intent.ACTION_SEND,Uri.parse("mailto:"+Url));
-//       //System.out.println("Habi jabi : "+Url);
-//       startActivity(mailIntent);
-//
-//   }
 
 }

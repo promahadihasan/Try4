@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
 
     AutoCompleteTextView allDistrictAutoCompleteTextView;
     DistrictsTimeClass districtsTimeObject = new DistrictsTimeClass();
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
     }
 
     public void allDistrictShowTimeButton(View v){
+        v.startAnimation(buttonClick);
         String tempDistrict;
 
         try{

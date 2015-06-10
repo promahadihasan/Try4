@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -58,6 +59,7 @@ public class SettingsActivity
     DistrictsTimeClass districtsTimeObject = new DistrictsTimeClass();
     private LinearLayout userTimeLayout;
     boolean makeSureButtonCheckhed=false;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
 
 //    private EditText tasbihEditText;
     private AutoCompleteTextView autoCompleteTextView;
@@ -298,6 +300,8 @@ public class SettingsActivity
 //        Toast.makeText(getApplicationContext(),"Tasbih counter is "+tasbihCounter, Toast.LENGTH_LONG).show();
 //    }
     public void saveDistrict(View v){
+        v.startAnimation(buttonClick);
+
         String districtName = autoCompleteTextView.getText().toString();
         districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);

@@ -60,10 +60,10 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     TextView englishDate;
     TextView arabicDate;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
-    String hourForAlarmSeheri;
-    String minuteForAlarmSeheri;
-    String hourForAlarmIfter;
-    String minuteForAlarmIfter;
+    String hourForAlarmSeheri = "0";
+    String minuteForAlarmSeheri = "00";
+    String hourForAlarmIfter = "0";
+    String minuteForAlarmIfter = "00";
 
 
 
@@ -74,8 +74,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
-        ActionBar actionBara = getSupportActionBar();
-        actionBara.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getResources().getString(R.string.actionbar_color))));
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getResources().getString(R.string.actionbar_color))));
         if(flagString.equals(DEFAULT)){
             setContentView(R.layout.distric_input);
 
@@ -90,7 +90,6 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             setContentView(R.layout.activity_sehri_and_ifter_short_form);
             drawerHelper();
             sehriActivity();
-
 
         }
 
@@ -205,7 +204,6 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
     // Hasan's Code Start
 
-
     public void showFullTime(View v){
         v.startAnimation(buttonClick);
 
@@ -264,17 +262,13 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     }
 
     public void showAllDistrict(View v){
-
+        v.startAnimation(buttonClick);
         Intent intent = new Intent(SehriAndIfterShortForm.this, InputForAllDistrictTimeActivity.class);
         startActivity(intent);
-
     }
 
 
-
-
     public void sehriActivity(){
-
 
         iftarTime = (TextView) findViewById(R.id.iftarTextView);
         sehriTime = (TextView) findViewById(R.id.sehriTextView);
@@ -286,45 +280,49 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
         districtName = sharedPreferences.getString("DefaultDistrictName", "N/A");
 
-        if(districtName=="N/A"){
-            //Toast.makeText(getApplicationContext(),"SharedPreference Error",Toast.LENGTH_LONG).show();
-        }
-        else{
-            String dateString = getDate(); // "15/06/2015"; // "17/06/2015"; //"10/07/2015";  //
-            String arabicMonth = districtsTimeObject.findMonth(dateString);
+
+            String dateString = getDate();
             englishDate.setText(getResources().getString(R.string.date_text_view) + " " + dateString);
-            if(arabicMonth=="ramadan"){
-                arabicDate.setText("("+districtsTimeObject.getRamadanDate(dateString)+" "+getString(R.string.ramadan)+" "+getString(R.string.hijri));
-                sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, dateString);
-                iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, dateString);
+
+            if(districtsTimeObject.isDateValid(dateString)){
+                String arabicMonth = districtsTimeObject.findMonth(dateString);
+                if(arabicMonth=="ramadan"){
+                    arabicDate.setText("("+districtsTimeObject.getRamadanDate(dateString)+" "+getString(R.string.ramadan)+" "+getString(R.string.hijri));
+                    sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, dateString);
+                    iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, dateString);
+                }
+                else {
+                    int shabanDate = districtsTimeObject.getShabanDate(dateString);
+                    String plusMinus = districtsTimeObject.getDistrictPlusMinusTime(districtName);
+                    String centralSehriShaban = districtsTimeObject.getCentralSehriShaban(shabanDate);
+                    String centralIftarShaban = districtsTimeObject.getCentralIftarShaban(shabanDate);
+                    sehriTimeString = districtsTimeObject.calculateTime(centralSehriShaban, plusMinus);
+                    iftarTimeString = districtsTimeObject.calculateTime(centralIftarShaban,plusMinus);
+
+                    arabicDate.setText("("+shabanDate+" "+getString(R.string.shaban)+" "+getString(R.string.hijri));
+
+                }
+
+                sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
+                sehriTime.setText(sehriTimeString + " am");
+                iftarTime.setText(iftarTimeString + " pm");
+                String alarmTimeSeheri = districtsTimeObject.calculateTime(sehriTimeString,"-60");
+
+                hourForAlarmSeheri = "" + alarmTimeSeheri.charAt(0);
+                minuteForAlarmSeheri = alarmTimeSeheri.substring(2,4);
+                String alarmTimeIfter = districtsTimeObject.calculateTime(iftarTimeString,"-05");
+
+                hourForAlarmIfter=""+alarmTimeIfter.charAt(0);
+                minuteForAlarmIfter=""+alarmTimeIfter.substring(2,4);
+                //System.out.println("Testing Time -->>: "+hourForAlarmSeheri+":"+minuteForAlarmSeheri);
+
             }
-            else {
-                int shabanDate = districtsTimeObject.getShabanDate(dateString);
-                String plusMinus = districtsTimeObject.getDistrictPlusMinusTime(districtName);
-                String centralSehriShaban = districtsTimeObject.getCentralSehriShaban(shabanDate);
-                String centralIftarShaban = districtsTimeObject.getCentralIftarShaban(shabanDate);
-                sehriTimeString = districtsTimeObject.calculateTime(centralSehriShaban, plusMinus);
-                iftarTimeString = districtsTimeObject.calculateTime(centralIftarShaban,plusMinus);
+            else{
 
-                arabicDate.setText("("+shabanDate+" "+getString(R.string.shaban)+" "+getString(R.string.hijri));
-
-
+                TextView noteTextView = (TextView) findViewById(R.id.date_validity_check_note);
+                noteTextView.setText(getString(R.string.date_check_note));
             }
 
-            sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
-            sehriTime.setText(sehriTimeString + " am");
-            iftarTime.setText(iftarTimeString + " pm");
-            String alarmTimeSeheri = districtsTimeObject.calculateTime(sehriTimeString,"-60");
-
-            hourForAlarmSeheri = "" + alarmTimeSeheri.charAt(0);
-            minuteForAlarmSeheri = alarmTimeSeheri.substring(2,4);
-            String alarmTimeIfter = districtsTimeObject.calculateTime(iftarTimeString,"-05");
-
-        hourForAlarmIfter=""+alarmTimeIfter.charAt(0);
-            minuteForAlarmIfter=""+alarmTimeIfter.substring(2,4);
-            //System.out.println("Testing Time -->>: "+hourForAlarmSeheri+":"+minuteForAlarmSeheri);
-
-        }
 
 
     }
@@ -360,6 +358,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     }
 
     public void  saveDistrict(View view){
+        view.startAnimation(buttonClick);
 
         try{
 
