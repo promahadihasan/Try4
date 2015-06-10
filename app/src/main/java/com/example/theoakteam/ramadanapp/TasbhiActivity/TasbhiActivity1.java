@@ -84,7 +84,7 @@ public class TasbhiActivity1
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-        //upper code use for drawer
+        //upper code use for drawer ddff
 
     }
 
