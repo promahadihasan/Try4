@@ -64,6 +64,9 @@
             android:label="@string/title_activity_food_habit" />
         <activity android:name=".About.AboutUsActivity" />
         <activity android:name=".DistrictActivity.InputForAllDistrictTimeActivity" />
+
+        <activity android:name=".DuaDorutActivity.DuaTitleClass"></activity>
+        <activity android:name=".DuaDorutActivity.DuaViewer"></activity>
     </application>
 
 </manifest>

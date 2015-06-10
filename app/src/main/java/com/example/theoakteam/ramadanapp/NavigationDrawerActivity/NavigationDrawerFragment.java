@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.theoakteam.ramadanapp.About.AboutUsActivity;
 
+import com.example.theoakteam.ramadanapp.DuaDorutActivity.DuaTitleClass;
 import com.example.theoakteam.ramadanapp.EattingHabitActivity.EattingHabitTitleClass;
 
 import com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm;
@@ -127,12 +128,12 @@ public class NavigationDrawerFragment extends Fragment {
 
 
                 }
-//                else   if (position==3) {
-//                    Intent intent = new Intent(getActivity(), DuaDorudActivity.class);
-//                    startActivity(intent);
-//
-//
-//                }
+                else   if (position==3) {
+                    Intent intent = new Intent(getActivity(), DuaTitleClass.class);
+                    startActivity(intent);
+
+
+                }
                 else   if (position==4) {
                     Intent intent = new Intent(getActivity(), TasbhiActivity1.class);
                     startActivity(intent);
