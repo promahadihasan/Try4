@@ -243,6 +243,10 @@ public class TasbhiActivity1
 
         return super.onOptionsItemSelected(item);
     }
-
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getString(R.string.title_activity_tasbih));}
 
 }

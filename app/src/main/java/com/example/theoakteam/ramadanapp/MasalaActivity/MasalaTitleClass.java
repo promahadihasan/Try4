@@ -153,7 +153,11 @@ public class MasalaTitleClass   extends ActionBarActivity
         }
     }
 
-
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getString(R.string.title_activity_masala));}
 
 
 

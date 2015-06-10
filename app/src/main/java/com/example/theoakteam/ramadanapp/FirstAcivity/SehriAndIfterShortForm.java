@@ -102,7 +102,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     //below code use for drawer
     mNavigationDrawerFragment = (NavigationDrawerFragment)
             getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-    mTitle = getTitle();
+   // mTitle = getTitle();
 
     // Set up the drawer.
     mNavigationDrawerFragment.setUp(
@@ -155,7 +155,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setHomeAsUpIndicator(R.drawable.logo);
 
-        actionBar.setTitle(mTitle);
+       // actionBar.setTitle(mTitle);
     }
 
 
@@ -396,7 +396,10 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     @Override
     protected void onPostResume() {
         super.onPostResume();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getString(R.string.title_activity_sehri_and_ifter_short_form));
        sehriActivity();
+
     }
 
 

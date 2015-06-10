@@ -155,6 +155,10 @@ public class HadithTitleClass
     }
 
 
-
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getString(R.string.title_activity_hadith));}
 
 }

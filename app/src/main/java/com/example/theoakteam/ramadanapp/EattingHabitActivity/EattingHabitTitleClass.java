@@ -154,6 +154,11 @@ public class EattingHabitTitleClass
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getString(R.string.title_activity_food_habit));}
 
 
 

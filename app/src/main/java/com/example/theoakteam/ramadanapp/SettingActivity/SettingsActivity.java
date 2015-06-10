@@ -446,6 +446,10 @@ public class SettingsActivity
         return null;
     }
 
-
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getString(R.string.action_settings));}
 
 }
