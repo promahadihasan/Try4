@@ -63,8 +63,8 @@ public class NotifyingService extends Service {
                 editor=sharedPreferences.edit();
                 editor.putInt("indexofnotificaton", i);
                 editor.commit();
-               // i=sharedPreferences.getInt("indexofnotificaton",5);
-                System.out.println(i);
+
+              // System.out.println(i);
 
                 System.out.println("Final Minute=" + finalMinute);
                 System.out.println("Final Milliseconds=" + finalMilliScecond);
