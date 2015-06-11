@@ -64,6 +64,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     String minuteForAlarmSeheri = "00";
     String hourForAlarmIfter = "0";
     String minuteForAlarmIfter = "00";
+    int flagForPostResume=0;
 
 
 
@@ -77,6 +78,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getResources().getString(R.string.actionbar_color))));
         if(flagString.equals(DEFAULT)){
+
             setContentView(R.layout.distric_input);
 
             String[] districts = getResources().getStringArray(R.array.list_of_districts);
@@ -85,8 +87,10 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             autoCompleteTextView.setAdapter(adapter);
 
 
+
         }
         else{
+
             setContentView(R.layout.activity_sehri_and_ifter_short_form);
             drawerHelper();
             sehriActivity();
@@ -392,15 +396,21 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
     }
 
+
+
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getString(R.string.title_activity_sehri_and_ifter_short_form));
-       sehriActivity();
 
+
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+
+        String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
+        if(!flagString.equals(DEFAULT)) {
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setTitle(getString(R.string.title_activity_sehri_and_ifter_short_form));
+            sehriActivity();
+        }
     }
-
-
 }
 
