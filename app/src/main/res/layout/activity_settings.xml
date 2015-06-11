@@ -52,8 +52,8 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                 android:layout_height="30dp"
                 android:id="@+id/bttimeshow"
                 android:text="@string/txt_time"
-                android:textSize="10sp"
-                android:background="@android:color/background_light" />
+                android:textSize="10sp"></Button>
+
         </LinearLayout>
 
 

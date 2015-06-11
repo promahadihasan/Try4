@@ -1,10 +1,16 @@
 package com.example.theoakteam.ramadanapp.About;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
@@ -15,7 +21,7 @@ import com.example.theoakteam.ramadanapp.R;
  * Created by Sunny_PC on 6/9/2015.
  * f
  */
-public class AboutUsActivity extends Activity {
+public class AboutUsActivity extends ActionBarActivity {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
 
@@ -24,6 +30,28 @@ public class AboutUsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_xml);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.second_activity_bar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
     public void callToDeveloper(View view){
         view.startAnimation(buttonClick);

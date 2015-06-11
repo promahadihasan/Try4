@@ -36,7 +36,13 @@
 
         <activity
             android:name=".DistrictActivity.DistrictAllTimeShow"
-            android:label="@string/title_activity_district_all_time_show" >
+            android:label="@string/title_activity_district_all_time_show"
+            android:parentActivityName=".FirstAcivity.SehriAndIfterShortForm" >
+            <meta-data
+                android:name="android:parentActivityName"
+                android:value=".FirstAcivity.SehriAndIfterShortForm" />
+
+
         </activity>
         <activity
             android:name=".NotificationChallenging.NotificationViewer"
@@ -48,25 +54,69 @@
             android:label="@string/title_activity_hadith" />
         <activity
             android:name=".HadithActivity.HadisViewer"
-            android:label="@string/title_activity_hadith" >
+            android:label="@string/title_activity_hadith"
+            android:parentActivityName=".HadithActivity.HadithTitleClass" >
+            <meta-data
+                android:name="android:parentActivityName"
+                android:value=".HadithActivity.HadithTitleClass" />
+
+
         </activity>
         <activity
             android:name=".MasalaActivity.MasalaTitleClass"
             android:label="@string/title_activity_masala" />
         <activity
             android:name=".MasalaActivity.MasalaViewer"
-            android:label="@string/title_activity_masala" />
+            android:label="@string/title_activity_masala"
+            android:parentActivityName=".MasalaActivity.MasalaTitleClass" >
+            <meta-data
+                android:name="android:parentActivityName"
+                android:value=".MasalaActivity.MasalaTitleClass" />
+
+
+        </activity>
+
         <activity
             android:name=".EattingHabitActivity.EattingHabitTitleClass"
             android:label="@string/title_activity_food_habit" />
         <activity
             android:name=".EattingHabitActivity.EattingHabitViewer"
-            android:label="@string/title_activity_food_habit" />
-        <activity android:name=".About.AboutUsActivity" />
-        <activity android:name=".DistrictActivity.InputForAllDistrictTimeActivity" />
+            android:label="@string/title_activity_food_habit"
+            android:parentActivityName=".EattingHabitActivity.EattingHabitTitleClass" >
+            <meta-data
+                android:name="android:parentActivityName"
+                android:value=".EattingHabitActivity.EattingHabitTitleClass" />
+
+
+        </activity>
+
+        <activity android:name=".About.AboutUsActivity"
+
+            android:parentActivityName=".FirstAcivity.SehriAndIfterShortForm" >
+            <meta-data
+                android:name="android:parentActivityName"
+                android:value=".FirstAcivity.SehriAndIfterShortForm" />
+
+
+        </activity>
+        <activity android:name=".DistrictActivity.InputForAllDistrictTimeActivity"
+            android:parentActivityName=".FirstAcivity.SehriAndIfterShortForm" >
+            <meta-data
+                android:name="android:parentActivityName"
+                android:value=".FirstAcivity.SehriAndIfterShortForm" />
+
+
+        </activity>
 
         <activity android:name=".DuaDorutActivity.DuaTitleClass"></activity>
-        <activity android:name=".DuaDorutActivity.DuaViewer"></activity>
+        <activity android:name=".DuaDorutActivity.DuaViewer"
+            android:parentActivityName=".DuaDorutActivity.DuaTitleClass" >
+            <meta-data
+                android:name="android:parentActivityName"
+                android:value=".DuaDorutActivity.DuaTitleClass" />
+
+
+        </activity>
     </application>
 
 </manifest>
