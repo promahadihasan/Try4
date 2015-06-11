@@ -61,9 +61,10 @@ public class NotifyingService extends Service {
             for (int i = 0; i < notificationString.length; ++i) {
                 sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
                 editor=sharedPreferences.edit();
-                editor.putInt("ivalue", i);
+                editor.putInt("indexofnotificaton", i);
                 editor.commit();
-               // System.out.println(i);
+               // i=sharedPreferences.getInt("indexofnotificaton",5);
+                System.out.println(i);
 
                 System.out.println("Final Minute=" + finalMinute);
                 System.out.println("Final Milliseconds=" + finalMilliScecond);
@@ -72,10 +73,8 @@ public class NotifyingService extends Service {
         showNotification(R.drawable.notification_icon,
         i);
                 finalMilliScecond=24*60*60*1000;
-                if(i+1==notificationString.length)
-                {
-                    i=0;
-                }
+                //finalMilliScecond=30*1000;
+
 
         }
 
@@ -96,7 +95,7 @@ private void showNotification(int moodId, int textId) {
     Notification notification = new Notification(moodId, null, System.currentTimeMillis());
 
     Intent mynoIntent = new Intent(this, NotificationViewer.class);
-    mynoIntent.putExtra("indexofnotificaton", String.valueOf(textId));
+   // mynoIntent.putExtra("indexofnotificaton", String.valueOf(textId));
 
     PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
             mynoIntent, 0);

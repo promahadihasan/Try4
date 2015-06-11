@@ -1,7 +1,11 @@
 package com.example.theoakteam.ramadanapp.FirstAcivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -20,6 +24,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.theoakteam.ramadanapp.DistrictActivity.DistrictAllTimeShow;
@@ -30,6 +35,7 @@ import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDraw
 import com.example.theoakteam.ramadanapp.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -46,7 +52,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
      */
     private CharSequence mTitle;
     //upper code need for Drawer
-
+  private   Intent alarmIntent;
     String DEFAULT = "N/A";
     String districtName;
     SharedPreferences sharedPreferences;
@@ -65,6 +71,15 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     String hourForAlarmIfter = "0";
     String minuteForAlarmIfter = "00";
     int flagForPostResume=0;
+    private TimePickerDialog aTimePickerDialog;
+
+
+    private int pHourSeheri;
+    private int pHourIfter;
+    private int pMinuteSehri;
+    private int pMinuteIfter;
+    static final int TIME_DIALOG_ID_Seheri = 0;
+    static final int TIME_DIALOG_ID_Ifter = 1;
 
 
 
@@ -272,6 +287,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     }
 
 
+
     public void sehriActivity(){
 
         iftarTime = (TextView) findViewById(R.id.iftarTextView);
@@ -330,26 +346,88 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
 
     }
+    public void DialogeForSeheriChange(View view){
+        new AlertDialog.Builder(this)
+                .setTitle("Information")
+                .setMessage("Oh! You can change your district from settings")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+                })
+
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
+    }
 
     public void alarmSet(View v){
-        Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+       alarmIntent=new  Intent(AlarmClock.ACTION_SET_ALARM);
+
         if(v.getId()==R.id.alarmButton) {
             String titleSeheri = getResources().getString(R.string.sehri_last) + " " + getResources().getString(R.string.title_activity_alarm);
 
-            i.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(hourForAlarmSeheri));
-            i.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(minuteForAlarmSeheri));
-            i.putExtra(AlarmClock.EXTRA_MESSAGE, titleSeheri);
+
             //ss
+
+            pHourSeheri =Integer.parseInt(hourForAlarmSeheri);
+            pMinuteSehri = Integer.parseInt(minuteForAlarmSeheri);
+
+            alarmIntent.putExtra(AlarmClock.EXTRA_MESSAGE, titleSeheri);
+            showDialog(TIME_DIALOG_ID_Seheri);
+
+
+
+
+
+
 
         }
         if (v.getId()==R.id.alarmButton2){
             String titleIfter=getString(R.string.title_ifter_alarm)+" "+getString(R.string.title_activity_alarm);
-            i.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(hourForAlarmIfter)+12);
-            i.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(minuteForAlarmIfter));
-            i.putExtra(AlarmClock.EXTRA_MESSAGE, titleIfter);
+
+
+            pHourIfter =Integer.parseInt(hourForAlarmIfter);
+            pMinuteIfter = Integer.parseInt(minuteForAlarmIfter);
+            alarmIntent.putExtra(AlarmClock.EXTRA_MESSAGE, titleIfter);
+
+            showDialog(TIME_DIALOG_ID_Ifter);
+
+
         }
-        startActivity(i);
+
+
+
     }
+
+private TimePickerDialog.OnTimeSetListener mTimeSetListener =
+        new TimePickerDialog.OnTimeSetListener() {
+public void onTimeSet(TimePicker view, int hourOfDay, int minute ) {
+
+
+
+    alarmIntent.putExtra(AlarmClock.EXTRA_HOUR, hourOfDay);
+    alarmIntent.putExtra(AlarmClock.EXTRA_MINUTES, minute);
+    startActivity(alarmIntent);
+
+
+        }
+        };
+
+@Override
+protected Dialog onCreateDialog(int id) {
+        switch (id) {
+        case TIME_DIALOG_ID_Seheri:
+
+        return new TimePickerDialog(this,
+        mTimeSetListener, pHourSeheri, pMinuteSehri, false);
+
+    case TIME_DIALOG_ID_Ifter:
+    return new TimePickerDialog(this,
+            mTimeSetListener, pHourIfter+12, pMinuteIfter, false);
+}
+        return null;
+        }
 
 
 

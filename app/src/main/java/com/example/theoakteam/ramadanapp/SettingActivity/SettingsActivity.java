@@ -55,6 +55,7 @@ public class SettingsActivity
     private int pfinalMinute;
     private int pHour;
     private int pMinute;
+    static final int TIME_DIALOG_ID = 0;
     private String AMPM;
     DistrictsTimeClass districtsTimeObject = new DistrictsTimeClass();
     private LinearLayout userTimeLayout;
@@ -67,7 +68,7 @@ public class SettingsActivity
     private Button districtButton;
 
 
-    static final int TIME_DIALOG_ID = 0;
+
     String checkShareprefernce="ok";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -94,6 +95,9 @@ public class SettingsActivity
         {  preTime=sharedPreferences.getString("time",checkShareprefernce);
             pickTime.setText(preTime);
 
+        }
+        else {
+            pickTime.setText(getString(R.string.txt_time));
         }
         if(sharedPreferences.contains("checkbox"))
         {
@@ -360,7 +364,7 @@ public class SettingsActivity
         System.out.println("Final Hour=" + finalHour);
         finalMinute+=finalHour*60;
         System.out.println("Final Minute aftercalculation=" + finalMinute);
-        System.out.println("Final Milliseconds aftercalculation=" + finalMinute*60*1000);
+        System.out.println("Final Milliseconds aftercalculation=" + finalMinute * 60 * 1000);
 
 
     }
@@ -370,7 +374,7 @@ public class SettingsActivity
     protected void onPause() {
         super.onPause();
 
-        if(makeSureButtonCheckhed==true ) {
+        if(makeSureButtonCheckhed==true || checkBoxUser.isChecked() == true) {
 
             editor.putString("time", timeString.toString());
             editor.putLong("finaltime",finalMinute);
@@ -416,6 +420,16 @@ public class SettingsActivity
 
                 }
             };
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case TIME_DIALOG_ID:
+                return new TimePickerDialog(this,
+                        mTimeSetListener, pHour, pMinute+1, false);
+        }
+        return null;
+    }
+
     /** Add padding to numbers less than ten */
     private static String pad(int c) {
         if (c >= 10)
@@ -440,15 +454,6 @@ public class SettingsActivity
 
 
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case TIME_DIALOG_ID:
-                return new TimePickerDialog(this,
-                        mTimeSetListener, pHour, pMinute+1, false);
-        }
-        return null;
-    }
 
     @Override
     protected void onPostResume() {
