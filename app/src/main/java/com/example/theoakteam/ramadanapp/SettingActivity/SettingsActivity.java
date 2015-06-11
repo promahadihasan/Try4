@@ -120,7 +120,7 @@ public class SettingsActivity
                 }
             }
         });
-
+//hkjk
 
         pickTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
