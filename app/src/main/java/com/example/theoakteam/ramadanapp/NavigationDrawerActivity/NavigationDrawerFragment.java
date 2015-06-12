@@ -124,19 +124,20 @@ public class NavigationDrawerFragment extends Fragment {
 
                 }
                 else if(position==2){
-                    startActivity(new Intent(getActivity(), MasalaTitleClass.class));
 
 
+                    Intent intent = new Intent(getActivity(), TasbhiActivity1.class);
+                    startActivity(intent);
                 }
                 else   if (position==3) {
-                    Intent intent = new Intent(getActivity(), DuaTitleClass.class);
-                    startActivity(intent);
 
+                    startActivity(new Intent(getActivity(), MasalaTitleClass.class));
 
                 }
                 else   if (position==4) {
-                    Intent intent = new Intent(getActivity(), TasbhiActivity1.class);
+                    Intent intent = new Intent(getActivity(), DuaTitleClass.class);
                     startActivity(intent);
+
 
 
                 }
@@ -172,8 +173,9 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.id.text1,
                 new String[]{
                         getString(R.string.title_activity_sehri_and_ifter_short_form), getString(R.string.title_activity_hadith),
-                        getString(R.string.title_activity_masala),getString(R.string.title_activity_dua),
-                        getString(R.string.title_activity_tasbih),
+                        getString(R.string.title_activity_tasbih),getString(R.string.title_activity_masala),
+                        getString(R.string.title_activity_dua),
+
                       getString(R.string.title_activity_food_habit),getString(R.string.title_settings),getString(R.string.title_aboutus),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);

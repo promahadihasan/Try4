@@ -73,7 +73,7 @@ public class NotifyingService extends Service {
         showNotification(R.drawable.notification_icon,
         i);
                 finalMilliScecond=24*60*60*1000;
-                //finalMilliScecond=30*1000;
+               // finalMilliScecond=7*60*30*1000;
 
 
         }

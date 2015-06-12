@@ -26,7 +26,7 @@ public class NotificationViewer extends ActionBarActivity
 {
     private TextView noTextView;
     private String[] notificationStringArray;
-    String checkShareprefernce="ok";
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     private int i;

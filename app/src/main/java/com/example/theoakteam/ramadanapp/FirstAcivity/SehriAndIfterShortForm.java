@@ -149,13 +149,13 @@ public class SehriAndIfterShortForm extends ActionBarActivity
                 mTitle = getString(R.string.title_activity_hadith);
                 break;
             case 3:
-                mTitle = getString(R.string.title_activity_masala);
+                mTitle =  getString(R.string.title_activity_tasbih);
                 break;
             case 4:
-                mTitle = getString(R.string.title_activity_dua);
+                mTitle =getString(R.string.title_activity_masala);
                 break;
             case 5:
-                mTitle = getString(R.string.title_activity_tasbih);
+                mTitle= getString(R.string.title_activity_dua);
                 break;
             case 6:
                 mTitle = getString(R.string.title_activity_food_habit);
