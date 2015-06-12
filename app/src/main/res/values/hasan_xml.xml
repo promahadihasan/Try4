@@ -16,7 +16,7 @@
     <string name="ramadan2">19/06/2015</string>
     <string name="radio_group_note">রমজান শুরুর তারিখ সেট করুন</string>
     <string name="district_input_footnote">[ডিফল্ট জেলা ও রোজা শুরুর তারিখ App এর সেটিংস থেকে পরিবর্তনযোগ্য। রমজান মাস চাঁদ দেখার উপর নির্ভরশীল বিধায় তারিখ সেট করার অপশন রাখা হয়েছে।]</string>
-
+    <string name="notification_footnote">আল্লাহ আমাদেরকে এই সুমহান বাণীর উপর আমল করার তাওফিক দান করুন। ।।আমীন।।</string>
 
 
 </resources>

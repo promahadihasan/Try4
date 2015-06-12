@@ -38,12 +38,13 @@ public class NotificationViewer extends ActionBarActivity
 
 
 
-            i=sharedPreferences.getInt("indexofnotificaton",5)-1;
+        i=sharedPreferences.getInt("indexofnotificaton",5)-1;
 
         notificationStringArray=getResources().getStringArray(R.array.notification_messages);
         noTextView=(TextView)findViewById(R.id.txtview_notification);
         System.out.println("indexofnotificaton from Viewer"+i);
-                noTextView.setText(notificationStringArray[i]);
+
+        noTextView.setText(notificationStringArray[i]+"\n\n\n"+getString(R.string.notification_footnote));
 
 
     }
