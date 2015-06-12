@@ -170,11 +170,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-        //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setHomeAsUpIndicator(R.drawable.logo);
 
-       // actionBar.setTitle(mTitle);
+        actionBar.setTitle(mTitle);
     }
 
 
