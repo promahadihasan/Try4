@@ -40,6 +40,15 @@ public class EattingHabitTitleClass
 
     private String[] EattingHabitTitle;
     private ListView lv;
+    private int  flagforFinsh=0;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(flagforFinsh==0)
+        {
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,7 @@ public class EattingHabitTitleClass
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                flagforFinsh=1;
                 Intent detailsHadithIntent=new Intent(EattingHabitTitleClass.this,EattingHabitViewer.class);
                 detailsHadithIntent.putExtra("indexOfEattingHabit", String.valueOf(position));
                 startActivity(detailsHadithIntent);

@@ -39,6 +39,15 @@ public class HadithTitleClass
 
     private String[] hidithTitle;
     private ListView lv;
+    private int  flagforFinsh=0;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(flagforFinsh==0)
+        {
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +60,7 @@ public class HadithTitleClass
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                flagforFinsh=1;
                 Intent detailsHadithIntent=new Intent(HadithTitleClass.this,HadisViewer.class);
                 detailsHadithIntent.putExtra("index", String.valueOf(position));
                 startActivity(detailsHadithIntent);
@@ -159,6 +169,10 @@ public class HadithTitleClass
     protected void onPostResume() {
         super.onPostResume();
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getString(R.string.title_activity_hadith));}
+        actionBar.setTitle(getString(R.string.title_activity_hadith));
+
+
+    }
+
 
 }

@@ -42,7 +42,7 @@
 
     <string name="txt_showthe">প্রতিদিন নোটিফিকেশন আকারে একটি কুরআন/হাদীস এর বাণী দেয়া হবে</string>
     <string name="txt_nottime">নোটিফিকেশন প্রাপ্তির সময় সেট করুন</string>
-    <string name="txt_time">06:00 PM</string>
+    <string name="txt_time">06:30 PM</string>
     <string name="action_notification">Get notification</string>
     <string name="title_notification"> আজকের আয়াত/হাদীস </string>
     <string name="first_notification">রোযা রাখা যেমন ফরয তেমনি  রোযার নিয়ত করা ফরয  </string>

@@ -34,7 +34,7 @@ public class NotifyingService extends Service {
     public void onCreate() {
         mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-        editor=sharedPreferences.edit();
+
         if(sharedPreferences.contains("finaltime"))
         {  finalMinute=sharedPreferences.getLong("finaltime", checkShareprefernce);
            finalMilliScecond=finalMinute*60*1000;

@@ -102,10 +102,12 @@ public class SettingsActivity
         }
         else {
             pickTime.setText(getString(R.string.txt_time));
+
+
         }
         if(sharedPreferences.contains("checkbox"))
         {
-            checkBoxcheck=sharedPreferences.getInt("checkbox",6);
+            checkBoxcheck=sharedPreferences.getInt("checkbox",0);
             if(checkBoxcheck==0)
             {
                 callChechkBoxMakeGone();
@@ -114,6 +116,7 @@ public class SettingsActivity
                 callChechkBoxMakeVisibile();
             }
         }
+        allCheckh();
 
 
         checkBoxUser.setOnClickListener(new View.OnClickListener() {
@@ -399,31 +402,35 @@ public class SettingsActivity
 
     }
 
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if(makeSureButtonCheckhed==true || checkBoxUser.isChecked() == true) {
-
-            editor.putString("time", timeString.toString());
-            editor.putLong("finaltime",finalMinute);
-            editor.commit();
-            if (finalMinute!=0)
-            {Intent serviceIntent=new Intent(getApplicationContext(),NotifyingService.class);
+void allCheckh(){
+    if(makeSureButtonCheckhed==true || checkBoxUser.isChecked() == true) {
+        callChechkBoxMakeVisibile();
+        timeCalculation();
+        editor.putString("time", timeString.toString());
+        editor.putLong("finaltime",finalMinute);
+        editor.commit();
+        if (finalMinute!=0)
+        {Intent serviceIntent=new Intent(getApplicationContext(),NotifyingService.class);
 
             startService(serviceIntent);}
 
 
 
-            makeSureButtonCheckhed=false;
-        }
-        else {
-            editor.commit();
+        makeSureButtonCheckhed=false;
+    }
+    else {
+        editor.commit();
 
-            Intent serviceIntent=new Intent(getApplicationContext(),NotifyingService.class);
+        Intent serviceIntent=new Intent(getApplicationContext(),NotifyingService.class);
 
-                stopService(serviceIntent);}
+        stopService(serviceIntent);
+    }
+}
+    @Override
+    protected void onPause() {
+        super.onPause();
+allCheckh();
+
         finish();
 
     }

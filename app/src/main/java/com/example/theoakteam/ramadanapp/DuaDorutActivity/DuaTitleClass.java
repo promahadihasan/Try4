@@ -40,7 +40,15 @@ public class DuaTitleClass
 
     private String[] duaTitle;
     private ListView lv;
-
+    private int  flagforFinsh=0;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(flagforFinsh==0)
+        {
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +60,7 @@ public class DuaTitleClass
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                flagforFinsh=1;
                 Intent detailsHadithIntent=new Intent(DuaTitleClass.this,DuaViewer.class);
                 detailsHadithIntent.putExtra("indexOfdua", String.valueOf(position));
                 startActivity(detailsHadithIntent);

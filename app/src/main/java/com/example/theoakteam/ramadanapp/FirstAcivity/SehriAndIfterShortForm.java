@@ -34,6 +34,7 @@ import com.example.theoakteam.ramadanapp.DistrictActivity.DistrictsTimeClass;
 
 import com.example.theoakteam.ramadanapp.DistrictActivity.InputForAllDistrictTimeActivity;
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
+import com.example.theoakteam.ramadanapp.NotificationChallenging.NotifyingService;
 import com.example.theoakteam.ramadanapp.R;
 
 import java.text.SimpleDateFormat;
@@ -448,19 +449,51 @@ protected Dialog onCreateDialog(int id) {
 
         return ft.format(date).toString();
     }
+void forNotificationservice(){
 
+    //for background thread
+    final Calendar cal = Calendar.getInstance();
+    int nowHour	= cal.get(Calendar.HOUR_OF_DAY);
+    int nowMinute = cal.get(Calendar.MINUTE);
+
+  int   finalHour=18-nowHour;
+   int finalMinute=30-nowMinute;
+    if(finalMinute<0)
+    {
+        finalMinute+=60;
+        finalHour-=1;
+    }
+    if(finalHour<0)
+    {
+        finalHour+=24;
+    }
+    System.out.println("Final Minute=" + finalMinute);
+    System.out.println("Final Hour=" + finalHour);
+    finalMinute+=finalHour*60;
+    sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+    editor.putLong("finaltime", finalMinute);
+    editor.commit();
+    Intent serviceIntent=new Intent(getApplicationContext(),NotifyingService.class);
+
+    startService(serviceIntent);
+
+}
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
         radioButton1 = (RadioButton) findViewById(R.id.first_ramadan);
 
         try{
+
+
+
+
             districtName = autoCompleteTextView.getText().toString();
             districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
 
             if(districtsTimeObject.isDistrictPresent(districtName)){
                 editor.putString("DefaultDistrictName", districtName);
                 editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
-                editor.putString("DistrictInputFlag","true");
+                editor.putString("DistrictInputFlag", "true");
 
                 if(radioButton1.isChecked()){
                     editor.putInt("DateMinus",0);
@@ -476,6 +509,7 @@ protected Dialog onCreateDialog(int id) {
                 setContentView(R.layout.activity_sehri_and_ifter_short_form);
                 sehriActivity();
                 drawerHelper();
+                forNotificationservice();
             }
             else{
 

@@ -37,6 +37,15 @@ public class MasalaTitleClass   extends ActionBarActivity
 
     private String[] masalaTitle;
     private ListView lv;
+    private int  flagforFinsh=0;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(flagforFinsh==0)
+        {
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +59,7 @@ public class MasalaTitleClass   extends ActionBarActivity
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                flagforFinsh=1;
                 Intent detailsHadithIntent=new Intent(MasalaTitleClass.this,MasalaViewer.class);
                 detailsHadithIntent.putExtra("indexformasala", String.valueOf(position));
                 startActivity(detailsHadithIntent);
