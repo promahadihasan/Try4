@@ -33,7 +33,7 @@
     <string name="sehri_button_view">পুরো রমজানের সূচী দেখুন</string>
     <string name="title_activity_district_input">DistrictInputActivity</string>
     <string name="district_submit_button">Submit</string>
-    <string name="district_input_note">আপনার অবস্থানরত জেলার নাম লিখুন</string>
+    <string name="district_input_note">আপনার অবস্থানরত জেলার নাম লিখুন (ডিফল্ট জেলা)</string>
     <string name="all_district_input_note">জেলার নাম লিখুন</string>
 
     <string name="title_logo">আহলান-সাহলান...</string>
@@ -41,7 +41,7 @@
     <string name="title_ifter_alarm">ইফতার</string>
 
     <string name="txt_showthe">প্রতিদিন নোটিফিকেশন আকারে একটি কুরআন/হাদীস এর বাণী দেয়া হবে</string>
-    <string name="txt_nottime">নোটিফিকেশন প্রাপ্তির সময় নির্বাচন করুন</string>
+    <string name="txt_nottime">নোটিফিকেশন প্রাপ্তির সময় সেট করুন</string>
     <string name="txt_time">06:00 PM</string>
     <string name="action_notification">Get notification</string>
     <string name="title_notification"> আজকের আয়াত/হাদীস </string>

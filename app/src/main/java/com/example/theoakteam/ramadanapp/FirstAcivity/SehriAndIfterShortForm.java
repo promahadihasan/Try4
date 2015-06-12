@@ -23,6 +23,8 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -100,7 +102,6 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
             autoCompleteTextView.setAdapter(adapter);
-
 
 
         }
@@ -442,8 +443,8 @@ protected Dialog onCreateDialog(int id) {
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
 
-        try{
 
+        try{
             districtName = autoCompleteTextView.getText().toString();
             districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
 
@@ -451,6 +452,10 @@ protected Dialog onCreateDialog(int id) {
                 editor.putString("DefaultDistrictName", districtName);
                 editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
                 editor.putString("DistrictInputFlag","true");
+
+
+
+
                 editor.commit();
                 Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
 

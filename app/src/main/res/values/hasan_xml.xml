@@ -12,5 +12,11 @@
     <string name="arabic_date">12 রমজান ১৪৩৬</string>
     <string name="district_name_note_check">Manikganj জেলার স্থানীয় সময় অনুযায়ী আজকের\n\nসেহরীর শেষ সময়</string>
     <string name="date_check_note">[আজকের তারিখটি রমজান ২০১৫ এর সাথে সামঞ্জস্যপূর্ণ নয়। এখানে আরবি মাসের একটি ডেমো তারিখ ও সেহরি-ইফতারের ডেমো সময় দেখানো হয়েছে।]</string>
+    <string name="ramadan1">18/06/2015</string>
+    <string name="ramadan2">19/06/2015</string>
+    <string name="radio_group_note">রমজান শুরুর তারিখ সেট করুন</string>
+    <string name="district_input_footnote">[ডিফল্ট জেলা ও রোজা শুরুর তারিখ App এর সেটিংস থেকে পরিবর্তনযোগ্য। রমজান মাস চাঁদ দেখার উপর নির্ভরশীল বিধায় তারিখ সেট করার অপশন রাখা হয়েছে।]</string>
+
+
 
 </resources>
