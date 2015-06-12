@@ -1,6 +1,8 @@
 package com.example.theoakteam.ramadanapp.DistrictActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
     AutoCompleteTextView allDistrictAutoCompleteTextView;
     DistrictsTimeClass districtsTimeObject = new DistrictsTimeClass();
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -31,6 +34,7 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
         allDistrictAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.allDistrictAutoCompleteTextView);
         allDistrictAutoCompleteTextView.setAdapter(adapter);
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -40,6 +44,7 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
     public void allDistrictShowTimeButton(View v){
         v.startAnimation(buttonClick);
         String tempDistrict;
+        int dateMinus = sharedPreferences.getInt("DateMinus",0);
 
         try{
 
@@ -54,7 +59,16 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
                 allIftarTime[0]="0:00";
                 allIftarTime[0]="0:00";
                 allDate[0] = "00/00/0000";
-                int engDate=18, flag=0;
+
+                int engDate, flag=0;
+
+                if(dateMinus==0){
+                    engDate = 18;
+                }
+                else{
+                    engDate = 19;
+                }
+
                 String engMonth="06";
                 for(int ramadanDate=1; ramadanDate<=30; ramadanDate++,engDate++){
 
@@ -66,10 +80,10 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
 
                     String dateStringFull;
                     if(engDate<10){
-                        dateStringFull = "0" + String.valueOf(engDate) + "/" + engMonth + "/" + "'15";
+                        dateStringFull = "0" + String.valueOf(engDate) + "/" + engMonth + "/" + "15";
                     }
                     else {
-                        dateStringFull = String.valueOf(engDate) + "/" + engMonth + "/" + "'15";
+                        dateStringFull = String.valueOf(engDate) + "/" + engMonth + "/" + "15";
 
                     }
 

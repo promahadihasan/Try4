@@ -21,7 +21,7 @@
     <string name="title_activity_quran">কুরআনের বাণী</string>
     <string name="title_activity_hadith">কুরআন ও হাদীস</string>
     <string name="title_activity_masala">আর্টিকেল এবং মাসয়ালা</string>
-    <string name="title_activity_dua">দোয়া দরূদ</string>
+    <string name="title_activity_dua">মাসনূন দোয়া</string>
     <string name="title_activity_seheri_ifter_time">সেহেরী ও ইফতারের সূচী</string>
     <string name="title_activity_tasbih">তসবিহ</string>
     <string name="title_activity_food_habit">রমজানের খাদ্যাভ্যাস</string>
@@ -36,7 +36,7 @@
     <string name="district_input_note">আপনার অবস্থানরত জেলার নাম লিখুন (ডিফল্ট জেলা)</string>
     <string name="all_district_input_note">জেলার নাম লিখুন</string>
 
-    <string name="title_logo">আহলান-সাহলান...</string>
+    <string name="title_logo">আহলান-সাহলান\nখোশ আমদেদ</string>
 
     <string name="title_ifter_alarm">ইফতার</string>
 

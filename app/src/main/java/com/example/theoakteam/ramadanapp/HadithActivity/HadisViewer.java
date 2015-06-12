@@ -41,7 +41,7 @@ public class HadisViewer extends ActionBarActivity {
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getResources().getString(R.string.actionbar_color))));
         hidithTitle_details = getResources().getStringArray(R.array.hadis_details);
         noTextView=(TextView)findViewById(R.id.txtview_notification);
-        noTextView.setText(hidithTitle_details[i]);
+        noTextView.setText(hidithTitle_details[i] + "\n\n" + getString(R.string.quran_courtesy));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

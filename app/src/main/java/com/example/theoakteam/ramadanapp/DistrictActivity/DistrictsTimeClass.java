@@ -1,6 +1,9 @@
 package com.example.theoakteam.ramadanapp.DistrictActivity;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +22,16 @@ public class DistrictsTimeClass {
     private String[] centralSehriShaban = new String[35];
     private String[] centralIftarShaban = new String[35];
     private String monthName;
+    private int dateMinus;
+
+
+    public int getDateMinus() {
+        return dateMinus;
+    }
+
+    public void setDateMinus(int dateMinus) {
+        this.dateMinus = dateMinus;
+    }
 
     public boolean isDateValid(String date){
 
@@ -266,6 +279,7 @@ public class DistrictsTimeClass {
 
     public int getRamadanDate(String date){
 
+
         int dayRamadan;
         if(date.charAt(4)=='6'){
             dayRamadan = (date.charAt(0)-'0') * 10 + date.charAt(1)-'0' -17;
@@ -276,7 +290,7 @@ public class DistrictsTimeClass {
         }
 
 
-        return dayRamadan;
+        return dayRamadan - getDateMinus();
     }
 
     public int getShabanDate(String date){
@@ -315,16 +329,38 @@ public class DistrictsTimeClass {
             e.printStackTrace();
         }
 
+        if(getDateMinus()==0){
+            if(dateObject.compareTo(shabanStartDate)>0 && dateObject.compareTo(shabanLast)<0){
+                //System.out.println("Shaban is running!");
+                monthName = "shaban";
 
-        if(dateObject.compareTo(shabanStartDate)>0 && dateObject.compareTo(shabanLast)<0){
-            //System.out.println("Shaban is running!");
-            monthName = "shaban";
+            }
+            else if (dateObject.compareTo(shabanLast)>0 && dateObject.compareTo(ramadanLastDate)<0){
+                //System.out.println("Ramadan is running!");
+                monthName = "ramadan";
+            }
+        }
+        else{
+            try {
+                shabanLast = formatter.parse("18/06/2015");
+                ramadanLastDate = formatter.parse("18/07/2015");
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if(dateObject.compareTo(shabanStartDate)>0 && dateObject.compareTo(shabanLast)<0){
+                //System.out.println("Shaban is running!");
+                monthName = "shaban";
+
+            }
+            else if (dateObject.compareTo(shabanLast)>0 && dateObject.compareTo(ramadanLastDate)<0){
+                //System.out.println("Ramadan is running!");
+                monthName = "ramadan";
+            }
 
         }
-        else if (dateObject.compareTo(shabanLast)>0 && dateObject.compareTo(ramadanLastDate)<0){
-            //System.out.println("Ramadan is running!");
-            monthName = "ramadan";
-        }
+
+
         //System.out.println("Month is: "+ monthName);
         return monthName;
     }

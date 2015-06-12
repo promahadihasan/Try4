@@ -21,6 +21,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -61,6 +62,8 @@ public class SettingsActivity
     private LinearLayout userTimeLayout;
     boolean makeSureButtonCheckhed=false;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
+    private RadioButton radio1;
+    private RadioButton radio2;
 
 //    private EditText tasbihEditText;
     private AutoCompleteTextView autoCompleteTextView;
@@ -72,6 +75,7 @@ public class SettingsActivity
     String checkShareprefernce="ok";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
 
 
     private long finalHour;
@@ -140,8 +144,6 @@ public class SettingsActivity
         });
 
 
-
-
         //below code use for drawer
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -152,6 +154,20 @@ public class SettingsActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         //upper code use for drawer
+
+    }
+
+    public void saveRadioButton(View view){
+
+        if(radio1.isChecked()){
+            editor.putInt("DateMinus",0);
+        }
+        else{
+            editor.putInt("DateMinus",1);
+        }
+        editor.commit();
+
+        Toast.makeText(getApplicationContext(),"Saved succesfully!",Toast.LENGTH_SHORT).show();
 
     }
 
@@ -273,7 +289,7 @@ public class SettingsActivity
 //    }
     public void districtInitialization(){
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
+//        editor = sharedPreferences.edit();
         String districtString = sharedPreferences.getString("DefaultDistrictName","0");
         autoCompleteTextView.setText(districtString.substring(0,1).toUpperCase() + districtString.substring(1));
 
@@ -309,7 +325,7 @@ public class SettingsActivity
         String districtName = autoCompleteTextView.getText().toString();
         districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
+
 
         if(districtsTimeObject.isDistrictPresent(districtName)){
             editor.putString("DefaultDistrictName",districtName);
@@ -339,6 +355,19 @@ public class SettingsActivity
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
 //        tasbihButton = (Button) findViewById(R.id.tasbihCounterButton);
         districtButton = (Button) findViewById(R.id.districtButton);
+
+        radio1 = (RadioButton) findViewById(R.id.first_ramadan);
+        radio2 = (RadioButton) findViewById(R.id.second_ramadan);
+
+        if(sharedPreferences.getInt("DateMinus",1)==0){
+            radio1.setChecked(true);
+            radio2.setChecked(false);
+        }
+        else {
+            radio2.setChecked(true);
+            radio1.setChecked(false);
+        }
+
 
     }
 

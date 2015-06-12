@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
 import com.example.theoakteam.ramadanapp.R;
@@ -60,6 +61,8 @@ public class TasbhiActivity1
 
         textView = (TextView) findViewById(R.id.textView);
         DEFAULT = "N/A";
+
+        Toast.makeText(getApplicationContext(),"Click anywhere of this screen", Toast.LENGTH_LONG).show();
 
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

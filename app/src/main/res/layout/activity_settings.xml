@@ -49,7 +49,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                 />
             <Button
 
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/bttimeshow"
                 android:text="@string/txt_time"
@@ -139,7 +139,6 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:text="@string/ramadan1"
                     android:textSize="17sp"
                     android:layout_weight="1"
-                    android:checked="true"
                     android:textColor="#FFFFFF"
                     android:id="@+id/first_ramadan"/>
 
@@ -149,11 +148,19 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                     android:text="@string/ramadan2"
                     android:textSize="17sp"
                     android:layout_weight="1"
-                    android:id="@+id/second_ramadan"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#FFFFFF"
+                    android:id="@+id/second_ramadan" />
 
             </RadioGroup>
 
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:text="@string/district_submit_button"
+                android:id="@+id/radioSubmitButton"
+                android:layout_gravity="center_horizontal"
+                android:onClick="saveRadioButton"
+                android:background="@drawable/added_button" />
         </LinearLayout>
 
 

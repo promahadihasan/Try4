@@ -74,6 +74,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     String minuteForAlarmIfter = "00";
     int flagForPostResume=0;
     private TimePickerDialog aTimePickerDialog;
+    private int dateMinus;
+    private RadioButton radioButton1;
 
 
     private int pHourSeheri;
@@ -91,6 +93,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
         String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getResources().getString(R.string.actionbar_color))));
@@ -233,13 +236,21 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
     public void helpShowFullTime(String districtNameTemp){
 
-        String[] allSehriTime = new String[31];
-        String[] allIftarTime = new String[31];
-        String[] allDate = new String[31];
+        String[] allSehriTime = new String[35];
+        String[] allIftarTime = new String[35];
+        String[] allDate = new String[35];
         allIftarTime[0]="0:00";
         allIftarTime[0]="0:00";
         allDate[0] = "00/00/0000";
-        int engDate=18, flag=0;
+        int engDate, flag=0;
+
+        if(dateMinus==0){
+            engDate = 18;
+        }
+        else{
+            engDate = 19;
+        }
+
         String engMonth="06";
         for(int ramadanDate=1; ramadanDate<=30; ramadanDate++,engDate++){
 
@@ -287,8 +298,6 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         startActivity(intent);
     }
 
-
-
     public void sehriActivity(){
 
         iftarTime = (TextView) findViewById(R.id.iftarTextView);
@@ -300,42 +309,42 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         String sehriTimeString;
 
         districtName = sharedPreferences.getString("DefaultDistrictName", "N/A");
+        districtsTimeObject.setDateMinus(sharedPreferences.getInt("DateMinus",0));
+        dateMinus = districtsTimeObject.getDateMinus();
+        String dateString = getDate();
+        englishDate.setText(getResources().getString(R.string.date_text_view) + " " + dateString);
 
+        if(districtsTimeObject.isDateValid(dateString)){
+            String arabicMonth = districtsTimeObject.findMonth(dateString);
+            if(arabicMonth=="ramadan"){
+                arabicDate.setText("("+districtsTimeObject.getRamadanDate(dateString)+" "+getString(R.string.ramadan)+" "+getString(R.string.hijri));
+                sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, dateString);
+                iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, dateString);
+            }
+            else {
+                int shabanDate = districtsTimeObject.getShabanDate(dateString);
+                String plusMinus = districtsTimeObject.getDistrictPlusMinusTime(districtName);
+                String centralSehriShaban = districtsTimeObject.getCentralSehriShaban(shabanDate);
+                String centralIftarShaban = districtsTimeObject.getCentralIftarShaban(shabanDate);
+                sehriTimeString = districtsTimeObject.calculateTime(centralSehriShaban, plusMinus);
+                iftarTimeString = districtsTimeObject.calculateTime(centralIftarShaban,plusMinus);
 
-            String dateString = getDate();
-            englishDate.setText(getResources().getString(R.string.date_text_view) + " " + dateString);
+                arabicDate.setText("("+shabanDate+" "+getString(R.string.shaban)+" "+getString(R.string.hijri));
 
-            if(districtsTimeObject.isDateValid(dateString)){
-                String arabicMonth = districtsTimeObject.findMonth(dateString);
-                if(arabicMonth=="ramadan"){
-                    arabicDate.setText("("+districtsTimeObject.getRamadanDate(dateString)+" "+getString(R.string.ramadan)+" "+getString(R.string.hijri));
-                    sehriTimeString = districtsTimeObject.getDistrictIndividualSehriTime(districtName, dateString);
-                    iftarTimeString = districtsTimeObject.getDistrictIndividualIftarTime(districtName, dateString);
-                }
-                else {
-                    int shabanDate = districtsTimeObject.getShabanDate(dateString);
-                    String plusMinus = districtsTimeObject.getDistrictPlusMinusTime(districtName);
-                    String centralSehriShaban = districtsTimeObject.getCentralSehriShaban(shabanDate);
-                    String centralIftarShaban = districtsTimeObject.getCentralIftarShaban(shabanDate);
-                    sehriTimeString = districtsTimeObject.calculateTime(centralSehriShaban, plusMinus);
-                    iftarTimeString = districtsTimeObject.calculateTime(centralIftarShaban,plusMinus);
+            }
 
-                    arabicDate.setText("("+shabanDate+" "+getString(R.string.shaban)+" "+getString(R.string.hijri));
+            sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
+            sehriTime.setText(sehriTimeString + " am");
+            iftarTime.setText(iftarTimeString + " pm");
+            String alarmTimeSeheri = districtsTimeObject.calculateTime(sehriTimeString,"-60");
 
-                }
+            hourForAlarmSeheri = "" + alarmTimeSeheri.charAt(0);
+            minuteForAlarmSeheri = alarmTimeSeheri.substring(2,4);
+            String alarmTimeIfter = districtsTimeObject.calculateTime(iftarTimeString,"-05");
 
-                sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
-                sehriTime.setText(sehriTimeString + " am");
-                iftarTime.setText(iftarTimeString + " pm");
-                String alarmTimeSeheri = districtsTimeObject.calculateTime(sehriTimeString,"-60");
-
-                hourForAlarmSeheri = "" + alarmTimeSeheri.charAt(0);
-                minuteForAlarmSeheri = alarmTimeSeheri.substring(2,4);
-                String alarmTimeIfter = districtsTimeObject.calculateTime(iftarTimeString,"-05");
-
-                hourForAlarmIfter=""+alarmTimeIfter.charAt(0);
-                minuteForAlarmIfter=""+alarmTimeIfter.substring(2,4);
-                //System.out.println("Testing Time -->>: "+hourForAlarmSeheri+":"+minuteForAlarmSeheri);
+            hourForAlarmIfter=""+alarmTimeIfter.charAt(0);
+            minuteForAlarmIfter=""+alarmTimeIfter.substring(2,4);
+            //System.out.println("Testing Time -->>: "+hourForAlarmSeheri+":"+minuteForAlarmSeheri);
 
             }
             else{
@@ -350,7 +359,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     public void DialogeForSeheriChange(View view){
         new AlertDialog.Builder(this)
                 .setTitle("Information")
-                .setMessage("Oh! You can change your district from settings")
+                .setMessage(getString(R.string.district_change_dialog))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -442,7 +451,7 @@ protected Dialog onCreateDialog(int id) {
 
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
-
+        radioButton1 = (RadioButton) findViewById(R.id.first_ramadan);
 
         try{
             districtName = autoCompleteTextView.getText().toString();
@@ -453,8 +462,12 @@ protected Dialog onCreateDialog(int id) {
                 editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
                 editor.putString("DistrictInputFlag","true");
 
-
-
+                if(radioButton1.isChecked()){
+                    editor.putInt("DateMinus",0);
+                }
+                else {
+                    editor.putInt("DateMinus",1);
+                }
 
                 editor.commit();
                 Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();

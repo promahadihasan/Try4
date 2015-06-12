@@ -36,7 +36,6 @@ public class DistrictAllTimeShow extends ActionBarActivity {
     SharedPreferences sharedPreferences;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

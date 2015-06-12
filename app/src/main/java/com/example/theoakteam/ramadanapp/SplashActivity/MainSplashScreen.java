@@ -22,7 +22,7 @@ public class MainSplashScreen extends Activity {
 
                 try {
 
-                    sleep(1500);
+                    sleep(2000);
 
 
                     Intent i=new Intent(MainSplashScreen.this,SehriAndIfterShortForm.class);

@@ -2,7 +2,7 @@
 <resources>
 
 
-    <string name="copy_right">Copyright @ The Oak Team - 2015</string>
+    <string name="copy_right">Copyright @ The Oak Troop - 2015</string>
     <string name="about_developer">The Oak Team এর প্রথম প্রোডাক্ট App of Ramadan ব্যবহার করার জন্য আপনাকে ধন্যবাদ। App সম্পর্কে আপনার সুচিন্তিত মতামতের প্রত্যাশায় থাকব।  ।।ধন্যবাদ।। </string>
     <string name="facebook_oak_team">ফেসবুকে The Oak Team</string>
     <string name="facebook_note">Me on Facebook</string>
@@ -17,6 +17,7 @@
     <string name="radio_group_note">রমজান শুরুর তারিখ সেট করুন</string>
     <string name="district_input_footnote">[ডিফল্ট জেলা ও রোজা শুরুর তারিখ App এর সেটিংস থেকে পরিবর্তনযোগ্য। রমজান মাস চাঁদ দেখার উপর নির্ভরশীল বিধায় তারিখ সেট করার অপশন রাখা হয়েছে।]</string>
     <string name="notification_footnote">আল্লাহ আমাদেরকে এই সুমহান বাণীর উপর আমল করার তাওফিক দান করুন। ।।আমীন।।</string>
-
+    <string name="district_change_dialog">আপনার ডিফল্ট জেলার নাম পরিবর্তন করতে App এর সেটিংস অপশনে যান।</string>
+    <string name="quran_courtesy">[Collected from: www.onlineholyquran.com]</string>
 
 </resources>
