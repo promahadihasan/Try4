@@ -51,16 +51,42 @@ public class DistrictsTimeClass {
             e.printStackTrace();
         }
 
+        if(dateMinus==0){
+            if(dateObject.compareTo(shabanStartDate)>0 && dateObject.compareTo(ramadanLastDate)<0){
+                //System.out.println("Shaban is running!");
+                validity = true;
 
-        if(dateObject.compareTo(shabanStartDate)>0 && dateObject.compareTo(ramadanLastDate)<0){
-            //System.out.println("Shaban is running!");
-            validity = true;
+            }
+            else {
+                //System.out.println("Ramadan is running!");
+                validity = false;;
+            }
+        }
+        else{
+
+            try {
+                dateObject = formatter.parse(date);
+                shabanStartDate = formatter.parse("28/05/2015");
+                shabanLast = formatter.parse("17/06/2015");
+                ramadanLastDate = formatter.parse("19/07/2015");
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+            if(dateObject.compareTo(shabanStartDate)>0 && dateObject.compareTo(ramadanLastDate)<0){
+                //System.out.println("Shaban is running!");
+                validity = true;
+
+            }
+            else {
+                //System.out.println("Ramadan is running!");
+                validity = false;;
+            }
 
         }
-        else {
-            //System.out.println("Ramadan is running!");
-            validity = false;;
-        }
+
+
         //System.out.println("Month is: "+ monthName);
 
 
@@ -112,6 +138,7 @@ public class DistrictsTimeClass {
         centralSehriShaban[27] = "3:37";
         centralSehriShaban[28] = "3:37";
         centralSehriShaban[29] = "3:38";
+        centralSehriShaban[30] = "3:38";
     }
 
     public String getCentralIftarShaban(int dateShaban) {
@@ -151,6 +178,7 @@ public class DistrictsTimeClass {
         centralIftarShaban[27] = "6:50";
         centralIftarShaban[28] = "6:51";
         centralIftarShaban[29] = "6:51";
+        centralIftarShaban[30] = "6:51";
     }
 
     public String getDistrictPlusMinusTime(String districtKey){

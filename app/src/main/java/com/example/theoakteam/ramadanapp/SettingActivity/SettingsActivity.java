@@ -158,6 +158,7 @@ public class SettingsActivity
     }
 
     public void saveRadioButton(View view){
+        view.startAnimation(buttonClick);
 
         if(radio1.isChecked()){
             editor.putInt("DateMinus",0);
