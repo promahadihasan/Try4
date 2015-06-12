@@ -311,7 +311,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         districtName = sharedPreferences.getString("DefaultDistrictName", "N/A");
         districtsTimeObject.setDateMinus(sharedPreferences.getInt("DateMinus",0));
         dateMinus = districtsTimeObject.getDateMinus();
-        String dateString = "17/07/2015";//getDate();
+        String dateString = getDate();
         englishDate.setText(getResources().getString(R.string.date_text_view) + " " + dateString);
 
         if(districtsTimeObject.isDateValid(dateString)){

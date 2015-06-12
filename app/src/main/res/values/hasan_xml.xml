@@ -4,16 +4,16 @@
 
     <string name="copy_right">Copyright @ The Oak Troop - 2015</string>
     <string name="about_developer">The Oak Troop এর প্রথম প্রোডাক্ট App of Ramadan ব্যবহার করার জন্য আপনাকে ধন্যবাদ। App সম্পর্কে আপনার সুচিন্তিত মতামতের প্রত্যাশায় থাকব।  ।।ধন্যবাদ।। </string>
-    <string name="facebook_oak_team">ফেসবুকে The Oak Team</string>
+    <string name="facebook_oak_team">ফেসবুকে The Oak Troop</string>
     <string name="facebook_note">Me on Facebook</string>
     <string name="mail_note">Mail me</string>
     <string name="developer_head_line">We try our best...</string>
     <string name="designation">Developer</string>
     <string name="arabic_date">12 রমজান ১৪৩৬</string>
-    <string name="district_name_note_check">Manikganj জেলার স্থানীয় সময় অনুযায়ী আজকের\n\nসেহরীর শেষ সময়</string>
+    <string name="district_name_note_check">Manikganj জেলার স্থানীয় সময় অনুযায়ী আজকের\n\n\nসেহরীর শেষ সময়</string>
     <string name="date_check_note">[আজকের তারিখটি রমজান ২০১৫ এর সাথে সামঞ্জস্যপূর্ণ নয়। এখানে আরবি মাসের একটি ডেমো তারিখ ও সেহরি-ইফতারের ডেমো সময় দেখানো হয়েছে।]</string>
-    <string name="ramadan1">18/06/2015</string>
-    <string name="ramadan2">19/06/2015</string>
+    <string name="ramadan1">18/06/15</string>
+    <string name="ramadan2">19/06/15</string>
     <string name="radio_group_note">রমজান শুরুর তারিখ সেট করুন</string>
     <string name="district_input_footnote">[ডিফল্ট জেলা ও রোজা শুরুর তারিখ App এর সেটিংস থেকে পরিবর্তনযোগ্য। রমজান মাস চাঁদ দেখার উপর নির্ভরশীল বিধায় তারিখ সেট করার অপশন রাখা হয়েছে।]</string>
     <string name="notification_footnote">আল্লাহ আমাদেরকে এই সুমহান বাণীর উপর আমল করার তাওফিক দান করুন। ।।আমীন।।</string>
