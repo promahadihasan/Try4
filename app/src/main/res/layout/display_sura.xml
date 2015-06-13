@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/default_background">
+    android:background="@drawable/default_background"
+    android:orientation="vertical"
+    android:weightSum="5">
     <!--klkl-->
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_weight="4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        >
-        <TextView
-            android:textSize="30sp"
-            android:gravity="center"
-            android:text="Sura may be allocate"
+            >
+            <TextView
+                android:textSize="30sp"
+                android:gravity="center"
+                android:text="Sura may be allocate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_display_sura"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1">
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_display_sura"
-            />
-
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id">
+        </com.google.android.gms.ads.AdView>
     </LinearLayout>
-</ScrollView>
+
+</LinearLayout>

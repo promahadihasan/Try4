@@ -32,7 +32,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="12sp"
                     android:text="@string/about_developer"
                     android:id="@+id/about_developer" />
 
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/developer_head_line"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
                     android:layout_gravity="center"
                     android:textColor="#325C74"
                     android:paddingTop="5dp"

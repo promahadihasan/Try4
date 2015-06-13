@@ -52,13 +52,14 @@
     <string name="date_text_view">আজ  </string>
     <string name="ramadan">রমজান</string>
     <string name="shaban">শাবান</string>
-    <string name="hijri">১৪৩৬ হিজরী)</string>
+    <string name="hijri">1436 হিজরী)</string>
     <string name="district_name_all">জেলার সম্পূর্ণ সূচী</string>
     <string name="ramadan_month">রমজান</string>
     <string name="english_date">ইংরেজী</string>
     <string name="sehri_last">সেহরী</string>
     <string name="iftar">ইফতার</string>
     <string name="all_district_time_show_button">যে কোন জেলার সূচী দেখুন</string>
+`   <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
 
 

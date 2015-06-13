@@ -21,6 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.RadioButton;
@@ -36,6 +38,8 @@ import com.example.theoakteam.ramadanapp.DistrictActivity.InputForAllDistrictTim
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
 import com.example.theoakteam.ramadanapp.NotificationChallenging.NotifyingService;
 import com.example.theoakteam.ramadanapp.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -77,6 +81,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     private TimePickerDialog aTimePickerDialog;
     private int dateMinus;
     private RadioButton radioButton1;
+//    private int counter=0;
 
 
     private int pHourSeheri;
@@ -107,19 +112,34 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
             autoCompleteTextView.setAdapter(adapter);
 
-
         }
         else{
-
             setContentView(R.layout.activity_sehri_and_ifter_short_form);
             drawerHelper();
             sehriActivity();
 
         }
-
-
+//        counter++;
 
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        if(counter==1){
+//            autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view,
+//                                        int position, long id) {
+//                    InputMethodManager inputManager = (InputMethodManager)
+//                            getSystemService(Context.INPUT_METHOD_SERVICE);
+//                }
+//            });
+//        }
+//
+//    }
 
     private  void drawerHelper(){
     //below code use for drawer
@@ -337,6 +357,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
             sehriTime.setText(sehriTimeString + " am");
             iftarTime.setText(iftarTimeString + " pm");
+
+
             String alarmTimeSeheri = districtsTimeObject.calculateTime(sehriTimeString,"-60");
 
             hourForAlarmSeheri = "" + alarmTimeSeheri.charAt(0);
@@ -353,6 +375,9 @@ public class SehriAndIfterShortForm extends ActionBarActivity
                 TextView noteTextView = (TextView) findViewById(R.id.date_validity_check_note);
                 noteTextView.setText(getString(R.string.date_check_note));
             }
+//        AdView mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
 
 
 
@@ -480,13 +505,14 @@ void forNotificationservice(){
 }
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
         radioButton1 = (RadioButton) findViewById(R.id.first_ramadan);
 
         try{
-
-
-
-
             districtName = autoCompleteTextView.getText().toString();
             districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
 

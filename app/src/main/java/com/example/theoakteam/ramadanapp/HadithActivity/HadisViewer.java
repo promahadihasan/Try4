@@ -22,6 +22,8 @@ import android.widget.TextView;
 
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
 import com.example.theoakteam.ramadanapp.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 /**
  * Created by Sunny_PC on 6/3/2015.
@@ -34,6 +36,10 @@ public class HadisViewer extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_details);
+        AdView mAdView = (AdView) findViewById(R.id.adView1);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         Intent myIntent=getIntent();
 
         int i=Integer.parseInt(myIntent.getStringExtra("index"));
@@ -43,7 +49,12 @@ public class HadisViewer extends ActionBarActivity {
         noTextView=(TextView)findViewById(R.id.txtview_notification);
         noTextView.setText(hidithTitle_details[i] + "\n\n" + getString(R.string.quran_courtesy));
 
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
     }
 
     @Override

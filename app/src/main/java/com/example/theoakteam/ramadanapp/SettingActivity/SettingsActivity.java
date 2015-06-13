@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -24,6 +26,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import com.example.theoakteam.ramadanapp.DistrictActivity.DistrictsTimeClass;
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
@@ -90,6 +94,10 @@ public class SettingsActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         intilizationOfViews();
 //        tasbihInitialization();
@@ -303,6 +311,21 @@ public class SettingsActivity
         autoCompleteTextView.setAdapter(adapter);
         autoCompleteTextView.setSelection(autoCompleteTextView.getText().length());
 
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+            }
+        });
+
+
+
+
+
 //        autoCompleteTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 //
 //            @Override
@@ -326,12 +349,15 @@ public class SettingsActivity
     public void saveDistrict(View v){
         v.startAnimation(buttonClick);
 
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
         String districtName = autoCompleteTextView.getText().toString();
         districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
-        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+        if(districtsTimeObject.isDistrictPresent(districtName) && districtName.length()>0){
 
+            sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
 
-        if(districtsTimeObject.isDistrictPresent(districtName)){
             editor.putString("DefaultDistrictName",districtName);
             editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
             editor.commit();

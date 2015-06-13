@@ -1,6 +1,7 @@
     <!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent" android:layout_height="match_parent"
 tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.DrawerMainActivity">
 
@@ -132,7 +133,20 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                             android:id="@+id/alarmButton2"
                             android:alpha=".80"
                             android:onClick="alarmSet"/>
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textSize="15sp"-->
+                            <!--android:layout_marginLeft="10dp"-->
+                            <!--android:text="@string/iftar_remaining_note"-->
+                            <!--android:id="@+id/iftar_time_remaining"-->
+                        <!--/>-->
+
                         </LinearLayout>
+
+
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -172,8 +186,13 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
                         android:id="@+id/showAllDistrictButton" />
 
                 </LinearLayout>
+
+
+
             </LinearLayout>
+
         </ScrollView>
+
     </LinearLayout>
 </FrameLayout>
 

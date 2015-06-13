@@ -39,6 +39,7 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+
     }
 
     public void allDistrictShowTimeButton(View v){
