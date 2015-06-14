@@ -12,7 +12,7 @@
 <ScrollView
     android:layout_width="fill_parent"
     android:layout_height="0dp"
-    android:layout_weight="8">
+    android:layout_weight="7.85">
 
         <LinearLayout
             android:orientation="vertical"
@@ -36,7 +36,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.15"
         android:gravity="center">
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView1"

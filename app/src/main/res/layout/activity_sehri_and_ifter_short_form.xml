@@ -22,7 +22,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:layout_weight="8"
+        android:layout_weight="7.85"
         >
 
         <LinearLayout
@@ -196,7 +196,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.15"
         android:gravity="center">
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView1"
