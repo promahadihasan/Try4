@@ -24,11 +24,12 @@
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextView"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="Enter Your District in English"
             android:ems="18"
+            android:background="#a8daea"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"

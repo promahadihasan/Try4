@@ -518,10 +518,6 @@ protected Dialog onCreateDialog(int id) {
         radioButton1 = (RadioButton) findViewById(R.id.first_ramadan);
 
         try{
-
-
-
-
             districtName = autoCompleteTextView.getText().toString();
             districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
 
