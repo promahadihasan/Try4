@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/district_name_all"
-            android:padding="5dp"
+            android:padding="2dp"
             android:layout_gravity="center"
             android:id="@+id/districtNameTextView" />
 
@@ -29,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/columnNameLayout"
-            android:padding="10dp"
-            android:weightSum="4">
+            android:paddingRight="5dp"
+            android:weightSum="4.5">
 
             <TextView
                 android:layout_weight="1"
@@ -73,7 +73,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6.3"
+        android:layout_weight="6"
         android:id="@+id/scrollView" >
 
 

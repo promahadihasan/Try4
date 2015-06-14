@@ -133,46 +133,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
                 android:background="@drawable/added_button" />
         </LinearLayout>
 
-        <CheckBox
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_showthe"
-            android:id="@+id/checkBoxmain"
-            android:checked="true"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
 
-            />
-        />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-
-            android:paddingLeft="10dp"
-            android:id="@+id/notification_user_time"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_nottime"
-                android:paddingRight="3dp"
-                android:textSize="15sp"
-                android:textColor="#ffffff"
-
-                />
-            <Button
-                android:layout_marginLeft="150dp"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/bttimeshow"
-                android:text="@string/txt_time"
-                android:textSize="10sp">
-
-            </Button>
-
-        </LinearLayout>
 
 
 
