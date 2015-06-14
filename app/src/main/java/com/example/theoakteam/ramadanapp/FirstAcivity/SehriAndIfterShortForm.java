@@ -1,8 +1,10 @@
 package com.example.theoakteam.ramadanapp.FirstAcivity;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +13,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.provider.AlarmClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,8 +24,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.RadioButton;
@@ -36,10 +37,9 @@ import com.example.theoakteam.ramadanapp.DistrictActivity.DistrictsTimeClass;
 
 import com.example.theoakteam.ramadanapp.DistrictActivity.InputForAllDistrictTimeActivity;
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
+import com.example.theoakteam.ramadanapp.NotificationChallenging.AlarmReceiver;
 import com.example.theoakteam.ramadanapp.NotificationChallenging.NotifyingService;
 import com.example.theoakteam.ramadanapp.R;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -81,7 +81,6 @@ public class SehriAndIfterShortForm extends ActionBarActivity
     private TimePickerDialog aTimePickerDialog;
     private int dateMinus;
     private RadioButton radioButton1;
-//    private int counter=0;
 
 
     private int pHourSeheri;
@@ -112,34 +111,19 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
             autoCompleteTextView.setAdapter(adapter);
 
+
         }
         else{
+
             setContentView(R.layout.activity_sehri_and_ifter_short_form);
             drawerHelper();
             sehriActivity();
 
         }
-//        counter++;
+
+
 
     }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        if(counter==1){
-//            autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view,
-//                                        int position, long id) {
-//                    InputMethodManager inputManager = (InputMethodManager)
-//                            getSystemService(Context.INPUT_METHOD_SERVICE);
-//                }
-//            });
-//        }
-//
-//    }
 
     private  void drawerHelper(){
     //below code use for drawer
@@ -357,8 +341,6 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
             sehriTime.setText(sehriTimeString + " am");
             iftarTime.setText(iftarTimeString + " pm");
-
-
             String alarmTimeSeheri = districtsTimeObject.calculateTime(sehriTimeString,"-60");
 
             hourForAlarmSeheri = "" + alarmTimeSeheri.charAt(0);
@@ -375,9 +357,6 @@ public class SehriAndIfterShortForm extends ActionBarActivity
                 TextView noteTextView = (TextView) findViewById(R.id.date_validity_check_note);
                 noteTextView.setText(getString(R.string.date_check_note));
             }
-//        AdView mAdView = (AdView) findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
 
 
 
@@ -474,45 +453,70 @@ protected Dialog onCreateDialog(int id) {
 
         return ft.format(date).toString();
     }
-void forNotificationservice(){
 
-    //for background thread
-    final Calendar cal = Calendar.getInstance();
-    int nowHour	= cal.get(Calendar.HOUR_OF_DAY);
-    int nowMinute = cal.get(Calendar.MINUTE);
 
-  int   finalHour=18-nowHour;
-   int finalMinute=30-nowMinute;
-    if(finalMinute<0)
-    {
-        finalMinute+=60;
-        finalHour-=1;
+
+    private void setAlarm() {
+
+
+//        Calendar calNow = Calendar.getInstance();
+//        Calendar calSet = (Calendar) calNow.clone();
+//
+//        calSet.set(Calendar.HOUR_OF_DAY,2- calNow.HOUR_OF_DAY);
+//        calSet.set(Calendar.MINUTE, 15-calNow.MINUTE);
+//        calSet.set(Calendar.SECOND, 0);
+//        calSet.set(Calendar.MILLISECOND, 0);
+//
+//        if (calSet.compareTo(calNow) <= 0) {
+//            //Today Set time passed, count to tomorrow
+//            calSet.add(Calendar.DATE, 1);
+//        }
+        //for background thread
+        final Calendar cal = Calendar.getInstance();
+        int nowHour	= cal.get(Calendar.HOUR_OF_DAY);
+        int nowMinute = cal.get(Calendar.MINUTE);
+
+        int   finalHour=18-nowHour;
+        int  finalMinute=35-nowMinute;
+        if(finalMinute<0)
+        {
+            finalMinute+=60;
+            finalHour-=1;
+        }
+        if(finalHour<0)
+        {
+            finalHour+=24;
+        }
+        System.out.println("Final Minute=" + finalMinute);
+        System.out.println("Final Hour=" + finalHour);
+        finalMinute+=finalHour*60;
+        long finalMillSecond=finalMinute*60*1000;
+
+
+        // setRepeating takes a start delay and period between alarms as arguments.
+        // The below code fires after 15 seconds, and repeats every 15 seconds.  This is very
+        // useful for demonstration purposes, but horrendous for production.  Don't be that dev.
+//        alarmManager.setRepeating(alarmType, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
+//                FIFTEEN_SEC_MILLIS, pendingIntent);
+
+        // System.out.println(+calSet.getTimeInMillis()+" "+SystemClock.elapsedRealtime()+"="+SystemClock.elapsedRealtime()+calSet.getTimeInMillis());
+
+        Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 1, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime()+finalMillSecond,finalMillSecond, pendingIntent);
+
     }
-    if(finalHour<0)
-    {
-        finalHour+=24;
-    }
-    System.out.println("Final Minute=" + finalMinute);
-    System.out.println("Final Hour=" + finalHour);
-    finalMinute+=finalHour*60;
-    sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-    editor.putLong("finaltime", finalMinute);
-    editor.commit();
-    Intent serviceIntent=new Intent(getApplicationContext(),NotifyingService.class);
 
-    startService(serviceIntent);
-
-}
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
-        InputMethodManager inputManager = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                InputMethodManager.HIDE_NOT_ALWAYS);
         radioButton1 = (RadioButton) findViewById(R.id.first_ramadan);
 
         try{
+
+
+
+
             districtName = autoCompleteTextView.getText().toString();
             districtName = districtsTimeObject.removeEndSpace(districtName).toLowerCase();
 
@@ -535,7 +539,7 @@ void forNotificationservice(){
                 setContentView(R.layout.activity_sehri_and_ifter_short_form);
                 sehriActivity();
                 drawerHelper();
-                forNotificationservice();
+                setAlarm();
             }
             else{
 

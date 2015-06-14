@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment;
 import com.example.theoakteam.ramadanapp.R;
 import com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 /**
  * Created by Sunny_PC on 6/3/2015.
@@ -35,9 +37,11 @@ public class NotificationViewer extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_details);
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+        AdView mAdView = (AdView) findViewById(R.id.adView1);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
-
-
+System.out.println("Notification Viewer");
         i=sharedPreferences.getInt("indexofnotificaton",5)-1;
 
         notificationStringArray=getResources().getStringArray(R.array.notification_messages);

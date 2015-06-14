@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.theoakteam.ramadanapp.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 /**
  * Created by Sunny_PC on 6/3/2015.
@@ -26,7 +28,9 @@ public class DuaViewer extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_details);
         Intent myIntent=getIntent();
-
+        AdView mAdView = (AdView) findViewById(R.id.adView1);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         int i=Integer.parseInt(myIntent.getStringExtra("indexOfdua"));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getResources().getString(R.string.actionbar_color))));
