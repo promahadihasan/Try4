@@ -40,6 +40,8 @@ import com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDraw
 import com.example.theoakteam.ramadanapp.NotificationChallenging.AlarmReceiver;
 import com.example.theoakteam.ramadanapp.NotificationChallenging.NotifyingService;
 import com.example.theoakteam.ramadanapp.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -116,6 +118,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         else{
 
             setContentView(R.layout.activity_sehri_and_ifter_short_form);
+
+            AdView mAdView = (AdView) findViewById(R.id.adView1);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
             drawerHelper();
             sehriActivity();
 
@@ -316,7 +323,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         districtName = sharedPreferences.getString("DefaultDistrictName", "N/A");
         districtsTimeObject.setDateMinus(sharedPreferences.getInt("DateMinus",0));
         dateMinus = districtsTimeObject.getDateMinus();
-        String dateString = getDate();
+        String dateString = getDate(); //"25/12/2015";
         englishDate.setText(getResources().getString(R.string.date_text_view) + " " + dateString);
 
         if(districtsTimeObject.isDateValid(dateString)){
@@ -353,8 +360,8 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
             }
             else{
-
-                TextView noteTextView = (TextView) findViewById(R.id.date_validity_check_note);
+            sehriNote.setText(districtName.substring(0, 1).toUpperCase() + districtName.substring(1) + "  " + getText(R.string.sehri_iftar_first_note));
+            TextView noteTextView = (TextView) findViewById(R.id.date_validity_check_note);
                 noteTextView.setText(getString(R.string.date_check_note));
             }
 

@@ -16,6 +16,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.example.theoakteam.ramadanapp.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 //h
 public class InputForAllDistrictTimeActivity extends ActionBarActivity {
 
@@ -29,6 +32,10 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_for_all_district_time);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView1);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         String[] districts = getResources().getStringArray(R.array.list_of_districts);
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);

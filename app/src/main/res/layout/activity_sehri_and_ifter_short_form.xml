@@ -1,7 +1,7 @@
     <!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
+xmlns:ads="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent" android:layout_height="match_parent"
 tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.DrawerMainActivity">
 
@@ -10,207 +10,223 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
 <FrameLayout android:id="@+id/container" android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="9"
+    android:orientation="vertical"
+    android:background="@drawable/default_background"
+    tools:context="com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_weight="8"
+        >
 
-        android:orientation="vertical"
-        android:background="@drawable/default_background"
-        tools:context="com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm">
-
-        <ScrollView
+        <LinearLayout
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:weightSum="5"
             >
 
             <LinearLayout
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".90"
                 android:gravity="center"
-                android:weightSum="5"
-                >
+                android:id="@+id/dateLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_text_view"
+                    android:textSize="20sp"
+                    android:id="@+id/dateEnglishTextView" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arabic_date"
+                    android:textSize="15sp"
+                    android:id="@+id/arabicTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_below="@id/dateLayout"
+                android:layout_marginTop="12dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="@string/district_name_note_check"
+                    android:id="@+id/sehri_iftar_initial_note"
+                    android:clickable="true"
+                    android:onClick="DialogeForSeheriChange"
+                    />
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".70"
-                    android:gravity="center"
-                    android:id="@+id/dateLayout">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/date_text_view"
-                        android:textSize="20sp"
-                        android:id="@+id/dateEnglishTextView" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/arabic_date"
-                        android:textSize="15sp"
-                        android:id="@+id/arabicTextView"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_below="@id/dateLayout"
-                    android:layout_marginTop="12dp"
-                    android:layout_weight="2.6">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="@string/district_name_note_check"
-                        android:id="@+id/sehri_iftar_initial_note"
-                        android:clickable="true"
-                        android:onClick="DialogeForSeheriChange"
-                        />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="25sp"
-                            android:text="0:00"
-                            android:id="@+id/sehriTextView"
-                            android:layout_below="@+id/sehri_iftar_initial_note"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true" />
-       <Space
-       android:layout_width="40dp"
-       android:layout_height="1dp" />
-                        <ImageButton
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/ic_alarm_clock"
-                            android:id="@+id/alarmButton"
-                            android:alpha=".80"
-                            android:onClick="alarmSet"/>
-
-
-                    </LinearLayout>
-
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ifter_time_note"
-                        android:id="@+id/iftarTimeNoteTextView"
-                        android:textSize="18sp"
-                        android:layout_below="@+id/sehriTextView" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="25sp"
                         android:text="0:00"
-                        android:id="@+id/iftarTextView"
-                        android:layout_below="@+id/iftarTimeNoteTextView" />
-                        <Space
-                            android:layout_width="40dp"
-                            android:layout_height="1dp" />
-                        <ImageButton
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/ic_alarm_clock"
-                            android:id="@+id/alarmButton2"
-                            android:alpha=".80"
-                            android:onClick="alarmSet"/>
+                        android:id="@+id/sehriTextView"
+                        android:layout_below="@+id/sehri_iftar_initial_note"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+   <Space
+   android:layout_width="40dp"
+   android:layout_height="1dp" />
+                    <ImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_alarm_clock"
+                        android:id="@+id/alarmButton"
+                        android:alpha=".80"
+                        android:onClick="alarmSet"/>
 
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:textSize="15sp"-->
-                            <!--android:layout_marginLeft="10dp"-->
-                            <!--android:text="@string/iftar_remaining_note"-->
-                            <!--android:id="@+id/iftar_time_remaining"-->
-                        <!--/>-->
-
-                        </LinearLayout>
-
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/date_validity_check_note"
-                        android:layout_weight=".3"
-                        android:layout_marginTop="10dp"/>
 
                 </LinearLayout>
 
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ifter_time_note"
+                    android:id="@+id/iftarTimeNoteTextView"
+                    android:textSize="18sp"
+                    android:layout_below="@+id/sehriTextView" />
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:gravity="center"
-                    android:layout_weight="1.4"
-                    android:padding="5dp">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="0:00"
+                    android:id="@+id/iftarTextView"
+                    android:layout_below="@+id/iftarTimeNoteTextView" />
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="1dp" />
+                    <ImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_alarm_clock"
+                        android:id="@+id/alarmButton2"
+                        android:alpha=".80"
+                        android:onClick="alarmSet"/>
 
-                    <Button
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        android:textSize="20sp"
-                        android:text="@string/sehri_button_view"
-                        android:id="@+id/fullTimeShowButton"
-                        android:background="@drawable/added_button"
-                        android:alpha="0.8"
-                        android:onClick="showFullTime"/>
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textSize="15sp"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:text="@string/iftar_remaining_note"-->
+                        <!--android:id="@+id/iftar_time_remaining"-->
+                    <!--/>-->
+
+                    </LinearLayout>
 
 
-                    <Button
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        android:textSize="20sp"
-                        android:text="@string/all_district_time_show_button"
-                        android:background="@drawable/added_button"
-                        android:alpha="0.8"
-                        android:onClick="showAllDistrict"
-                        android:id="@+id/showAllDistrictButton" />
 
-                </LinearLayout>
-
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/date_validity_check_note"
+                    android:layout_weight=".3"
+                    android:layout_marginTop="10dp"/>
 
             </LinearLayout>
 
-        </ScrollView>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:layout_weight="1.1">
 
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:textSize="20sp"
+                    android:text="@string/sehri_button_view"
+                    android:id="@+id/fullTimeShowButton"
+                    android:background="@drawable/added_button"
+                    android:alpha="0.8"
+                    android:onClick="showFullTime"/>
+
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:textSize="20sp"
+                    android:text="@string/all_district_time_show_button"
+                    android:background="@drawable/added_button"
+                    android:alpha="0.8"
+                    android:onClick="showAllDistrict"
+                    android:id="@+id/showAllDistrictButton" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id">
+        </com.google.android.gms.ads.AdView>
     </LinearLayout>
+
+</LinearLayout>
 </FrameLayout>
 
 <!-- android:layout_gravity="start" tells DrawerLayout to treat
-     this as a sliding drawer on the left side for left-to-right
-     languages and on the right side for right-to-left languages.
-     If you're not building against API 17 or higher, use
-     android:layout_gravity="left" instead. -->
+ this as a sliding drawer on the left side for left-to-right
+ languages and on the right side for right-to-left languages.
+ If you're not building against API 17 or higher, use
+ android:layout_gravity="left" instead. -->
 <!-- The drawer is given a fixed width in dp and extends the full height of
-     the container. -->
+ the container. -->
 <fragment android:id="@+id/navigation_drawer"
-    android:layout_width="@dimen/navigation_drawer_width"
-    android:layout_height="wrap_content"
-    android:layout_gravity="start"
-    android:name="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment"
-    tools:layout="@layout/fragment_navigation_drawer"
+android:layout_width="@dimen/navigation_drawer_width"
+android:layout_height="wrap_content"
+android:layout_gravity="start"
+android:name="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment"
+tools:layout="@layout/fragment_navigation_drawer"
 
-    />
+/>
 
 </android.support.v4.widget.DrawerLayout>
 

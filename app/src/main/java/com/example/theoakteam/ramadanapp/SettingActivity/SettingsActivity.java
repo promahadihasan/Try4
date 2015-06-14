@@ -95,7 +95,7 @@ public class SettingsActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdView mAdView = (AdView) findViewById(R.id.adViewSettings);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
