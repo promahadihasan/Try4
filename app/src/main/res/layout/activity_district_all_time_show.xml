@@ -30,6 +30,7 @@
             android:layout_height="match_parent"
             android:id="@+id/columnNameLayout"
             android:paddingRight="5dp"
+            android:gravity="center"
             android:weightSum="4.5">
 
             <TextView

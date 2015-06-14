@@ -18,7 +18,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
     <ScrollView
     android:layout_width="fill_parent"
     android:layout_height="0dp"
-    android:layout_weight="8">
+    android:layout_weight="7">
 
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
@@ -151,7 +151,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center">
         <com.google.android.gms.ads.AdView
             android:id="@+id/adViewSettings"
