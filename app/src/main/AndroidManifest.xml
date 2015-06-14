@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.theoakteam.ramadanapp" >
+    package="theoaktroop.appoframadan" >
 
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" >
     </uses-permission>
@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashActivity.MainSplashScreen"
+            android:name="theoaktroop.appoframadan.SplashActivity.MainSplashScreen"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,25 +25,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FirstAcivity.SehriAndIfterShortForm"
+            android:name="theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm"
             android:label="@string/title_activity_sehri_and_ifter_short_form" />
         <activity
-            android:name=".TasbhiActivity.TasbhiActivity1"
+            android:name="theoaktroop.appoframadan.TasbhiActivity.TasbhiActivity1"
             android:label="@string/title_activity_tasbih" >
         </activity>
         <activity
-            android:name=".SettingActivity.SettingsActivity"
+            android:name="theoaktroop.appoframadan.SettingActivity.SettingsActivity"
             android:label="@string/title_settings"
 
             android:windowSoftInputMode="stateHidden"
             />
 
-        <service android:name=".NotificationChallenging.NotifyingService" />
+        <service android:name="theoaktroop.appoframadan.NotificationChallenging.NotifyingService" />
 
         <activity
-            android:name=".DistrictActivity.DistrictAllTimeShow"
+            android:name="theoaktroop.appoframadan.DistrictActivity.DistrictAllTimeShow"
             android:label="@string/title_activity_district_all_time_show"
-            android:parentActivityName=".FirstAcivity.SehriAndIfterShortForm" >
+            android:parentActivityName="theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm" >
             <meta-data
                 android:name="android:parentActivityName"
                 android:value=".FirstAcivity.SehriAndIfterShortForm" />
@@ -51,17 +51,17 @@
 
         </activity>
         <activity
-            android:name=".NotificationChallenging.NotificationViewer"
+            android:name="theoaktroop.appoframadan.NotificationChallenging.NotificationViewer"
             android:label="@string/title_notification" >
         </activity>
         <activity
-            android:name=".HadithActivity.HadithTitleClass"
+            android:name="theoaktroop.appoframadan.HadithActivity.HadithTitleClass"
             android:autoRemoveFromRecents="true"
             android:label="@string/title_activity_hadith" />
         <activity
-            android:name=".HadithActivity.HadisViewer"
+            android:name="theoaktroop.appoframadan.HadithActivity.HadisViewer"
             android:label="@string/title_activity_hadith"
-            android:parentActivityName=".HadithActivity.HadithTitleClass" >
+            android:parentActivityName="theoaktroop.appoframadan.HadithActivity.HadithTitleClass" >
             <meta-data
                 android:name="android:parentActivityName"
                 android:value=".HadithActivity.HadithTitleClass" />
@@ -69,12 +69,12 @@
 
         </activity>
         <activity
-            android:name=".MasalaActivity.MasalaTitleClass"
+            android:name="theoaktroop.appoframadan.MasalaActivity.MasalaTitleClass"
             android:label="@string/title_activity_masala" />
         <activity
-            android:name=".MasalaActivity.MasalaViewer"
+            android:name="theoaktroop.appoframadan.MasalaActivity.MasalaViewer"
             android:label="@string/title_activity_masala"
-            android:parentActivityName=".MasalaActivity.MasalaTitleClass" >
+            android:parentActivityName="theoaktroop.appoframadan.MasalaActivity.MasalaTitleClass" >
             <meta-data
                 android:name="android:parentActivityName"
                 android:value=".MasalaActivity.MasalaTitleClass" />
@@ -83,12 +83,12 @@
         </activity>
 
         <activity
-            android:name=".EattingHabitActivity.EattingHabitTitleClass"
+            android:name="theoaktroop.appoframadan.EattingHabitActivity.EattingHabitTitleClass"
             android:label="@string/title_activity_food_habit" />
         <activity
-            android:name=".EattingHabitActivity.EattingHabitViewer"
+            android:name="theoaktroop.appoframadan.EattingHabitActivity.EattingHabitViewer"
             android:label="@string/title_activity_food_habit"
-            android:parentActivityName=".EattingHabitActivity.EattingHabitTitleClass" >
+            android:parentActivityName="theoaktroop.appoframadan.EattingHabitActivity.EattingHabitTitleClass" >
             <meta-data
                 android:name="android:parentActivityName"
                 android:value=".EattingHabitActivity.EattingHabitTitleClass" />
@@ -96,17 +96,17 @@
 
         </activity>
 
-        <activity android:name=".About.AboutUsActivity"
+        <activity android:name="theoaktroop.appoframadan.About.AboutUsActivity"
 
-            android:parentActivityName=".FirstAcivity.SehriAndIfterShortForm" >
+            android:parentActivityName="theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm" >
             <meta-data
                 android:name="android:parentActivityName"
                 android:value=".FirstAcivity.SehriAndIfterShortForm" />
 
 
         </activity>
-        <activity android:name=".DistrictActivity.InputForAllDistrictTimeActivity"
-            android:parentActivityName=".FirstAcivity.SehriAndIfterShortForm" >
+        <activity android:name="theoaktroop.appoframadan.DistrictActivity.InputForAllDistrictTimeActivity"
+            android:parentActivityName="theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm" >
             <meta-data
                 android:name="android:parentActivityName"
                 android:value=".FirstAcivity.SehriAndIfterShortForm" />
@@ -114,9 +114,9 @@
 
         </activity>
 
-        <activity android:name=".DuaDorutActivity.DuaTitleClass"></activity>
-        <activity android:name=".DuaDorutActivity.DuaViewer"
-            android:parentActivityName=".DuaDorutActivity.DuaTitleClass" >
+        <activity android:name="theoaktroop.appoframadan.DuaDorutActivity.DuaTitleClass"></activity>
+        <activity android:name="theoaktroop.appoframadan.DuaDorutActivity.DuaViewer"
+            android:parentActivityName="theoaktroop.appoframadan.DuaDorutActivity.DuaTitleClass" >
             <meta-data
                 android:name="android:parentActivityName"
                 android:value=".DuaDorutActivity.DuaTitleClass" />

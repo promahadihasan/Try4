@@ -7,4 +7,4 @@
     android:dividerHeight="0dp"
     android:background="#cc1584cc"
 
-    tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment" />
+    tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.NavigationDrawerFragment" />

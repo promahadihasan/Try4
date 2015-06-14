@@ -3,7 +3,7 @@
 xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout"
 xmlns:ads="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent" android:layout_height="match_parent"
-tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.DrawerMainActivity">
+tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActivity">
 
 <!-- As the main content view, the view below consumes the entire
      space available using match_parent in both dimensions. -->
@@ -16,7 +16,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
     android:weightSum="9"
     android:orientation="vertical"
     android:background="@drawable/default_background"
-    tools:context="com.example.theoakteam.ramadanapp.FirstAcivity.SehriAndIfterShortForm">
+    tools:context="theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -223,7 +223,7 @@ tools:context="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.Drawer
 android:layout_width="@dimen/navigation_drawer_width"
 android:layout_height="wrap_content"
 android:layout_gravity="start"
-android:name="com.example.theoakteam.ramadanapp.NavigationDrawerActivity.NavigationDrawerFragment"
+android:name="theoaktroop.appoframadan.NavigationDrawerActivity.NavigationDrawerFragment"
 tools:layout="@layout/fragment_navigation_drawer"
 
 />
