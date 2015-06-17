@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -55,7 +56,7 @@ public class TasbhiActivity1
     String DEFAULT;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-
+private int flagForOrientation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -204,8 +205,26 @@ public class TasbhiActivity1
 
            editor.putString("tasbihCounter", currentCounter.toString());
            editor.commit();
+        int ot = getResources().getConfiguration().orientation;
+        if(ot== Configuration.ORIENTATION_LANDSCAPE){
+            editor.putInt("flagO",1);
+            editor.commit();
 
-        finish();
+        }
+        else if(ot==Configuration.ORIENTATION_PORTRAIT && sharedPreferences.getInt("flagO",0)!=0) {
+            editor.putInt("flagO",0);
+            editor.commit();
+        }
+
+       else if(ot==Configuration.ORIENTATION_PORTRAIT && sharedPreferences.getInt("flagO",0)==0)
+        {
+         finish();
+
+        }
+
+
+
+
     }
 
     @Override

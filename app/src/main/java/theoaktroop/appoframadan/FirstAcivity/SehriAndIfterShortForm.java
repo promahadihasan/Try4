@@ -12,6 +12,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.AlarmClock;
@@ -26,6 +29,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -128,10 +132,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         else{
 
             setContentView(R.layout.activity_sehri_and_ifter_short_form);
-
-            AdView mAdView = (AdView) findViewById(R.id.adView1);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+            addVisibile();
 
             drawerHelper();
             sehriActivity();
@@ -141,6 +142,23 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
 
     }
+
+    private void addVisibile() {
+
+        LinearLayout adLinearLayout=(LinearLayout)findViewById(R.id.addViewSe);
+        if(isNetworkAvailable()) {
+           adLinearLayout.setVisibility(View.VISIBLE);
+            AdView mAdView;
+            mAdView = (AdView) findViewById(R.id.adView1);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+        else {
+           adLinearLayout.setVisibility(View.GONE);
+        }
+    }
+
+
 
     private  void drawerHelper(){
     //below code use for drawer
@@ -471,45 +489,6 @@ protected Dialog onCreateDialog(int id) {
         return ft.format(date).toString();
     }
 
-private void setAlarmAtFirstTime()
-{
-    sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-    int chcheckBoxcheck=sharedPreferences.getInt("checkbox",1);
-
-
-    boolean onOff=sharedPreferences.getBoolean("on",true);
-   if( !sharedPreferences.contains("indexofnotificaton")) {
-       editor = sharedPreferences.edit();
-       editor.putInt("indexofnotificaton", 0);
-       editor.commit();
-   }
-    NotificationModule notificationModule=new NotificationModule();
-
-    notificationModule.sethOur(18);
-    notificationModule.setmUnites(29);
-    long timeMillisecond=notificationModule.getTimeMilliseceond();
-
-
-    Context context=getBaseContext();
-    AlarmManager alarmManager=(AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-    Intent intent = new Intent(context, AlarmReceiver.class);
-    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
-
-    if(chcheckBoxcheck==1) {
-        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() +timeMillisecond,timeMillisecond*2 , pendingIntent);
-        System.out.println("Alarm Manager start");
-    }
-
-if(chcheckBoxcheck==0)
-{
-    alarmManager.cancel(pendingIntent);
-    System.out.println("Alarm Manager Cancel");
-
-}
-
-
-
-}
     @Override
     protected void onPostResume() {
         super.onPostResume();
@@ -521,17 +500,55 @@ if(chcheckBoxcheck==0)
         if(!flagString.equals(DEFAULT)) {
             ActionBar actionBar = getSupportActionBar();
             actionBar.setTitle(getString(R.string.title_activity_sehri_and_ifter_short_form));
+            addVisibile();
             sehriActivity();
+            setAlarmAtFirstTime();
+        }
+    }
 
+    private void setAlarmAtFirstTime()
+    {
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+        int chcheckBoxcheck=sharedPreferences.getInt("checkbox",1);
+
+
+        boolean onOff=sharedPreferences.getBoolean("on",true);
+        if( !sharedPreferences.contains("indexofnotificaton")) {
+            editor = sharedPreferences.edit();
+            editor.putInt("indexofnotificaton", 0);
+            editor.commit();
+        }
+        NotificationModule notificationModule=new NotificationModule();
+
+        notificationModule.sethOur(1);
+        notificationModule.setmUnites(35);
+        long timeMillisecond=notificationModule.getTimeMilliseceond();
+
+
+        Context context=getBaseContext();
+        AlarmManager alarmManager=(AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
+
+        if(chcheckBoxcheck==1 && onOff!=true) {
+            editor = sharedPreferences.edit();
+            editor.putBoolean("on",true);
+            editor.commit();
+            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + timeMillisecond, timeMillisecond * 2, pendingIntent);
+            System.out.println("Alarm Manager start");
         }
 
+      else  if(chcheckBoxcheck==0)
+        {
+            alarmManager.cancel(pendingIntent);
+            System.out.println("Alarm Manager Cancel");
 
-
+        }
+       else System.out.println("From alarm manager");
 
 
 
     }
-
 
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
@@ -553,6 +570,7 @@ if(chcheckBoxcheck==0)
                     editor.putInt("DateMinus",1);
                 }
                 editor.putInt("checkbox",1);
+                editor.putBoolean("on",false);
                 editor.commit();
                 Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
 
@@ -578,7 +596,12 @@ if(chcheckBoxcheck==0)
     }
 
 
-
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 }
 

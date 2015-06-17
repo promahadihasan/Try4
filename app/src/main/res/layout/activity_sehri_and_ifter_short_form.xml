@@ -22,7 +22,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:layout_weight="7.85"
+        android:layout_weight="9"
         >
 
         <LinearLayout
@@ -194,9 +194,10 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
     </ScrollView>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/addViewSe"
         android:gravity="center">
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView1"
@@ -205,6 +206,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             ads:adSize="BANNER"
+            android:layout_gravity="bottom"
             ads:adUnitId="@string/banner_ad_unit_id">
         </com.google.android.gms.ads.AdView>
     </LinearLayout>

@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
@@ -170,6 +171,7 @@ public class SettingsActivity
         checkBoxUser.setChecked(true);
 
         editor.putInt("checkbox", 1);
+        editor.putBoolean("on",false);
         editor.commit();
 
 
@@ -382,8 +384,25 @@ public class SettingsActivity
     protected void onPause() {
         super.onPause();
 
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
 
-        finish();
+        editor=sharedPreferences.edit();
+        int ot = getResources().getConfiguration().orientation;
+        if(ot== Configuration.ORIENTATION_LANDSCAPE){
+            editor.putInt("flagOS",1);
+            editor.commit();
+
+        }
+        else if(ot==Configuration.ORIENTATION_PORTRAIT && sharedPreferences.getInt("flagOS",0)!=0) {
+            editor.putInt("flagOS",0);
+            editor.commit();
+        }
+
+        else if(ot==Configuration.ORIENTATION_PORTRAIT && sharedPreferences.getInt("flagOS",0)==0)
+        {
+            finish();
+
+        }
 
     }
 
