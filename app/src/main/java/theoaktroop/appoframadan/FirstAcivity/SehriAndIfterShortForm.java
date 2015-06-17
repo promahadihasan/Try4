@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import theoaktroop.appoframadan.NotificationChallenging.NotificationModule;
 import theoaktroop.appoframadan.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -59,7 +60,18 @@ public class SehriAndIfterShortForm extends ActionBarActivity
      */
     private CharSequence mTitle;
     //upper code need for Drawer
-  private   Intent alarmIntent;
+  public    Intent alarmIntent;
+  public   AlarmManager alarmManager;
+
+    public AlarmManager getAlarmManager() {
+
+        return alarmManager;
+    }
+
+    public void setAlarmManager(AlarmManager alarmManager) {
+        this.alarmManager = alarmManager;
+    }
+
     String DEFAULT = "N/A";
     String districtName;
     SharedPreferences sharedPreferences;
@@ -459,59 +471,67 @@ protected Dialog onCreateDialog(int id) {
         return ft.format(date).toString();
     }
 
+private void setAlarmAtFirstTime()
+{
+    sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+    int chcheckBoxcheck=sharedPreferences.getInt("checkbox",1);
 
 
-    private void setAlarm() {
+    boolean onOff=sharedPreferences.getBoolean("on",true);
+   if( !sharedPreferences.contains("indexofnotificaton")) {
+       editor = sharedPreferences.edit();
+       editor.putInt("indexofnotificaton", 0);
+       editor.commit();
+   }
+    NotificationModule notificationModule=new NotificationModule();
+
+    notificationModule.sethOur(18);
+    notificationModule.setmUnites(29);
+    long timeMillisecond=notificationModule.getTimeMilliseceond();
 
 
-//        Calendar calNow = Calendar.getInstance();
-//        Calendar calSet = (Calendar) calNow.clone();
-//
-//        calSet.set(Calendar.HOUR_OF_DAY,2- calNow.HOUR_OF_DAY);
-//        calSet.set(Calendar.MINUTE, 15-calNow.MINUTE);
-//        calSet.set(Calendar.SECOND, 0);
-//        calSet.set(Calendar.MILLISECOND, 0);
-//
-//        if (calSet.compareTo(calNow) <= 0) {
-//            //Today Set time passed, count to tomorrow
-//            calSet.add(Calendar.DATE, 1);
-//        }
-        //for background thread
-        final Calendar cal = Calendar.getInstance();
-        int nowHour	= cal.get(Calendar.HOUR_OF_DAY);
-        int nowMinute = cal.get(Calendar.MINUTE);
+    Context context=getBaseContext();
+    AlarmManager alarmManager=(AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+    Intent intent = new Intent(context, AlarmReceiver.class);
+    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
 
-        int   finalHour=18-nowHour;
-        int  finalMinute=35-nowMinute;
-        if(finalMinute<0)
-        {
-            finalMinute+=60;
-            finalHour-=1;
+    if(chcheckBoxcheck==1) {
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() +timeMillisecond,timeMillisecond*2 , pendingIntent);
+        System.out.println("Alarm Manager start");
+    }
+
+if(chcheckBoxcheck==0)
+{
+    alarmManager.cancel(pendingIntent);
+    System.out.println("Alarm Manager Cancel");
+
+}
+
+
+
+}
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+
+        String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
+        if(!flagString.equals(DEFAULT)) {
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setTitle(getString(R.string.title_activity_sehri_and_ifter_short_form));
+            sehriActivity();
+
         }
-        if(finalHour<0)
-        {
-            finalHour+=24;
-        }
-        System.out.println("Final Minute=" + finalMinute);
-        System.out.println("Final Hour=" + finalHour);
-        finalMinute+=finalHour*60;
-        long finalMillSecond=finalMinute*60*1000;
 
 
-        // setRepeating takes a start delay and period between alarms as arguments.
-        // The below code fires after 15 seconds, and repeats every 15 seconds.  This is very
-        // useful for demonstration purposes, but horrendous for production.  Don't be that dev.
-//        alarmManager.setRepeating(alarmType, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
-//                FIFTEEN_SEC_MILLIS, pendingIntent);
 
-        // System.out.println(+calSet.getTimeInMillis()+" "+SystemClock.elapsedRealtime()+"="+SystemClock.elapsedRealtime()+calSet.getTimeInMillis());
 
-        Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 1, intent, 0);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime()+finalMillSecond,finalMillSecond, pendingIntent);
+
 
     }
+
 
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
@@ -532,7 +552,7 @@ protected Dialog onCreateDialog(int id) {
                 else {
                     editor.putInt("DateMinus",1);
                 }
-
+                editor.putInt("checkbox",1);
                 editor.commit();
                 Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
 
@@ -540,7 +560,7 @@ protected Dialog onCreateDialog(int id) {
                 setContentView(R.layout.activity_sehri_and_ifter_short_form);
                 sehriActivity();
                 drawerHelper();
-                setAlarm();
+                setAlarmAtFirstTime();
             }
             else{
 
@@ -559,19 +579,6 @@ protected Dialog onCreateDialog(int id) {
 
 
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
 
-
-        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-
-        String flagString = sharedPreferences.getString("DistrictInputFlag", DEFAULT);
-        if(!flagString.equals(DEFAULT)) {
-            ActionBar actionBar = getSupportActionBar();
-            actionBar.setTitle(getString(R.string.title_activity_sehri_and_ifter_short_form));
-            sehriActivity();
-        }
-    }
 }
 

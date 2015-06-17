@@ -135,6 +135,18 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
 
 
 
+        <CheckBox
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_showthe"
+            android:id="@+id/checkBoxmain"
+            android:checked="true"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+
+            />
+
 
 
 

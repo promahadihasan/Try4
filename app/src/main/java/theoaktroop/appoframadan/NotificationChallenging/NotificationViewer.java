@@ -33,8 +33,8 @@ public class NotificationViewer extends ActionBarActivity
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-System.out.println("Notification Viewer");
-        i=sharedPreferences.getInt("indexofnotificaton",5)-1;
+       System.out.println("Notification Viewer");
+        i=sharedPreferences.getInt("indexofnotificaton",1);
 
         notificationStringArray=getResources().getStringArray(R.array.notification_messages);
         noTextView=(TextView)findViewById(R.id.txtview_notification);
