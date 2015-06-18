@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="7"
+    android:weightSum="4"
     android:background="@drawable/default_background">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="3"
         android:gravity="center"
         android:padding="10dp">
 
@@ -38,47 +38,47 @@
             <requestFocus />
         </AutoCompleteTextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:orientation="vertical"
-            >
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="20dp"-->
+            <!--android:orientation="vertical"-->
+            <!-->-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/radio_group_note"
-                android:textSize="20sp" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:text="@string/radio_group_note"-->
+                <!--android:textSize="20sp" />-->
 
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="6"
-                android:id="@+id/radio_group"
-                android:orientation="horizontal">
+            <!--<RadioGroup-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:weightSum="6"-->
+                <!--android:id="@+id/radio_group"-->
+                <!--android:orientation="horizontal">-->
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ramadan1"
-                    android:textSize="17sp"
-                    android:layout_weight="1"
-                    android:id="@+id/first_ramadan"/>
+                <!--<RadioButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/ramadan1"-->
+                    <!--android:textSize="17sp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:id="@+id/first_ramadan"/>-->
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ramadan2"
-                    android:textSize="17sp"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:id="@+id/second_ramadan" />
+                <!--<RadioButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/ramadan2"-->
+                    <!--android:textSize="17sp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:checked="true"-->
+                    <!--android:id="@+id/second_ramadan" />-->
 
-            </RadioGroup>
+            <!--</RadioGroup>-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
 
         <Button

@@ -11,6 +11,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
@@ -41,6 +43,16 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
         allDistrictAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.allDistrictAutoCompleteTextView);
         allDistrictAutoCompleteTextView.setAdapter(adapter);
+
+        allDistrictAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+            }
+        });
+
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -52,7 +64,7 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
     public void allDistrictShowTimeButton(View v){
         v.startAnimation(buttonClick);
         String tempDistrict;
-        int dateMinus = sharedPreferences.getInt("DateMinus",0);
+        int dateMinus = sharedPreferences.getInt("DateMinus",1);
 
         try{
 

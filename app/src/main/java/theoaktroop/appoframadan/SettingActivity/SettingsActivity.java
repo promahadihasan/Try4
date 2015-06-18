@@ -75,8 +75,8 @@ public class SettingsActivity
     private LinearLayout userTimeLayout;
     boolean makeSureButtonCheckhed=false;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.002F);
-    private RadioButton radio1;
-    private RadioButton radio2;
+//    private RadioButton radio1;
+//    private RadioButton radio2;
 
 //    private EditText tasbihEditText;
     private AutoCompleteTextView autoCompleteTextView;
@@ -177,20 +177,20 @@ public class SettingsActivity
 
     }
 
-    public void saveRadioButton(View view){
-        view.startAnimation(buttonClick);
-
-        if(radio1.isChecked()){
-            editor.putInt("DateMinus",0);
-        }
-        else{
-            editor.putInt("DateMinus",1);
-        }
-        editor.commit();
-
-        Toast.makeText(getApplicationContext(), "Saved succesfully!", Toast.LENGTH_SHORT).show();
-
-    }
+//    public void saveRadioButton(View view){
+//        view.startAnimation(buttonClick);
+//
+//        if(radio1.isChecked()){
+//            editor.putInt("DateMinus",0);
+//        }
+//        else{
+//            editor.putInt("DateMinus",1);
+//        }
+//        editor.commit();
+//
+//        Toast.makeText(getApplicationContext(), "Saved succesfully!", Toast.LENGTH_SHORT).show();
+//
+//    }
 
 
     @Override
@@ -338,6 +338,7 @@ public class SettingsActivity
             editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
             editor.commit();
             Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
+            finish();
         }
         else{
             Toast.makeText(getApplicationContext(),"Your District name is not correct!",Toast.LENGTH_LONG).show();
@@ -362,17 +363,17 @@ public class SettingsActivity
 //        tasbihButton = (Button) findViewById(R.id.tasbihCounterButton);
         districtButton = (Button) findViewById(R.id.districtButton);
 
-        radio1 = (RadioButton) findViewById(R.id.first_ramadan);
-        radio2 = (RadioButton) findViewById(R.id.second_ramadan);
+//        radio1 = (RadioButton) findViewById(R.id.first_ramadan);
+//        radio2 = (RadioButton) findViewById(R.id.second_ramadan);
 
-        if(sharedPreferences.getInt("DateMinus",1)==0){
-            radio1.setChecked(true);
-            radio2.setChecked(false);
-        }
-        else {
-            radio2.setChecked(true);
-            radio1.setChecked(false);
-        }
+//        if(sharedPreferences.getInt("DateMinus",1)==0){
+//            radio1.setChecked(true);
+//            radio2.setChecked(false);
+//        }
+//        else {
+//            radio2.setChecked(true);
+//            radio1.setChecked(false);
+//        }
 
 
     }

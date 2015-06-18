@@ -27,6 +27,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
@@ -126,6 +128,15 @@ public class SehriAndIfterShortForm extends ActionBarActivity
             ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
             autoCompleteTextView.setAdapter(adapter);
+
+            autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                }
+            });
 
 
         }
@@ -349,7 +360,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
         String sehriTimeString;
 
         districtName = sharedPreferences.getString("DefaultDistrictName", "N/A");
-        districtsTimeObject.setDateMinus(sharedPreferences.getInt("DateMinus",0));
+        districtsTimeObject.setDateMinus(sharedPreferences.getInt("DateMinus",1));
         dateMinus = districtsTimeObject.getDateMinus();
         String dateString = getDate(); //"25/12/2015";
         englishDate.setText(getResources().getString(R.string.date_text_view) + " " + dateString);
@@ -552,7 +563,7 @@ protected Dialog onCreateDialog(int id) {
 
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
-        radioButton1 = (RadioButton) findViewById(R.id.first_ramadan);
+//        radioButton1 = (RadioButton) findViewById(R.id.first_ramadan);
 
         try{
             districtName = autoCompleteTextView.getText().toString();
@@ -562,17 +573,19 @@ protected Dialog onCreateDialog(int id) {
                 editor.putString("DefaultDistrictName", districtName);
                 editor.putString("DistrictTime", districtsTimeObject.getDistrictPlusMinusTime(districtName));
                 editor.putString("DistrictInputFlag", "true");
-
-                if(radioButton1.isChecked()){
-                    editor.putInt("DateMinus",0);
-                }
-                else {
-                    editor.putInt("DateMinus",1);
-                }
-                editor.putInt("checkbox",1);
-                editor.putBoolean("on",false);
+                editor.putInt("DateMinus",1);
                 editor.commit();
                 Toast.makeText(getApplicationContext(),districtName.substring(0,1).toUpperCase() + districtName.substring(1)+" is your Default District",Toast.LENGTH_LONG).show();
+
+
+//                if(radioButton1.isChecked()){
+//                    editor.putInt("DateMinus",0);
+//                }
+//                else {
+//                    editor.putInt("DateMinus",1);
+//                }
+//                editor.putInt("checkbox",1);
+//                editor.putBoolean("on",false);
 
 
                 setContentView(R.layout.activity_sehri_and_ifter_short_form);

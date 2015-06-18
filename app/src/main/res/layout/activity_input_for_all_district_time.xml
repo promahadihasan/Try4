@@ -32,11 +32,12 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:inputType="text"
+            android:background="#a8daea"
             android:hint="District name in English"
             android:gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:digits=" 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             >
             <requestFocus />
         </AutoCompleteTextView>

@@ -35,7 +35,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:padding="20dp"
-
+            android:layout_marginTop="10dp"
             android:id="@+id/districtNameSetting">
 
             <TextView
@@ -57,7 +57,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:inputType="textPersonName"
                     android:ems="18"
 
@@ -79,59 +79,59 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="vertical"
-            >
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="10dp"-->
+            <!--android:orientation="vertical"-->
+            <!-->-->
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/radio_group_note"
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:text="@string/radio_group_note"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textColor="#FFFFFF"/>-->
 
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="6"
-                android:id="@+id/radio_group"
-                android:orientation="horizontal">
+            <!--<RadioGroup-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:weightSum="6"-->
+                <!--android:id="@+id/radio_group"-->
+                <!--android:orientation="horizontal">-->
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ramadan1"
-                    android:textSize="17sp"
-                    android:layout_weight="1"
-                    android:textColor="#FFFFFF"
-                    android:id="@+id/first_ramadan"/>
+                <!--<RadioButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/ramadan1"-->
+                    <!--android:textSize="17sp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textColor="#FFFFFF"-->
+                    <!--android:id="@+id/first_ramadan"/>-->
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ramadan2"
-                    android:textSize="17sp"
-                    android:layout_weight="1"
-                    android:textColor="#FFFFFF"
+                <!--<RadioButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/ramadan2"-->
+                    <!--android:textSize="17sp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textColor="#FFFFFF"-->
 
-                    android:id="@+id/second_ramadan" />
+                    <!--android:id="@+id/second_ramadan" />-->
 
-            </RadioGroup>
+            <!--</RadioGroup>-->
 
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="45dp"
-                android:text="@string/district_submit_button"
-                android:id="@+id/radioSubmitButton"
-                android:layout_gravity="center_horizontal"
-                android:onClick="saveRadioButton"
-                android:background="@drawable/added_button" />
-        </LinearLayout>
+            <!--<Button-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="45dp"-->
+                <!--android:text="@string/district_submit_button"-->
+                <!--android:id="@+id/radioSubmitButton"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:onClick="saveRadioButton"-->
+                <!--android:background="@drawable/added_button" />-->
+        <!--</LinearLayout>-->
 
 
 

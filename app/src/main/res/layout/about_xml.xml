@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="5dp">
+                android:layout_marginBottom="0dp">
 
                 <ImageView
                     android:id="@+id/logo"
@@ -60,7 +60,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -87,7 +88,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:textStyle="bold"
                             android:textColor="#104E8B"
                             android:text="Hasan Abdullah"
@@ -250,12 +251,13 @@
                         android:orientation="vertical"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:layout_marginTop="5dp"
                         >
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Mainuddin Chisty"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:textStyle="bold"
                             android:textColor="#104E8B"/>
                         <TextView
@@ -321,13 +323,14 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_gravity="center"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:layout_marginTop="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Shakir Ahmed Saimum"
-                            android:textSize="15sp"
+                            android:text="Shakir Ahmed"
+                            android:textSize="17sp"
                             android:textStyle="bold"
                             android:textColor="#104E8B"/>
                         <TextView
