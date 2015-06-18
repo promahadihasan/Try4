@@ -20,15 +20,15 @@ private  String strtitle ;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
    private int i;
-    String[] notificationString;
+
     Intent intent;
     private String[] notificationStringArray;
     @Override
     public void onReceive(Context arg0, Intent arg1) {
 
-            
-        
-        notificationString=arg0.getResources().getStringArray(R.array.notification_messages);
+
+
+        notificationStringArray=arg0.getResources().getStringArray(R.array.notification_messages);
         sharedPreferences = arg0.getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
         i=sharedPreferences.getInt("indexofnotificaton",1);
@@ -38,7 +38,9 @@ private  String strtitle ;
         if(sharedPreferences.contains("indexofnotificaton"))
         {
 
-
+            if(i>notificationStringArray.length-1)
+                i=0;
+            else
             i++;
             System.out.println("indexofnotificaton from Notification AlarmRecevier inside contains sharedpreference "+i);
         }
@@ -48,7 +50,7 @@ private  String strtitle ;
         editor.putInt("indexofnotificaton", i);
         editor.commit();
 
-        String message=notificationString[i];
+        String message=notificationStringArray[i];
         String  strtitle=arg0.getString(R.string.title_notification);
 
         // Open NotificationView Class on Notification Click

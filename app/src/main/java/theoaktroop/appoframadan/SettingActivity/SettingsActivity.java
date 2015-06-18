@@ -2,15 +2,10 @@ package theoaktroop.appoframadan.SettingActivity;
 
 import android.app.Activity;
 import android.app.AlarmManager;
-import android.app.Dialog;
-import android.app.PendingIntent;
-import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -27,18 +22,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm;
-import theoaktroop.appoframadan.NotificationChallenging.AlarmReceiver;
-import theoaktroop.appoframadan.NotificationChallenging.NotificationModule;
 import theoaktroop.appoframadan.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
-import java.util.Calendar;
 
 import theoaktroop.appoframadan.DistrictActivity.DistrictsTimeClass;
 import theoaktroop.appoframadan.NavigationDrawerActivity.NavigationDrawerFragment;
@@ -52,7 +40,7 @@ public class SettingsActivity
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
-    NotificationModule notificationModule;
+
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
     /**
@@ -109,7 +97,7 @@ public class SettingsActivity
         mAdView.loadAd(adRequest);
 
         intilizationOfViews();
-        notificationModule=new NotificationModule();
+
 //        tasbihInitialization();
         districtInitialization();
 

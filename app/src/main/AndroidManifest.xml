@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
     <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 
     <application
@@ -25,6 +26,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity     android:name="theoaktroop.appoframadan.NotificationChallenging.NotificationViewer"
+            android:label="@string/title_notification"
+            android:parentActivityName="theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm" >
+            <meta-data
+                android:name="android:parentActivityName"
+                android:value=".FirstAcivity.SehriAndIfterShortForm" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+            <receiver android:name=".NotificationChallenging.OnBootReceiver"
+                android:enabled="true"
+                >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <uses-permission android:name="android.permission.WAKE_LOCK" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name="theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm"
             android:label="@string/title_activity_sehri_and_ifter_short_form" />
@@ -50,10 +70,7 @@
 
 
         </activity>
-        <activity
-            android:name="theoaktroop.appoframadan.NotificationChallenging.NotificationViewer"
-            android:label="@string/title_notification" >
-        </activity>
+
         <activity
             android:name="theoaktroop.appoframadan.HadithActivity.HadithTitleClass"
             android:autoRemoveFromRecents="true"

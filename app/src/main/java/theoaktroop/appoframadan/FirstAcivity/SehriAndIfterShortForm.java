@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,9 +13,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.opengl.Visibility;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.provider.AlarmClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -37,20 +34,19 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import theoaktroop.appoframadan.NotificationChallenging.NotificationModule;
+
+import theoaktroop.appoframadan.NotificationChallenging.AlarmHelper;
 import theoaktroop.appoframadan.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import theoaktroop.appoframadan.DistrictActivity.DistrictAllTimeShow;
 import theoaktroop.appoframadan.DistrictActivity.DistrictsTimeClass;
 import theoaktroop.appoframadan.DistrictActivity.InputForAllDistrictTimeActivity;
 import theoaktroop.appoframadan.NavigationDrawerActivity.NavigationDrawerFragment;
-import theoaktroop.appoframadan.NotificationChallenging.AlarmReceiver;
 
 
 public class SehriAndIfterShortForm extends ActionBarActivity
@@ -69,10 +65,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
   public    Intent alarmIntent;
   public   AlarmManager alarmManager;
 
-    public AlarmManager getAlarmManager() {
-
-        return alarmManager;
-    }
+    private AlarmHelper alarmHelper;
 
     public void setAlarmManager(AlarmManager alarmManager) {
         this.alarmManager = alarmManager;
@@ -147,6 +140,11 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
             drawerHelper();
             sehriActivity();
+//            editor = sharedPreferences.edit();
+//            editor.putBoolean("on", false);
+//            editor.commit();
+//            alarmHelper=new AlarmHelper(getApplicationContext());
+//            alarmHelper.setAlarmAtFirstTime();
 
         }
 
@@ -500,6 +498,7 @@ protected Dialog onCreateDialog(int id) {
         return ft.format(date).toString();
     }
 
+
     @Override
     protected void onPostResume() {
         super.onPostResume();
@@ -513,53 +512,57 @@ protected Dialog onCreateDialog(int id) {
             actionBar.setTitle(getString(R.string.title_activity_sehri_and_ifter_short_form));
             addVisibile();
             sehriActivity();
-            setAlarmAtFirstTime();
+//            editor = sharedPreferences.edit();
+//            editor.putBoolean("on", true);
+//            editor.commit();
+            alarmHelper=new AlarmHelper(getApplicationContext());
+            alarmHelper.setAlarmAtFirstTime();
         }
     }
 
-    private void setAlarmAtFirstTime()
-    {
-        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-        int chcheckBoxcheck=sharedPreferences.getInt("checkbox",1);
-
-
-        boolean onOff=sharedPreferences.getBoolean("on",true);
-        if( !sharedPreferences.contains("indexofnotificaton")) {
-            editor = sharedPreferences.edit();
-            editor.putInt("indexofnotificaton", 0);
-            editor.commit();
-        }
-        NotificationModule notificationModule=new NotificationModule();
-
-        notificationModule.sethOur(1);
-        notificationModule.setmUnites(35);
-        long timeMillisecond=notificationModule.getTimeMilliseceond();
-
-
-        Context context=getBaseContext();
-        AlarmManager alarmManager=(AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
-
-        if(chcheckBoxcheck==1 && onOff!=true) {
-            editor = sharedPreferences.edit();
-            editor.putBoolean("on",true);
-            editor.commit();
-            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + timeMillisecond, timeMillisecond * 2, pendingIntent);
-            System.out.println("Alarm Manager start");
-        }
-
-      else  if(chcheckBoxcheck==0)
-        {
-            alarmManager.cancel(pendingIntent);
-            System.out.println("Alarm Manager Cancel");
-
-        }
-       else System.out.println("From alarm manager");
-
-
-
-    }
+//    private void setAlarmAtFirstTime()
+//    {
+//        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+//        int chcheckBoxcheck=sharedPreferences.getInt("checkbox",1);
+//
+//
+//        boolean onOff=sharedPreferences.getBoolean("on",true);
+//        if( !sharedPreferences.contains("indexofnotificaton")) {
+//            editor = sharedPreferences.edit();
+//            editor.putInt("indexofnotificaton", 0);
+//            editor.commit();
+//        }
+//        NotificationModule notificationModule=new NotificationModule();
+//
+//        notificationModule.sethOur(1);
+//        notificationModule.setmUnites(35);
+//        long timeMillisecond=notificationModule.getTimeMilliseceond();
+//
+//
+//        Context context=getBaseContext();
+//        AlarmManager alarmManager=(AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+//        Intent intent = new Intent(context, AlarmReceiver.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
+//
+//        if(chcheckBoxcheck==1 && onOff!=true) {
+//            editor = sharedPreferences.edit();
+//            editor.putBoolean("on",true);
+//            editor.commit();
+//            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + timeMillisecond, timeMillisecond * 2, pendingIntent);
+//            System.out.println("Alarm Manager start");
+//        }
+//
+//      else  if(chcheckBoxcheck==0)
+//        {
+//            alarmManager.cancel(pendingIntent);
+//            System.out.println("Alarm Manager Cancel");
+//
+//        }
+//       else System.out.println("From alarm manager");
+//
+//
+//
+//    }
 
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
@@ -591,7 +594,11 @@ protected Dialog onCreateDialog(int id) {
                 setContentView(R.layout.activity_sehri_and_ifter_short_form);
                 sehriActivity();
                 drawerHelper();
-                setAlarmAtFirstTime();
+                editor = sharedPreferences.edit();
+                editor.putBoolean("on", false);
+                editor.commit();
+                alarmHelper=new AlarmHelper(getApplicationContext());
+                alarmHelper.setAlarmAtFirstTime();
             }
             else{
 
