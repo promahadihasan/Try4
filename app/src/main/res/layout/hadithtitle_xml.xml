@@ -23,6 +23,7 @@ tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.DrawerMainActiv
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/list_item_hadith_title"
+            android:cacheColorHint="@android:color/background_light"
             ></ListView>
 
 

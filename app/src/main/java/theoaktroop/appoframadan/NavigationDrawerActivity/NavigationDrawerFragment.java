@@ -112,47 +112,45 @@ public class NavigationDrawerFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                if (position==0) {
-                    startActivity(new Intent(getActivity(), SehriAndIfterShortForm.class));
-                }
-                else if(position==1){
+
+                if(position==0){
 
                     startActivity(new Intent(getActivity(), HadithTitleClass.class));
 
 
 
                 }
-                else if(position==2){
+                else if(position==1){
 
 
                     Intent intent = new Intent(getActivity(), TasbhiActivity1.class);
                     startActivity(intent);
                 }
-                else   if (position==3) {
+                else   if (position==2) {
 
                     startActivity(new Intent(getActivity(), MasalaTitleClass.class));
 
                 }
-                else   if (position==4) {
+                else   if (position==3) {
                     Intent intent = new Intent(getActivity(), DuaTitleClass.class);
                     startActivity(intent);
 
 
 
                 }
-                else if(position==5){
+                else if(position==4){
 
                     Intent intent = new Intent(getActivity(), EattingHabitTitleClass.class);
                     startActivity(intent);
 
                 }
-                else if(position==6){
+                else if(position==5){
 
                     Intent i = new Intent(getActivity(),SettingsActivity.class);
                     startActivity(i);
 
                 }
-                else if(position==7){
+                else if(position==6){
 
                     Intent i = new Intent(getActivity(),AboutUsActivity.class);
                     startActivity(i);
@@ -171,7 +169,7 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 new String[]{
-                        getString(R.string.title_activity_sehri_and_ifter_short_form), getString(R.string.title_activity_hadith),
+                        getString(R.string.title_activity_hadith),
                         getString(R.string.title_activity_tasbih),getString(R.string.title_activity_masala),
                         getString(R.string.title_activity_dua),
 
