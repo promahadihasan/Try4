@@ -32,8 +32,9 @@ public class AlarmHelper {
             editor.putInt("indexofnotificaton", 0);
             editor.commit();
         }
+       long timMs=30*60*1000;
 
-        long timeMillisecond=5*60*1000;
+
 
 
 
@@ -45,9 +46,9 @@ public class AlarmHelper {
             editor = sharedPreferences.edit();
             editor.putBoolean("on", true);
             editor.commit();
-            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + timeMillisecond, AlarmManager.INTERVAL_DAY, pendingIntent);
+            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + timMs, AlarmManager.INTERVAL_DAY, pendingIntent);
 
-            System.out.println("Alarm Manager start");
+            System.out.println(timMs+"ms Alarm Manager start");
         }
 
         else  if(chcheckBoxcheck==0)
@@ -56,7 +57,7 @@ public class AlarmHelper {
             System.out.println("AlarmHelper Manager Cancel");
 
         }
-        else System.out.println("From alarmHelper manager");
+        else System.out.println("From alarmHelper  manager on Condition");
 
 
 

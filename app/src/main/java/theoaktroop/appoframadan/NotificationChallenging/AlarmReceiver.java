@@ -73,12 +73,12 @@ private  String strtitle ;
                 .setContentTitle(strtitle)
                         // Set Text
                 .setContentText(message)
-                        //.setDefaults(Notification.DEFAULT_ALL)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                         // Set PendingIntent into Notification
                 .setContentIntent(pIntent)
                         // Dismiss Notification
-                .setAutoCancel(false);
+                .setAutoCancel(true);
 
         // Create Notification Manager
         NotificationManager notificationmanager = (NotificationManager) arg0.getSystemService(arg0.NOTIFICATION_SERVICE);

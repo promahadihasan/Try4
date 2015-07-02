@@ -1,8 +1,13 @@
 package theoaktroop.appoframadan.HadithActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -10,11 +15,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import theoaktroop.appoframadan.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import theoaktroop.appoframadan.R;
 
 /**
  * Created by Sunny_PC on 6/3/2015.
@@ -27,10 +35,10 @@ public class HadisViewer extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_details);
-
-        AdView mAdView = (AdView) findViewById(R.id.adView1);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+addVisibile();
+//        AdView mAdView = (AdView) findViewById(R.id.adView1);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
 
         Intent myIntent=getIntent();
 
@@ -72,9 +80,46 @@ public class HadisViewer extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        finish();
-    }
+        SharedPreferences sharedPreferences;
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
 
+        int ot = getResources().getConfiguration().orientation;
+        if(ot== Configuration.ORIENTATION_LANDSCAPE){
+            editor.putInt("flagOHV",1);
+            editor.commit();
+
+        }
+        else if(ot==Configuration.ORIENTATION_PORTRAIT && sharedPreferences.getInt("flagOHV",0)!=0) {
+            editor.putInt("flagOHV",0);
+            editor.commit();
+        }
+
+        else if(ot==Configuration.ORIENTATION_PORTRAIT && sharedPreferences.getInt("flagOHV",0)==0 )
+        {
+            finish();
+        }
+    }
+    private void addVisibile() {
+
+        LinearLayout adLinearLayout=(LinearLayout)findViewById(R.id.addViewNotification);
+        if(isNetworkAvailable()) {
+            adLinearLayout.setVisibility(View.VISIBLE);
+            AdView mAdView;
+            mAdView = (AdView) findViewById(R.id.adView1);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+        else {
+            adLinearLayout.setVisibility(View.GONE);
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 
 }

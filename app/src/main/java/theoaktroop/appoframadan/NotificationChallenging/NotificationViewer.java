@@ -3,19 +3,22 @@ package theoaktroop.appoframadan.NotificationChallenging;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import theoaktroop.appoframadan.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import theoaktroop.appoframadan.FirstAcivity.SehriAndIfterShortForm;
+import theoaktroop.appoframadan.R;
 
 /**
  * Created by Sunny_PC on 6/3/2015.
@@ -33,9 +36,10 @@ public class NotificationViewer extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_details);
         sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-        AdView mAdView = (AdView) findViewById(R.id.adView1);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        addVisibile();
+//        AdView mAdView = (AdView) findViewById(R.id.adView1);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
 
        System.out.println("Notification Viewer");
         i=sharedPreferences.getInt("indexofnotificaton",1);
@@ -76,5 +80,25 @@ public class NotificationViewer extends ActionBarActivity
         super.onBackPressed();
         startActivity(new Intent(this, SehriAndIfterShortForm.class));
         finish();
+    }
+    private void addVisibile() {
+
+        LinearLayout adLinearLayout=(LinearLayout)findViewById(R.id.addViewNotification);
+        if(isNetworkAvailable()) {
+            adLinearLayout.setVisibility(View.VISIBLE);
+            AdView mAdView;
+            mAdView = (AdView) findViewById(R.id.adView1);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+        else {
+            adLinearLayout.setVisibility(View.GONE);
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

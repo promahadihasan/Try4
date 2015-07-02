@@ -3,6 +3,8 @@ package theoaktroop.appoframadan.DistrictActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
@@ -15,11 +17,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import theoaktroop.appoframadan.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import theoaktroop.appoframadan.R;
 
 //h
 public class InputForAllDistrictTimeActivity extends ActionBarActivity {
@@ -34,11 +38,11 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_for_all_district_time);
-
-        AdView mAdView = (AdView) findViewById(R.id.adView1);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
+//
+//        AdView mAdView = (AdView) findViewById(R.id.adView1);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
+addVisibile();
         String[] districts = getResources().getStringArray(R.array.list_of_districts);
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,districts);
         allDistrictAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.allDistrictAutoCompleteTextView);
@@ -59,6 +63,26 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
 
 
 
+    }
+    private void addVisibile() {
+
+        LinearLayout adLinearLayout=(LinearLayout)findViewById(R.id.addViewinput);
+        if(isNetworkAvailable()) {
+            adLinearLayout.setVisibility(View.VISIBLE);
+            AdView mAdView;
+            mAdView = (AdView) findViewById(R.id.adView1);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+        else {
+            adLinearLayout.setVisibility(View.GONE);
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public void allDistrictShowTimeButton(View v){
@@ -152,6 +176,7 @@ public class InputForAllDistrictTimeActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        addVisibile();
         finish();
     }
 

@@ -5,7 +5,7 @@
     android:choiceMode="none"
 
     android:dividerHeight="0dp"
-    android:background="#cccc"
+    android:background="#cc0cb5f0"
 
 
     tools:context="theoaktroop.appoframadan.NavigationDrawerActivity.NavigationDrawerFragment" />

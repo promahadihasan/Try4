@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -11,11 +13,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import theoaktroop.appoframadan.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import theoaktroop.appoframadan.R;
 
 
 public class DistrictAllTimeShow extends ActionBarActivity {
@@ -35,9 +40,7 @@ public class DistrictAllTimeShow extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_district_all_time_show);
 
-        AdView mAdView = (AdView) findViewById(R.id.adView1);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getResources().getString(R.string.actionbar_color))));
@@ -48,7 +51,7 @@ public class DistrictAllTimeShow extends ActionBarActivity {
         districtName = bundle.getString("districtName");
 
         initialize();
-
+addVisibile();
         for (int i = 1; i <= 30; i++) {
             ramadanDateTextView.append(i + "\n\n");
             englishDateTextView.append(allDate[i] + "\n\n");
@@ -58,6 +61,27 @@ public class DistrictAllTimeShow extends ActionBarActivity {
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+    private void addVisibile() {
+
+        LinearLayout adLinearLayout=(LinearLayout)findViewById(R.id.addViewDistimfullshow);
+        if(isNetworkAvailable()) {
+            adLinearLayout.setVisibility(View.VISIBLE);
+            AdView mAdView;
+            mAdView = (AdView) findViewById(R.id.adView1);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+        else {
+            adLinearLayout.setVisibility(View.GONE);
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

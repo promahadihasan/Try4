@@ -1,7 +1,10 @@
 package theoaktroop.appoframadan.DuaDorutActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -44,10 +47,30 @@ public class DuaTitleClass
     @Override
     protected void onPause() {
         super.onPause();
-        if(flagforFinsh==0)
-        {
-            finish();
+
+        SharedPreferences sharedPreferences;
+        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+
+        int ot = getResources().getConfiguration().orientation;
+        if(ot== Configuration.ORIENTATION_LANDSCAPE){
+            editor.putInt("flagODTV",1);
+            editor.commit();
+
         }
+        else if(ot==Configuration.ORIENTATION_PORTRAIT && sharedPreferences.getInt("flagODTV",0)!=0) {
+            editor.putInt("flagODTV",0);
+            editor.commit();
+        }
+
+        else if(ot==Configuration.ORIENTATION_PORTRAIT && sharedPreferences.getInt("flagODTV",0)==0 )
+        {   if(flagforFinsh==0)
+           {
+            finish();
+           }
+
+        }
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

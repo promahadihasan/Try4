@@ -18,7 +18,7 @@ public class OnBootReceiver extends BroadcastReceiver {
       SharedPreferences sharedPreferences = context.getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
        SharedPreferences.Editor editor;
         editor = sharedPreferences.edit();
-        editor.putInt("checkbox", 1);
+
         editor.putBoolean("on",false);
         editor.commit();
         alarmHelper.setAlarmAtFirstTime();

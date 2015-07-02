@@ -34,9 +34,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-
-import theoaktroop.appoframadan.NotificationChallenging.AlarmHelper;
-import theoaktroop.appoframadan.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -47,6 +44,8 @@ import theoaktroop.appoframadan.DistrictActivity.DistrictAllTimeShow;
 import theoaktroop.appoframadan.DistrictActivity.DistrictsTimeClass;
 import theoaktroop.appoframadan.DistrictActivity.InputForAllDistrictTimeActivity;
 import theoaktroop.appoframadan.NavigationDrawerActivity.NavigationDrawerFragment;
+import theoaktroop.appoframadan.NotificationChallenging.AlarmHelper;
+import theoaktroop.appoframadan.R;
 
 
 public class SehriAndIfterShortForm extends ActionBarActivity
@@ -152,20 +151,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
     }
 
-    private void addVisibile() {
 
-        LinearLayout adLinearLayout=(LinearLayout)findViewById(R.id.addViewSe);
-        if(isNetworkAvailable()) {
-           adLinearLayout.setVisibility(View.VISIBLE);
-            AdView mAdView;
-            mAdView = (AdView) findViewById(R.id.adView1);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
-        }
-        else {
-           adLinearLayout.setVisibility(View.GONE);
-        }
-    }
 
 
 
@@ -389,7 +375,7 @@ public class SehriAndIfterShortForm extends ActionBarActivity
 
             hourForAlarmSeheri = "" + alarmTimeSeheri.charAt(0);
             minuteForAlarmSeheri = alarmTimeSeheri.substring(2,4);
-            String alarmTimeIfter = districtsTimeObject.calculateTime(iftarTimeString,"-05");
+            String alarmTimeIfter = districtsTimeObject.calculateTime(iftarTimeString,"-0");
 
             hourForAlarmIfter=""+alarmTimeIfter.charAt(0);
             minuteForAlarmIfter=""+alarmTimeIfter.substring(2,4);
@@ -520,49 +506,6 @@ protected Dialog onCreateDialog(int id) {
         }
     }
 
-//    private void setAlarmAtFirstTime()
-//    {
-//        sharedPreferences = getSharedPreferences("RamadanAppData", Context.MODE_PRIVATE);
-//        int chcheckBoxcheck=sharedPreferences.getInt("checkbox",1);
-//
-//
-//        boolean onOff=sharedPreferences.getBoolean("on",true);
-//        if( !sharedPreferences.contains("indexofnotificaton")) {
-//            editor = sharedPreferences.edit();
-//            editor.putInt("indexofnotificaton", 0);
-//            editor.commit();
-//        }
-//        NotificationModule notificationModule=new NotificationModule();
-//
-//        notificationModule.sethOur(1);
-//        notificationModule.setmUnites(35);
-//        long timeMillisecond=notificationModule.getTimeMilliseceond();
-//
-//
-//        Context context=getBaseContext();
-//        AlarmManager alarmManager=(AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-//        Intent intent = new Intent(context, AlarmReceiver.class);
-//        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
-//
-//        if(chcheckBoxcheck==1 && onOff!=true) {
-//            editor = sharedPreferences.edit();
-//            editor.putBoolean("on",true);
-//            editor.commit();
-//            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + timeMillisecond, timeMillisecond * 2, pendingIntent);
-//            System.out.println("Alarm Manager start");
-//        }
-//
-//      else  if(chcheckBoxcheck==0)
-//        {
-//            alarmManager.cancel(pendingIntent);
-//            System.out.println("Alarm Manager Cancel");
-//
-//        }
-//       else System.out.println("From alarm manager");
-//
-//
-//
-//    }
 
     public void  saveDistrict(View view){
         view.startAnimation(buttonClick);
@@ -593,6 +536,7 @@ protected Dialog onCreateDialog(int id) {
 
                 setContentView(R.layout.activity_sehri_and_ifter_short_form);
                 sehriActivity();
+                addVisibile();
                 drawerHelper();
                 editor = sharedPreferences.edit();
                 editor.putBoolean("on", false);
@@ -614,13 +558,26 @@ protected Dialog onCreateDialog(int id) {
 
 
     }
-
-
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void addVisibile() {
+
+        LinearLayout adLinearLayout=(LinearLayout)findViewById(R.id.addViewSe);
+        if(isNetworkAvailable()) {
+            adLinearLayout.setVisibility(View.VISIBLE);
+            AdView mAdView;
+            mAdView = (AdView) findViewById(R.id.adView1);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+        else {
+            adLinearLayout.setVisibility(View.GONE);
+        }
     }
 
 }
